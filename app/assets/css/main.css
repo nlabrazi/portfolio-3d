@@ -58,3 +58,15 @@ body {
     0 0 0 1px rgba(255, 255, 255, 0.08),
     0 0 40px rgba(255, 255, 255, 0.06);
 }
+
+.card-soft {
+  @apply card glow-hover p-6;
+}
+
+.media-frame {
+  @apply overflow-hidden rounded-xl border border-white/10 bg-black/40;
+}
+
+.section-title {
+  @apply mb-8 flex items-end justify-between gap-4;
+}
