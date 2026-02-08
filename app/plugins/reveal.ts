@@ -1,6 +1,8 @@
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.directive("reveal", {
     mounted(el: HTMLElement) {
+      if (import.meta.server) return
+
       el.classList.add("reveal")
 
       const obs = new IntersectionObserver(
@@ -13,6 +15,10 @@ export default defineNuxtPlugin((nuxtApp) => {
       )
 
       obs.observe(el)
+    },
+
+    getSSRProps() {
+      return {}
     }
   })
 })
