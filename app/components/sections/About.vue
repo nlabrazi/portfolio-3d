@@ -3,7 +3,7 @@ import { about } from "../../../data/about"
 </script>
 
 <template>
-  <section id="about" class="section">
+  <section id="about" class="section" v-reveal>
     <div class="container">
       <h2 class="h2">About</h2>
 

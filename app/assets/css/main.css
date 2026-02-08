@@ -61,6 +61,11 @@ body {
 
 .card-soft {
   @apply card glow-hover p-6;
+  transition: transform 250ms ease;
+}
+
+.card-soft:hover {
+  transform: translateY(-2px);
 }
 
 .media-frame {
@@ -69,4 +74,15 @@ body {
 
 .section-title {
   @apply mb-8 flex items-end justify-between gap-4;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
 }

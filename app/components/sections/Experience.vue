@@ -3,7 +3,7 @@ import { experiences } from "../../../data/experience"
 </script>
 
 <template>
-  <section id="experience" class="section">
+  <section id="experience" class="section" v-reveal>
     <div class="container">
       <h2 class="h2">Experience</h2>
 

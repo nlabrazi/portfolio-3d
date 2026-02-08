@@ -4,7 +4,7 @@ import Starfield from "../hero/Starfield.vue"
 </script>
 
 <template>
-  <section id="home" class="section relative overflow-hidden">
+  <section id="home" class="section relative overflow-hidden" v-reveal>
     <Starfield />
     <div class="container relative z-10">
       <div class="max-w-4xl">

@@ -4,19 +4,19 @@ import { projects } from "../../../data/projects"
 const selectedTech = ref<string | null>(null)
 
 const allTech = computed(() => {
-	const set = new Set<string>()
-	for (const p of projects) for (const t of p.tech) set.add(t)
-	return Array.from(set).sort((a, b) => a.localeCompare(b))
+  const set = new Set<string>()
+  for (const p of projects) for (const t of p.tech) set.add(t)
+  return Array.from(set).sort((a, b) => a.localeCompare(b))
 })
 
 const filtered = computed(() => {
-	if (!selectedTech.value) return projects
-	return projects.filter((p) => p.tech.includes(selectedTech.value as string))
+  if (!selectedTech.value) return projects
+  return projects.filter((p) => p.tech.includes(selectedTech.value as string))
 })
 </script>
 
 <template>
-  <section id="projects" class="section">
+  <section id="projects" class="section" v-reveal>
     <div class="container">
       <div class="section-title">
         <div>

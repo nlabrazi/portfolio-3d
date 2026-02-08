@@ -3,7 +3,7 @@ import { skillGroups } from "../../../data/skills"
 </script>
 
 <template>
-  <section id="skills" class="section">
+  <section id="skills" class="section" v-reveal>
     <div class="container">
       <h2 class="h2">Skills</h2>
 
