@@ -35,12 +35,12 @@ body {
 
 /* ===== Containers ===== */
 .container {
-  @apply mx-auto max-w-6xl px-6;
+  @apply mx-auto max-w-7xl px-5 sm:px-6 lg:px-8;
 }
 
 /* ===== Sections ===== */
 .section {
-  @apply py-24;
+  @apply py-16 sm:py-20 lg:py-24;
 }
 
 /* ===== Glass Card ===== */
