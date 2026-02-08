@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { site } from "../../../data/site"
+import Starfield from "../hero/Starfield.vue"
 </script>
 
 <template>
-  <section id="home" class="section">
-    <div class="container">
+  <section id="home" class="section relative overflow-hidden">
+    <Starfield />
+    <div class="container relative z-10">
       <div class="max-w-4xl">
         <div
           class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
