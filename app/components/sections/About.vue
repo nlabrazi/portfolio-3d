@@ -4,7 +4,7 @@ import { about } from "../../../data/about"
 
 <template>
   <section id="about" class="section">
-    <h2 class="text-2xl font-semibold tracking-tight">About</h2>
+    <h2 class="h2">About</h2>
 
     <h3 class="mt-6 text-lg font-semibold text-white/90">
       {{ about.heading }}

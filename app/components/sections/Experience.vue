@@ -4,7 +4,7 @@ import { experiences } from "../../../data/experience"
 
 <template>
   <section id="experience" class="section">
-    <h2 class="text-2xl font-semibold tracking-tight">Experience</h2>
+    <h2 class="h2">Experience</h2>
 
     <div class="mt-8 grid gap-4">
       <article v-for="exp in experiences" :key="`${exp.company}-${exp.role}-${exp.start}`" class="card glow-hover p-6">

@@ -4,7 +4,7 @@ import { projects } from "../../../data/projects"
 
 <template>
   <section id="projects" class="section">
-    <h2 class="text-2xl font-semibold tracking-tight">Projects</h2>
+    <h2 class="h2">Projects</h2>
 
     <div class="mt-8 grid gap-4 md:grid-cols-2">
       <article v-for="p in projects" :key="p.slug" class="card glow-hover p-6">

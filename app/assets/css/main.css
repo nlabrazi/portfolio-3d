@@ -9,6 +9,28 @@ html {
 
 body {
   @apply bg-neutral-950 text-white antialiased;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.h1 {
+  @apply text-4xl font-semibold tracking-tight md:text-6xl;
+}
+
+.h2 {
+  @apply text-2xl font-semibold tracking-tight;
+}
+
+.lead {
+  @apply text-lg text-white/70;
+}
+
+.muted {
+  @apply text-sm text-white/60;
+}
+
+.pill {
+  @apply rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70;
 }
 
 /* ===== Containers ===== */

@@ -4,7 +4,7 @@ import { skillGroups } from "../../../data/skills"
 
 <template>
   <section id="skills" class="section">
-    <h2 class="text-2xl font-semibold tracking-tight">Skills</h2>
+    <h2 class="h2">Skills</h2>
 
     <div class="mt-8 grid gap-4 md:grid-cols-2">
       <article v-for="g in skillGroups" :key="g.title" class="card glow-hover p-6">
