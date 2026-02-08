@@ -1,9 +1,11 @@
 <template>
-  <div class="min-h-dvh bg-black text-white">
+  <div class="min-h-dvh bg-neutral-950 text-white">
     <LayoutHeader />
-    <main class="mx-auto max-w-6xl px-6">
+
+    <main class="container">
       <slot />
     </main>
+
     <LayoutFooterBar />
   </div>
 </template>

@@ -3,11 +3,11 @@ import { projects } from "../../../data/projects"
 </script>
 
 <template>
-  <section id="projects" class="py-20">
+  <section id="projects" class="section">
     <h2 class="text-2xl font-semibold tracking-tight">Projects</h2>
 
     <div class="mt-8 grid gap-4 md:grid-cols-2">
-      <article v-for="p in projects" :key="p.slug" class="rounded-2xl border border-white/10 p-6">
+      <article v-for="p in projects" :key="p.slug" class="card glow-hover p-6">
         <div class="flex items-start justify-between gap-3">
           <div>
             <h3 class="text-lg font-semibold text-white/90">

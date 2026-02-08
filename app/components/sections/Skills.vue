@@ -3,11 +3,11 @@ import { skillGroups } from "../../../data/skills"
 </script>
 
 <template>
-  <section id="skills" class="py-20">
+  <section id="skills" class="section">
     <h2 class="text-2xl font-semibold tracking-tight">Skills</h2>
 
     <div class="mt-8 grid gap-4 md:grid-cols-2">
-      <article v-for="g in skillGroups" :key="g.title" class="rounded-2xl border border-white/10 p-6">
+      <article v-for="g in skillGroups" :key="g.title" class="card glow-hover p-6">
         <h3 class="text-sm font-semibold text-white/80">{{ g.title }}</h3>
 
         <div class="mt-4 flex flex-wrap gap-2">

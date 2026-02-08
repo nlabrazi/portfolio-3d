@@ -3,7 +3,7 @@ import { site } from "../../../data/site"
 </script>
 
 <template>
-  <section id="home" class="py-20">
+  <section id="home" class="section">
     <h1 class="text-4xl font-bold tracking-tight md:text-6xl">
       {{ site.name }}
     </h1>

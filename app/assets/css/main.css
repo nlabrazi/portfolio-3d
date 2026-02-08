@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Base ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-neutral-950 text-white antialiased;
+}
+
+/* ===== Containers ===== */
+.container {
+  @apply mx-auto max-w-6xl px-6;
+}
+
+/* ===== Sections ===== */
+.section {
+  @apply py-24;
+}
+
+/* ===== Glass Card ===== */
+.card {
+  @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur;
+}
+
+/* ===== Glow Hover ===== */
+.glow-hover {
+  @apply transition-all duration-300;
+}
+
+.glow-hover:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 40px rgba(255, 255, 255, 0.06);
+}

@@ -17,14 +17,14 @@ function scrollToHash(href: string) {
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-      <a href="#home" class="font-semibold tracking-tight" @click.prevent="scrollToHash('#home')">
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/70 backdrop-blur">
+    <div class="container flex items-center justify-between py-4">
+      <a href="#home" class="font-semibold tracking-tight text-white">
         portfolio-3d
       </a>
 
       <nav class="hidden gap-6 md:flex">
-        <a v-for="l in links" :key="l.href" :href="l.href" class="text-sm text-white/80 hover:text-white"
+        <a v-for="l in links" :key="l.href" :href="l.href" class="text-sm text-white/70 transition hover:text-white"
           @click.prevent="scrollToHash(l.href)">
           {{ l.label }}
         </a>
