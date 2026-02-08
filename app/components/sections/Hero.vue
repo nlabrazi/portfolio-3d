@@ -1,10 +1,15 @@
+<script setup lang="ts">
+import { site } from "../../../data/site"
+</script>
+
 <template>
   <section id="home" class="py-20">
     <h1 class="text-4xl font-bold tracking-tight md:text-6xl">
-      Nabil Labrazi
+      {{ site.name }}
     </h1>
+
     <p class="mt-4 max-w-2xl text-lg text-white/70">
-      Placeholder — tagline / intro courte
+      {{ site.tagline }}
     </p>
 
     <div class="mt-8 flex gap-4">
