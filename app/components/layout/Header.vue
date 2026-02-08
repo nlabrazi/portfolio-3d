@@ -1,18 +1,18 @@
 <script setup lang="ts">
 const links = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" }
+	{ href: "#home", label: "Home" },
+	{ href: "#about", label: "About" },
+	{ href: "#experience", label: "Experience" },
+	{ href: "#skills", label: "Skills" },
+	{ href: "#projects", label: "Projects" },
+	{ href: "#contact", label: "Contact" },
 ]
 
 function scrollToHash(href: string) {
-  const id = href.replace("#", "")
-  const el = document.getElementById(id)
-  if (!el) return
-  el.scrollIntoView({ behavior: "smooth", block: "start" })
+	const id = href.replace("#", "")
+	const el = document.getElementById(id)
+	if (!el) return
+	el.scrollIntoView({ behavior: "smooth", block: "start" })
 }
 </script>
 
