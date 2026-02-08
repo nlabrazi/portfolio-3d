@@ -63,9 +63,40 @@ const filtered = computed(() => {
             </span>
           </div>
 
-          <div v-if="p.media?.type === 'video'" class="media-frame mt-5">
+          <div v-if="p.media?.type === 'video'" class="media-frame mt-5 media-wrap">
             <video :src="p.media.src" muted autoplay loop playsinline
-              class="h-52 w-full object-cover opacity-90 transition hover:opacity-100" />
+              class="h-52 w-full object-cover opacity-90 transition" />
+
+            <div class="media-overlay flex items-end justify-between p-4">
+              <div class="text-sm font-semibold text-white/90">
+                {{ p.title }}
+              </div>
+
+              <div class="flex gap-2">
+                <a v-if="p.links?.repo" :href="p.links.repo" target="_blank"
+                  class="rounded-lg border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/15">
+                  Repo
+                </a>
+
+                <a v-if="p.links?.live" :href="p.links.live" target="_blank"
+                  class="rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-black hover:bg-white/90">
+                  Live
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div v-if="(!p.media || p.media.type !== 'video') && (p.links?.repo || p.links?.live)"
+            class="mt-5 flex flex-wrap gap-3">
+            <a v-if="p.links?.repo" :href="p.links.repo" target="_blank"
+              class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80 hover:text-white">
+              Repo
+            </a>
+
+            <a v-if="p.links?.live" :href="p.links.live" target="_blank"
+              class="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-white/90">
+              Live
+            </a>
           </div>
 
           <div class="mt-5 flex flex-wrap gap-3">
