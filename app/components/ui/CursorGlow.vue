@@ -8,6 +8,8 @@ const pos = { x: 0, y: 0 }
 
 let last = { x: 0, y: 0, t: 0 }
 let hue = 220 // base bleu
+const bursts: Array<{ x: number; y: number; t: number; h: number }> = []
+const burstDuration = 520
 
 function resize() {
   if (!canvas) return
@@ -18,6 +20,16 @@ function resize() {
 function onMove(e: MouseEvent) {
   mouse.x = e.clientX
   mouse.y = e.clientY
+}
+
+function onClick(e: PointerEvent) {
+  bursts.push({
+    x: e.clientX,
+    y: e.clientY,
+    t: performance.now(),
+    h: Math.floor(Math.random() * 360),
+  })
+  if (bursts.length > 8) bursts.shift()
 }
 
 function draw() {
@@ -47,24 +59,51 @@ function draw() {
   // 4) glow en 2 couches (outer + inner)
   ctx.globalCompositeOperation = "lighter"
 
-  const outer = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 170)
-  outer.addColorStop(0, `hsla(${hue}, 95%, 65%, ${0.18 + speed * 0.12})`)
-  outer.addColorStop(0.45, `hsla(${hue + 10}, 95%, 60%, 0.08)`)
+  const outer = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 90)
+  outer.addColorStop(0, `hsla(${hue}, 95%, 65%, ${0.12 + speed * 0.1})`)
+  outer.addColorStop(0.45, `hsla(${hue + 10}, 95%, 60%, 0.05)`)
   outer.addColorStop(1, "rgba(0,0,0,0)")
 
   ctx.fillStyle = outer
   ctx.beginPath()
-  ctx.arc(pos.x, pos.y, 170, 0, Math.PI * 2)
+  ctx.arc(pos.x, pos.y, 90, 0, Math.PI * 2)
   ctx.fill()
 
-  const inner = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 70)
-  inner.addColorStop(0, `hsla(${hue + 20}, 95%, 70%, ${0.22 + speed * 0.18})`)
+  const inner = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 32)
+  inner.addColorStop(0, `hsla(${hue + 20}, 95%, 70%, ${0.16 + speed * 0.16})`)
   inner.addColorStop(1, "rgba(0,0,0,0)")
 
   ctx.fillStyle = inner
   ctx.beginPath()
-  ctx.arc(pos.x, pos.y, 70, 0, Math.PI * 2)
+  ctx.arc(pos.x, pos.y, 32, 0, Math.PI * 2)
   ctx.fill()
+
+  const nowBurst = performance.now()
+  for (let i = bursts.length - 1; i >= 0; i--) {
+    const burst = bursts[i]
+    const age = (nowBurst - burst.t) / burstDuration
+    if (age >= 1) {
+      bursts.splice(i, 1)
+      continue
+    }
+
+    const life = 1 - age
+    const radius = 18 + age * 130
+    const glow = ctx.createRadialGradient(burst.x, burst.y, 0, burst.x, burst.y, radius * 0.8)
+    glow.addColorStop(0, `hsla(${burst.h}, 95%, 70%, ${life * 0.7})`)
+    glow.addColorStop(1, `hsla(${burst.h}, 95%, 70%, 0)`)
+
+    ctx.beginPath()
+    ctx.fillStyle = glow
+    ctx.arc(burst.x, burst.y, radius * 0.35, 0, Math.PI * 2)
+    ctx.fill()
+
+    ctx.beginPath()
+    ctx.strokeStyle = `hsla(${burst.h}, 95%, 70%, ${life * 0.95})`
+    ctx.lineWidth = 3 * life
+    ctx.arc(burst.x, burst.y, radius, 0, Math.PI * 2)
+    ctx.stroke()
+  }
 
   raf = requestAnimationFrame(draw)
 }
@@ -82,6 +121,7 @@ onMounted(() => {
   resize()
   window.addEventListener("resize", resize)
   window.addEventListener("mousemove", onMove)
+  window.addEventListener("pointerdown", onClick, { passive: true })
 
   // init position pour éviter un glow au coin (0,0)
   mouse.x = window.innerWidth / 2
@@ -95,6 +135,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener("resize", resize)
   window.removeEventListener("mousemove", onMove)
+  window.removeEventListener("pointerdown", onClick)
   cancelAnimationFrame(raf)
 })
 </script>
