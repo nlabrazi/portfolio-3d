@@ -17,6 +17,42 @@ const form = reactive<FormState>({
 	botField: "",
 })
 
+const contactItems = computed(() => {
+	const map = new Map(site.socials.map((s) => [s.label.toLowerCase(), s.href]))
+	const items = [
+		{
+			key: "email",
+			label: "Email",
+			href: map.get("email") ?? "",
+			icon: ["fas", "envelope"],
+		},
+		{
+			key: "linkedin",
+			label: "LinkedIn",
+			href: map.get("linkedin") ?? "",
+			icon: ["fab", "linkedin"],
+		},
+		{
+			key: "github",
+			label: "GitHub",
+			href: map.get("github") ?? "",
+			icon: ["fab", "github"],
+		},
+		{
+			key: "x",
+			label: "X",
+			href: map.get("x") ?? map.get("twitter") ?? "",
+			icon: ["fab", "x-twitter"],
+		},
+	]
+	return items
+		.filter((i) => i.href)
+		.map((item) => ({
+			...item,
+			value: formatContactValue(item.href),
+		}))
+})
+
 const isSubmitting = ref(false)
 const isSent = ref(false)
 
@@ -32,6 +68,16 @@ async function onSubmit() {
 
 	isSubmitting.value = false
 	isSent.value = true
+}
+
+function formatContactValue(href: string) {
+	if (href.startsWith("mailto:")) return href.replace("mailto:", "")
+	try {
+		const url = new URL(href)
+		return `${url.host}${url.pathname}`.replace(/\/$/, "")
+	} catch {
+		return href
+	}
 }
 </script>
 
@@ -49,26 +95,28 @@ async function onSubmit() {
 
       <div class="grid gap-4 lg:grid-cols-2">
         <!-- Left Card: Contact Information -->
-        <article class="card glow-hover p-6">
-          <h3 class="text-lg font-semibold text-white/90">Contact Information</h3>
+        <article class="card glow-hover p-6 contact-card">
+          <h3 class="text-2xl font-semibold text-white">Contact Information</h3>
 
-          <dl class="mt-6 space-y-4">
-            <div v-for="s in site.socials" :key="s.href" class="flex items-start justify-between gap-6">
-              <dt class="text-sm text-white/60">{{ s.label }}</dt>
-              <dd class="text-sm">
-                <a :href="s.href" target="_blank" rel="noreferrer"
-                  class="text-white/80 hover:text-white hover:underline">
-                  {{ s.href.replace("mailto:", "") }}
+          <ul class="contact-list">
+            <li v-for="item in contactItems" :key="item.key" class="contact-item">
+              <span class="contact-icon">
+                <FontAwesomeIcon :icon="item.icon" />
+              </span>
+              <div>
+                <p class="contact-label">{{ item.label }}</p>
+                <a :href="item.href" target="_blank" rel="noreferrer" class="contact-link">
+                  {{ item.value }}
                 </a>
-              </dd>
-            </div>
-          </dl>
+              </div>
+            </li>
+          </ul>
 
-          <div class="mt-8 rounded-2xl border border-white/10 bg-white/5 p-4">
-            <div class="text-sm font-semibold text-white/80">Current Status</div>
-            <div class="mt-1 text-sm text-white/70">
+          <div class="contact-status">
+            <div class="status-dot"></div>
+            <p class="text-sm text-white/70">
               {{ site.status ?? "Available for opportunities" }}
-            </div>
+            </p>
           </div>
         </article>
 

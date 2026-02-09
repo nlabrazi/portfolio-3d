@@ -13,6 +13,18 @@ const filtered = computed(() => {
 	if (!selectedTech.value) return projects
 	return projects.filter((p) => p.tech.includes(selectedTech.value as string))
 })
+
+function onVideoReady(e: Event) {
+	const video = e.target as HTMLVideoElement | null
+	if (!video) return
+	video.muted = true
+	const attempt = video.play()
+	if (attempt && typeof attempt.catch === "function") {
+		attempt.catch(() => {
+			// Autoplay can be blocked in some browsers; ignore silently.
+		})
+	}
+}
 </script>
 
 <template>
@@ -64,8 +76,13 @@ const filtered = computed(() => {
           </div>
 
           <div v-if="p.media?.type === 'video'" class="media-frame mt-5 media-wrap">
-            <video :src="p.media.src" muted autoplay loop playsinline
-              class="h-52 w-full object-cover opacity-90 transition" />
+            <video muted autoplay loop playsinline preload="metadata" @canplay="onVideoReady"
+              class="h-52 w-full object-cover opacity-90 transition">
+              <template v-if="p.media.sources?.length">
+                <source v-for="s in p.media.sources" :key="s.src" :src="s.src" :type="s.type" />
+              </template>
+              <source v-else-if="p.media.src" :src="p.media.src" type="video/mp4" />
+            </video>
 
             <div class="media-overlay flex items-end justify-between p-4">
               <div class="text-sm font-semibold text-white/90">

@@ -24,7 +24,8 @@ export type ProjectItem = {
 	tech: string[]
 	media?: {
 		type: "video" | "image"
-		src: string
+		src?: string
+		sources?: { src: string; type: string }[]
 	}
 	links?: {
 		live?: string

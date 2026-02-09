@@ -15,4 +15,7 @@ export default defineNuxtConfig({
 		"~/assets/css/social.css",
 		"~/assets/css/effects.css",
 	],
+	vite: {
+		assetsInclude: ["**/*.mp4", "**/*.webm"],
+	},
 })
