@@ -1,42 +1,63 @@
 import type { SkillGroup } from "./types"
 
+import bootstrap from "~/assets/images/bootstrap.png"
+import css3 from "~/assets/images/css3.png"
+import github from "~/assets/images/github.png"
+import heroku from "~/assets/images/heroku.png"
+import html5 from "~/assets/images/html5.png"
+import javascript from "~/assets/images/javascript.png"
+import jekyll from "~/assets/images/jekyll.png"
+import joomla from "~/assets/images/joomla.png"
+import nodejs from "~/assets/images/nodejs.png"
+import obs from "~/assets/images/obs.png"
+import photoshop from "~/assets/images/photoshop.png"
+import postgresql from "~/assets/images/postgresql.png"
+import rails from "~/assets/images/rails.png"
+import react from "~/assets/images/react.png"
+import redux from "~/assets/images/redux.png"
+import ruby from "~/assets/images/ruby.png"
+import sass from "~/assets/images/sass.png"
+import sqlserver from "~/assets/images/sqlserver.png"
+import tumblr from "~/assets/images/tumblr.png"
+import webpack from "~/assets/images/webpack.png"
+import wordpress from "~/assets/images/wordpress.png"
+
 export const skillGroups: SkillGroup[] = [
 	{
-		title: "HTML",
-		items: [{ label: "HTML5" }, { label: "JSX" }, { label: "Jekyll" }],
-	},
-	{
-		title: "CSS",
-		items: [{ label: "CSS3" }, { label: "SASS" }, { label: "Bootstrap" }],
-	},
-	{
-		title: "Javascript",
+		title: "Frontend Development",
 		items: [
-			{ label: "React" },
-			{ label: "Javascript" },
-			{ label: "Redux" },
-			{ label: "Node" },
+			{ label: "HTML5", icon: html5 },
+			{ label: "CSS3", icon: css3 },
+			{ label: "SASS", icon: sass },
+			{ label: "Bootstrap", icon: bootstrap },
+			{ label: "Javascript", icon: javascript },
+			{ label: "React", icon: react },
+			{ label: "Redux", icon: redux },
+			{ label: "JSX", icon: react },
+			{ label: "Jekyll", icon: jekyll },
 		],
 	},
 	{
-		title: "Back-End",
+		title: "Backend & Database",
 		items: [
-			{ label: "Ruby" },
-			{ label: "Rails" },
-			{ label: "PostgreSQL" },
-			{ label: "SQL Server" },
+			{ label: "Node", icon: nodejs },
+			{ label: "Ruby", icon: ruby },
+			{ label: "Rails", icon: rails },
+			{ label: "PostgreSQL", icon: postgresql },
+			{ label: "SQL Server", icon: sqlserver },
 		],
 	},
 	{
-		title: "CMS",
-		items: [{ label: "Wordpress" }, { label: "Tumblr" }, { label: "Joomla" }],
-	},
-	{
-		title: "Tools",
-		items: [{ label: "Webpack" }, { label: "GitHub" }, { label: "Heroku" }],
-	},
-	{
-		title: "Other",
-		items: [{ label: "Photoshop" }, { label: "OBS" }],
+		title: "Tools & Infra",
+		items: [
+			{ label: "Webpack", icon: webpack },
+			{ label: "GitHub", icon: github },
+			{ label: "Heroku", icon: heroku },
+			{ label: "Wordpress", icon: wordpress },
+			{ label: "Tumblr", icon: tumblr },
+			{ label: "Joomla", icon: joomla },
+			{ label: "Photoshop", icon: photoshop },
+			{ label: "OBS", icon: obs },
+		],
 	},
 ]

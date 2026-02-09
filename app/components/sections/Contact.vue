@@ -2,19 +2,19 @@
 import { site } from "../../../data/site"
 
 type FormState = {
-  name: string
-  email: string
-  subject: string
-  message: string
-  botField: string
+	name: string
+	email: string
+	subject: string
+	message: string
+	botField: string
 }
 
 const form = reactive<FormState>({
-  name: "",
-  email: "",
-  subject: "",
-  message: "",
-  botField: "",
+	name: "",
+	email: "",
+	subject: "",
+	message: "",
+	botField: "",
 })
 
 const isSubmitting = ref(false)
@@ -23,15 +23,15 @@ const isSent = ref(false)
 // Will plug Netlify after
 // Prepare only UI, wiring will come after
 async function onSubmit() {
-  if (isSubmitting.value) return
-  isSubmitting.value = true
-  isSent.value = false
+	if (isSubmitting.value) return
+	isSubmitting.value = true
+	isSent.value = false
 
-  // Placeholder UX (will plug Netlify after)
-  await new Promise((r) => setTimeout(r, 500))
+	// Placeholder UX (will plug Netlify after)
+	await new Promise((r) => setTimeout(r, 500))
 
-  isSubmitting.value = false
-  isSent.value = true
+	isSubmitting.value = false
+	isSent.value = true
 }
 </script>
 
@@ -115,7 +115,7 @@ async function onSubmit() {
 
             <div class="flex items-center gap-3">
               <button type="submit" :disabled="isSubmitting"
-                class="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-70">
+                class="btn btn-lg btn-primary disabled:cursor-not-allowed disabled:opacity-70">
                 {{ isSubmitting ? "Sending..." : "Send Message" }}
               </button>
 

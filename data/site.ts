@@ -4,7 +4,7 @@ export const site = {
 	brand: "portfolio-3d",
 	name: "Nabil Labrazi",
 	title: "Développeur Web Full-Stack",
-	tagline: "Ruby on Rails / React — ouvert à toute opportunités.",
+	tagline: "Développeur Web Full-Stack — ouvert à toute opportunités.",
 	location: "Île-de-France, France",
 	status: "Disponible pour de nouvelles opportunités en freelance ou en CDI.",
 	socials: [

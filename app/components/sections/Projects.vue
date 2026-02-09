@@ -4,14 +4,14 @@ import { projects } from "../../../data/projects"
 const selectedTech = ref<string | null>(null)
 
 const allTech = computed(() => {
-  const set = new Set<string>()
-  for (const p of projects) for (const t of p.tech) set.add(t)
-  return Array.from(set).sort((a, b) => a.localeCompare(b))
+	const set = new Set<string>()
+	for (const p of projects) for (const t of p.tech) set.add(t)
+	return Array.from(set).sort((a, b) => a.localeCompare(b))
 })
 
 const filtered = computed(() => {
-  if (!selectedTech.value) return projects
-  return projects.filter((p) => p.tech.includes(selectedTech.value as string))
+	if (!selectedTech.value) return projects
+	return projects.filter((p) => p.tech.includes(selectedTech.value as string))
 })
 </script>
 
@@ -74,12 +74,12 @@ const filtered = computed(() => {
 
               <div class="flex gap-2">
                 <a v-if="p.links?.repo" :href="p.links.repo" target="_blank"
-                  class="rounded-lg border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/15">
+                  class="btn btn-xs btn-soft">
                   Repo
                 </a>
 
                 <a v-if="p.links?.live" :href="p.links.live" target="_blank"
-                  class="rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-black hover:bg-white/90">
+                  class="btn btn-xs btn-primary">
                   Live
                 </a>
               </div>
@@ -89,24 +89,24 @@ const filtered = computed(() => {
           <div v-if="(!p.media || p.media.type !== 'video') && (p.links?.repo || p.links?.live)"
             class="mt-5 flex flex-wrap gap-3">
             <a v-if="p.links?.repo" :href="p.links.repo" target="_blank"
-              class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80 hover:text-white">
+              class="btn btn-sm btn-soft">
               Repo
             </a>
 
             <a v-if="p.links?.live" :href="p.links.live" target="_blank"
-              class="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-white/90">
+              class="btn btn-sm btn-primary">
               Live
             </a>
           </div>
 
           <div class="mt-5 flex flex-wrap gap-3">
             <a v-if="p.links?.repo" :href="p.links.repo" target="_blank"
-              class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80 hover:text-white">
+              class="btn btn-sm btn-soft">
               Repo
             </a>
 
             <a v-if="p.links?.live" :href="p.links.live" target="_blank"
-              class="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-white/90">
+              class="btn btn-sm btn-primary">
               Live
             </a>
 

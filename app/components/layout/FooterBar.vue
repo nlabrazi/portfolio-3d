@@ -3,16 +3,16 @@ import { site } from "../../../data/site"
 import { footer } from "../../../data/footer"
 
 function scrollTo(hash: string) {
-  const id = hash.replace("#", "")
-  const el = document.getElementById(id)
-  if (!el) return
-  el.scrollIntoView({ behavior: "smooth", block: "start" })
+	const id = hash.replace("#", "")
+	const el = document.getElementById(id)
+	if (!el) return
+	el.scrollIntoView({ behavior: "smooth", block: "start" })
 }
 </script>
 
 <template>
   <!-- <footer class="mt-24 border-t border-white/10"> -->
-  <footer class="relative z-10 mt-24 border-t border-white/10">
+  <footer class="relative z-10 mt-24 border-t border-white/10 bg-neutral-950/70 backdrop-blur">
     <div class="container py-16">
       <div class="grid gap-10 md:grid-cols-3">
         <!-- Brand -->

@@ -66,13 +66,12 @@ onBeforeUnmount(() => {
   <header class="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/70 backdrop-blur">
     <div class="container flex items-center justify-between py-4">
       <a href="#home" class="font-semibold tracking-tight text-white" @click.prevent="scrollTo('#home')">
-        portfolio-3d
+        Nabil Labrazi
       </a>
 
       <nav class="hidden items-center gap-2 md:flex">
-        <a v-for="l in links" :key="l.href" :href="l.href" class="rounded-full px-3 py-1 text-sm transition" :class="activeHash === l.href
-          ? 'bg-white/10 text-white'
-          : 'text-white/70 hover:text-white'" @click.prevent="scrollTo(l.href)">
+        <a v-for="l in links" :key="l.href" :href="l.href" class="nav-link"
+          :class="activeHash === l.href ? 'nav-link--active' : ''" @click.prevent="scrollTo(l.href)">
           {{ l.label }}
         </a>
       </nav>
