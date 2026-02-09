@@ -12,6 +12,10 @@ const activeHash = ref("#home")
 
 function scrollTo(hash: string) {
 	const id = hash.replace("#", "")
+	if (id === "home") {
+		window.scrollTo({ top: 0, behavior: "smooth" })
+		return
+	}
 	const el = document.getElementById(id)
 	if (!el) return
 	el.scrollIntoView({ behavior: "smooth", block: "start" })

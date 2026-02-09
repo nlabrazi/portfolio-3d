@@ -6,7 +6,7 @@ import { site } from "../../../data/site"
   <section id="home" class="section hero-section relative overflow-hidden" v-reveal>
     <div class="hero-ambient" aria-hidden="true"></div>
     <div class="container relative z-10">
-      <div class="mx-auto flex max-w-4xl flex-col items-center text-center">
+      <div class="hero-content mx-auto flex max-w-4xl flex-col items-center text-center">
         <div
           class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
           <span class="size-1.5 rounded-full bg-emerald-400/80"></span>

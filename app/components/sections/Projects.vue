@@ -4,14 +4,14 @@ import { projects } from "../../../data/projects"
 const selectedTech = ref<string | null>(null)
 
 const allTech = computed(() => {
-	const set = new Set<string>()
-	for (const p of projects) for (const t of p.tech) set.add(t)
-	return Array.from(set).sort((a, b) => a.localeCompare(b))
+  const set = new Set<string>()
+  for (const p of projects) for (const t of p.tech) set.add(t)
+  return Array.from(set).sort((a, b) => a.localeCompare(b))
 })
 
 const filtered = computed(() => {
-	if (!selectedTech.value) return projects
-	return projects.filter((p) => p.tech.includes(selectedTech.value as string))
+  if (!selectedTech.value) return projects
+  return projects.filter((p) => p.tech.includes(selectedTech.value as string))
 })
 </script>
 
@@ -22,7 +22,7 @@ const filtered = computed(() => {
         <div>
           <h2 class="h2">Projects</h2>
           <p class="mt-2 text-sm text-white/60">
-            Une sélection de projets (placeholders ok si lien manquant).
+            Une sélection de mes projets.
           </p>
         </div>
 
@@ -73,13 +73,11 @@ const filtered = computed(() => {
               </div>
 
               <div class="flex gap-2">
-                <a v-if="p.links?.repo" :href="p.links.repo" target="_blank"
-                  class="btn btn-xs btn-soft">
+                <a v-if="p.links?.repo" :href="p.links.repo" target="_blank" class="btn btn-xs btn-soft">
                   Repo
                 </a>
 
-                <a v-if="p.links?.live" :href="p.links.live" target="_blank"
-                  class="btn btn-xs btn-primary">
+                <a v-if="p.links?.live" :href="p.links.live" target="_blank" class="btn btn-xs btn-primary">
                   Live
                 </a>
               </div>
@@ -88,25 +86,21 @@ const filtered = computed(() => {
 
           <div v-if="(!p.media || p.media.type !== 'video') && (p.links?.repo || p.links?.live)"
             class="mt-5 flex flex-wrap gap-3">
-            <a v-if="p.links?.repo" :href="p.links.repo" target="_blank"
-              class="btn btn-sm btn-soft">
+            <a v-if="p.links?.repo" :href="p.links.repo" target="_blank" class="btn btn-sm btn-soft">
               Repo
             </a>
 
-            <a v-if="p.links?.live" :href="p.links.live" target="_blank"
-              class="btn btn-sm btn-primary">
+            <a v-if="p.links?.live" :href="p.links.live" target="_blank" class="btn btn-sm btn-primary">
               Live
             </a>
           </div>
 
           <div class="mt-5 flex flex-wrap gap-3">
-            <a v-if="p.links?.repo" :href="p.links.repo" target="_blank"
-              class="btn btn-sm btn-soft">
+            <a v-if="p.links?.repo" :href="p.links.repo" target="_blank" class="btn btn-sm btn-soft">
               Repo
             </a>
 
-            <a v-if="p.links?.live" :href="p.links.live" target="_blank"
-              class="btn btn-sm btn-primary">
+            <a v-if="p.links?.live" :href="p.links.live" target="_blank" class="btn btn-sm btn-primary">
               Live
             </a>
 
