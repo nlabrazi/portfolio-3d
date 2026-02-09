@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { site } from "../../../data/site"
+import SocialLinks from "../ui/SocialLinks.vue"
 </script>
 
 <template>
@@ -33,11 +34,9 @@ import { site } from "../../../data/site"
           <a href="#contact" class="btn btn-lg btn-outline">
             Contact
           </a>
-
-          <a :href="site.socials.find(s => s.label === 'GitHub')?.href" target="_blank" class="btn btn-lg btn-soft">
-            GitHub
-          </a>
         </div>
+
+        <SocialLinks class="mt-6 justify-center" />
 
         <div class="mt-10 flex flex-wrap justify-center gap-2">
           <span class="pill">Nuxt</span>
