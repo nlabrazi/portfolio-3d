@@ -1,0 +1,28 @@
+/* Typo: titres */
+.h1 {
+  @apply text-4xl font-semibold tracking-tight md:text-6xl;
+}
+
+.h2 {
+  @apply text-3xl font-semibold tracking-tight md:text-4xl;
+  position: relative;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.45rem;
+  width: 2.6rem;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.95), rgba(244, 114, 182, 0.95));
+  opacity: 0.9;
+}
+
+/* Typo: lead */
+.lead {
+  @apply text-lg text-white/70;
+}

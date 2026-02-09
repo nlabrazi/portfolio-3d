@@ -3,5 +3,16 @@ export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
 	modules: ["@nuxtjs/tailwindcss"],
-	css: ["~/assets/css/main.css"],
+	css: [
+		"~/assets/css/main.css",
+		"~/assets/css/base.css",
+		"~/assets/css/typography.css",
+		"~/assets/css/layout.css",
+		"~/assets/css/hero.css",
+		"~/assets/css/cards.css",
+		"~/assets/css/ui.css",
+		"~/assets/css/nav.css",
+		"~/assets/css/social.css",
+		"~/assets/css/effects.css",
+	],
 })
