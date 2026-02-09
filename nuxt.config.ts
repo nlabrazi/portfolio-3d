@@ -15,6 +15,16 @@ export default defineNuxtConfig({
 		"~/assets/css/social.css",
 		"~/assets/css/effects.css",
 	],
+	app: {
+		head: {
+			link: [
+				{
+					rel: "stylesheet",
+					href: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css",
+				},
+			],
+		},
+	},
 	vite: {
 		assetsInclude: ["**/*.mp4", "**/*.webm"],
 	},
