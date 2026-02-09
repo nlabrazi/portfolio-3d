@@ -1,0 +1,224 @@
+/* UI: pills */
+.pill {
+  @apply rounded-full border px-3 py-1 text-xs text-white/80;
+  border-color: rgba(148, 163, 184, 0.25);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(244, 114, 182, 0.08));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  transition: border-color 200ms ease, color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+}
+
+.pill-lg {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.pill:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
+}
+
+/* UI: skill icons */
+.skill-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.skill-icon-wrap {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.070);
+  /* background: rgba(255, 255, 255, 0.06); */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.skill-label {
+  font-size: 0.9rem;
+  color: rgba(226, 232, 240, 0.9);
+  text-align: center;
+}
+
+/* UI: buttons base */
+.btn {
+  @apply inline-flex items-center justify-center font-semibold transition;
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.btn-lg {
+  @apply rounded-xl px-5 py-3 text-sm;
+}
+
+.btn-sm {
+  @apply rounded-xl px-4 py-2 text-sm;
+}
+
+.btn-xs {
+  @apply rounded-lg px-3 py-1.5 text-xs;
+}
+
+/* UI: buttons variants */
+.btn-primary {
+  color: #0b0f1a;
+  background: linear-gradient(135deg, rgba(94, 234, 212, 0.95), rgba(99, 102, 241, 0.9));
+  box-shadow:
+    0 10px 25px rgba(56, 189, 248, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+}
+
+.btn-outline:hover {
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.btn-soft {
+  color: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btn-soft:hover {
+  border-color: rgba(244, 114, 182, 0.45);
+  color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 0 18px rgba(244, 114, 182, 0.2);
+}
+
+/* UI: click wow */
+.btn:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 0 22px rgba(56, 189, 248, 0.25);
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.55), rgba(244, 114, 182, 0.0));
+  opacity: 0;
+  transform: scale(0.2);
+  pointer-events: none;
+}
+
+.btn:active::after,
+.btn--pulse::after {
+  animation: btnClick 520ms ease;
+}
+
+@keyframes btnClick {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+
+/* UI: contact card */
+.contact-card {}
+
+.contact-list {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.contact-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.82);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.contact-label {
+  font-size: 0.8rem;
+  color: rgba(148, 163, 184, 0.8);
+}
+
+.contact-link {
+  font-size: 0.95rem;
+  color: rgba(226, 232, 240, 0.95);
+  transition: color 200ms ease;
+  word-break: break-word;
+}
+
+.contact-link:hover {
+  color: rgba(125, 211, 252, 0.95);
+}
+
+.contact-status {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.status-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: rgb(74, 222, 128);
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.6);
+  animation: statusPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+}

@@ -3,8 +3,10 @@
     <SectionsHero />
     <SectionsAbout />
     <SectionsExperience />
+    <SectionsEducation />
     <SectionsSkills />
     <SectionsProjects />
+    <SectionsMisc />
     <SectionsContact />
   </div>
 </template>

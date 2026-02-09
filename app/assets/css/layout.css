@@ -1,0 +1,14 @@
+/* Layout: container */
+.container {
+  @apply mx-auto max-w-7xl px-5 sm:px-6 lg:px-8;
+}
+
+/* Layout: sections */
+.section {
+  @apply py-16 sm:py-20 lg:py-24;
+}
+
+/* Layout: titre + actions */
+.section-title {
+  @apply mb-8 flex items-end justify-between gap-4;
+}
