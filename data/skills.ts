@@ -34,7 +34,6 @@ export const skillGroups: SkillGroup[] = [
 			{ label: "React", icon: react },
 			{ label: "Redux", icon: redux },
 			{ label: "JSX", icon: react },
-			{ label: "Jekyll", icon: jekyll },
 		],
 	},
 	{

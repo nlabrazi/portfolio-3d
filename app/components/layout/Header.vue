@@ -3,8 +3,10 @@ const links = [
 	{ href: "#home", label: "Home" },
 	{ href: "#about", label: "About" },
 	{ href: "#experience", label: "Experience" },
+	{ href: "#education", label: "Education" },
 	{ href: "#skills", label: "Skills" },
 	{ href: "#projects", label: "Projects" },
+	{ href: "#misc", label: "Hobbies" },
 	{ href: "#contact", label: "Contact" },
 ]
 
@@ -32,7 +34,8 @@ function updateProgress() {
 	const doc = document.documentElement
 	const height = doc.scrollHeight - doc.clientHeight
 	const current = window.scrollY || doc.scrollTop
-	progress.value = height > 0 ? Math.min(100, Math.max(0, (current / height) * 100)) : 0
+	progress.value =
+		height > 0 ? Math.min(100, Math.max(0, (current / height) * 100)) : 0
 }
 
 let obs: IntersectionObserver | null = null

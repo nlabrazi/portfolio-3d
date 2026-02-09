@@ -13,6 +13,7 @@ export type ExperienceItem = {
 	summary: string
 	tasks: string[]
 	stack: string[]
+	logo?: string
 }
 
 export type ProjectItem = {
@@ -29,6 +30,25 @@ export type ProjectItem = {
 		live?: string
 		repo?: string
 	}
+}
+
+export type EducationItem = {
+	title: string
+	licence: string
+	location: string
+	dateStart: string
+	dateEnd: string
+	description: string
+	skills: string
+	img: string
+}
+
+export type MiscItem = {
+	title: string
+	backContent: string
+	footer: string
+	img: string
+	imageFit?: "cover" | "contain"
 }
 
 export type SkillGroup = {

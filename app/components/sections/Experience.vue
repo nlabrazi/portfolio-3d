@@ -10,17 +10,23 @@ import { experiences } from "../../../data/experience"
       <div class="mt-8 grid gap-4">
         <article v-for="exp in experiences" :key="`${exp.company}-${exp.role}-${exp.start}`"
           class="card glow-hover p-6">
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <div class="text-lg font-semibold text-white/90">
-              <a v-if="exp.companyUrl" :href="exp.companyUrl" target="_blank" class="hover:underline">
-                {{ exp.company }}
-              </a>
-              <span v-else>{{ exp.company }}</span>
-              <span class="text-white/60"> — {{ exp.role }}</span>
+          <div class="exp-card__head">
+            <div v-if="exp.logo" class="exp-card__logo">
+              <img :src="exp.logo" :alt="`${exp.company} logo`" loading="lazy" decoding="async" />
             </div>
 
-            <div class="text-sm text-white/60">
-              {{ exp.start }} - {{ exp.end }} · {{ exp.location }}
+            <div class="flex flex-1 flex-wrap items-baseline justify-between gap-2">
+              <div class="text-lg font-semibold text-white/90">
+                <a v-if="exp.companyUrl" :href="exp.companyUrl" target="_blank" class="hover:underline">
+                  {{ exp.company }}
+                </a>
+                <span v-else>{{ exp.company }}</span>
+                <span class="text-white/60"> — {{ exp.role }}</span>
+              </div>
+
+              <div class="text-sm text-white/60">
+                {{ exp.start }} - {{ exp.end }} · {{ exp.location }}
+              </div>
             </div>
           </div>
 
