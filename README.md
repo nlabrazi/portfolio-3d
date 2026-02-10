@@ -44,7 +44,7 @@
 
 <p align="center">
   <a href="https://nabil-labrazi.fr">
-    <img src="src/assets/images/screenshot.png" alt="Screenshot" width="100%" height="400" />
+    <img src="app/assets/images/screenshot.png" alt="Screenshot" width="100%" height="400" />
   </a>
 </p>
 
@@ -163,7 +163,7 @@ See the full license in [`LICENSE.txt`](https://en.wikipedia.org/wiki/MIT_Licens
 [license-url]: https://github.com/nlabrazi/portfolio-3d/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/nabil-labrazi
-[product-screenshot]: src/assets/images/screenshot.png
+[product-screenshot]: app/assets/images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [Rails.js]: https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white
