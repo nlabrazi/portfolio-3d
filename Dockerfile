@@ -11,12 +11,14 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends curl \
   && rm -rf /var/lib/apt/lists/*
 
-# deps d'abord (cache)
-COPY package*.json ./
+RUN chown -R node:node /app
+
+USER node
+
+COPY --chown=node:node package*.json ./
 RUN npm ci
 
-# puis le reste
-COPY . .
+COPY --chown=node:node . .
 
 ##################################
 # 2) DEV (hot-reload Nuxt)       #
@@ -40,11 +42,9 @@ FROM ${NODE_IMAGE} AS prod
 WORKDIR /app
 ENV NODE_ENV=production
 
-# meilleure pratique : copier package pour certaines libs runtime qui le lisent
-# COPY --from=build /app/package.json ./package.json
+USER node
 
-COPY --from=build /app/.output ./.output
-# COPY --from=build /app/node_modules ./node_modules
+COPY --from=build --chown=node:node /app/.output ./.output
 
 EXPOSE 3000
 CMD ["node", ".output/server/index.mjs"]
