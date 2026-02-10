@@ -1,4 +1,16 @@
-<script defer src="https://cloud.umami.is/script.js" data-website-id="e7cb1358-0095-4d98-b23a-54a2a247008a"></script>
+<script setup lang="ts">
+const { public: pub } = useRuntimeConfig()
+
+useHead({
+  script: [
+    {
+      src: `${pub.umamiHost}/script.js`,
+      defer: true,
+      'data-website-id': pub.umamiId,
+    },
+  ],
+})
+</script>
 
 <template>
   <NuxtLayout>
