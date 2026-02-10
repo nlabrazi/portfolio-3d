@@ -6,6 +6,7 @@ services:
       target: dev
     container_name: portfolio-3d-app
     restart: unless-stopped
+    user: "${UID}:${GID}"
     env_file:
       - ./.env
     ports:
