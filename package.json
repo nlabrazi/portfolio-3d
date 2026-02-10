@@ -27,6 +27,7 @@
 		"vue-router": "^4.6.4"
 	},
 	"devDependencies": {
+		"@types/three": "^0.182.0",
 		"@biomejs/biome": "^2.3.14"
 	}
 }

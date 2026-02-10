@@ -13,7 +13,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 	document.addEventListener("pointerdown", onDown, { passive: true })
 
-	nuxtApp.hooks.hook("app:beforeUnmount", () => {
+	const cleanup = () => {
 		document.removeEventListener("pointerdown", onDown)
-	})
+	}
+
+	window.addEventListener("beforeunload", cleanup, { once: true })
 })
