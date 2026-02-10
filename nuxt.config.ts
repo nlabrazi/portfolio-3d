@@ -3,12 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss"],
-  runtimeConfig: {
-    public: {
-      umamiHost: process.env.NUXT_PUBLIC_UMAMI_HOST,
-      umamiId: process.env.NUXT_PUBLIC_UMAMI_ID,
-    },
-  },
+  plugins: [{ src: "~/plugins/simpleanalytics.client.js", ssr: false }],
   css: [
     "~/assets/css/main.css",
     "~/assets/css/base.css",
