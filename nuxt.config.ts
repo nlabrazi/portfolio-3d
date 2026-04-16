@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss"],
-  plugins: [{ src: "~/plugins/simpleanalytics.client.js", ssr: false }],
   css: [
     "~/assets/css/main.css",
     "~/assets/css/base.css",
