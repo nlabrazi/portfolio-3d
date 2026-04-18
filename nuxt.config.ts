@@ -21,7 +21,7 @@ export default defineNuxtConfig({
         {
           src: "https://umami.nabster.dev/script.js",
           defer: true,
-          "data-website-id": "689401ec-4af8-4f72-93ad-f82ed07d61e7",
+          "data-website-id": "5b11973a-7fe3-4221-bc32-6d2f382ca899",
         },
       ],
       link: [
