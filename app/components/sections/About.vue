@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { about } from "../../../data/about"
+import homeBgImage from "~/assets/images/home-bg.webp"
 </script>
 
 <template>
@@ -9,7 +10,7 @@ import { about } from "../../../data/about"
 
       <div class="card glow-hover mt-8 p-6 sm:p-8">
         <div class="grid gap-8 lg:grid-cols-[280px,1fr] lg:items-start">
-          <img src="~/assets/images/home-bg.jpg" alt="Portrait" class="h-64 w-full rounded-2xl object-cover" />
+          <img :src="homeBgImage" alt="Portrait" class="h-64 w-full rounded-2xl object-cover" />
 
           <div>
             <h3 class="text-lg font-semibold text-white/90">

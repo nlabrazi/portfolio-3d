@@ -43,7 +43,7 @@
 # 🧠 About The Project
 
 <p align="center">
-  <a href="https://nabil-labrazi.fr">
+  <a href="https://nabster.dev">
     <img src="app/assets/images/screenshot.png" alt="Screenshot" width="100%" height="400" />
   </a>
 </p>
@@ -53,11 +53,11 @@
 <!-- DESCRIPTION -->
 ### ℹ️ Description
 
-**Portfolio-3d** is a personal website showcasing projects, skills, and experiences. It serves as a digital resume and a platform to highlight work and connect with potential collaborators or employers:
+**Portfolio-3d** is a Nuxt portfolio showcasing projects, skills, and experience. It serves as a digital resume and a platform to connect with collaborators or employers:
 
-- 🌐 Live Site: <a href="https://nabil-labrazi.fr">nabil-labrazi.fr</a>
+- 🌐 Live Site: <a href="https://nabster.dev">nabster.dev</a>
 - 📁 Project Showcase: Displays a selection of projects with descriptions and links.
-- 📄 Resume Integration: Includes a downloadable resume for easy access.
+- ✉️ Contact Section: Includes direct contact links and a prefilled email draft flow.
 
 ---
 
@@ -86,8 +86,7 @@
 <!-- GETTING STARTED -->
 # ✅ Getting Started
 
-This project runs on ®️. Ensure you have Node.js and npm installed on your system before proceeding with the installation.
-Below are installation instructions for a React-based project.
+Ensure you have Node.js and npm installed on your system before proceeding.
 
 ### 💻 Installation
 
@@ -97,10 +96,10 @@ git clone https://github.com/nlabrazi/portfolio-3d.git
 cd portfolio-3d
 
 # Install dependencies
-npm install
+npm ci
 
 # Start the development server
-npm start
+npm run dev
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -141,9 +140,9 @@ See the full license in [`LICENSE.txt`](https://en.wikipedia.org/wiki/MIT_Licens
 ### 📬 Contact
 
 - 👤 [Linkedin][linkedin-url]
-- 🐦 [@Nabil](https://twitter.com/Nabil71405502)
+- 🐦 [@Nabil](https://x.com/Nabil71405502)
 - 📧 na.labrazi@gmail.com
-- 🔗 [Portfolio-3d](https://nabil-labrazi.fr)
+- 🔗 [Portfolio-3d](https://nabster.dev)
 - 📁 [Project Repository](https://github.com/nlabrazi/portfolio-3d)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

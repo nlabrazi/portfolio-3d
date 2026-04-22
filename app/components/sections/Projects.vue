@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import ImageLightbox from "~/components/ui/ImageLightbox.vue"
 import { projects } from "../../../data/projects"
 
 const selectedTech = ref<string | null>(null)
 const currentPage = ref(1)
 const PAGE_SIZE = 4
-const activeImage = ref<string | null>(null)
-const activeTitle = ref<string | null>(null)
+const { activeImage, activeTitle, openImage, closeImage } = useImageLightbox()
 
 const allTech = computed(() => {
 	const set = new Set<string>()
@@ -34,28 +34,6 @@ watch(selectedTech, () => {
 watch(totalPages, (value) => {
 	if (currentPage.value > value) currentPage.value = value
 })
-
-function openImage(src: string, title: string) {
-	activeImage.value = src
-	activeTitle.value = title
-}
-
-function closeImage() {
-	activeImage.value = null
-	activeTitle.value = null
-}
-
-function onVideoReady(e: Event) {
-	const video = e.target as HTMLVideoElement | null
-	if (!video) return
-	video.muted = true
-	const attempt = video.play()
-	if (attempt && typeof attempt.catch === "function") {
-		attempt.catch(() => {
-			// Autoplay can be blocked in some browsers; ignore silently.
-		})
-	}
-}
 </script>
 
 <template>
@@ -70,12 +48,13 @@ function onVideoReady(e: Event) {
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-          <button class="pill hover:text-white" :class="!selectedTech ? 'border-white/25 text-white' : ''"
+          <button type="button" class="pill hover:text-white"
+            :class="!selectedTech ? 'border-white/25 text-white' : ''"
             @click="selectedTech = null">
             All
           </button>
 
-          <button v-for="t in allTech" :key="t" class="pill hover:text-white"
+          <button v-for="t in allTech" :key="t" type="button" class="pill hover:text-white"
             :class="selectedTech === t ? 'border-white/25 text-white' : ''" @click="selectedTech = t">
             {{ t }}
           </button>
@@ -106,18 +85,9 @@ function onVideoReady(e: Event) {
             </span>
           </div>
 
-          <div v-if="p.media" class="media-frame mt-5 media-wrap"
-            :class="p.media.type === 'image' ? 'cursor-zoom-in' : ''"
-            @click="p.media.type === 'image' && p.media.src ? openImage(p.media.src, p.title) : undefined">
-            <video v-if="p.media.type === 'video'" muted autoplay loop playsinline preload="metadata"
-              @canplay="onVideoReady" class="project-media opacity-90 transition">
-              <template v-if="p.media.sources?.length">
-                <source v-for="s in p.media.sources" :key="s.src" :src="s.src" :type="s.type" />
-              </template>
-              <source v-else-if="p.media.src" :src="p.media.src" type="video/mp4" />
-            </video>
-
-            <img v-else-if="p.media.src" :src="p.media.src" :alt="`Apercu ${p.title}`" loading="lazy"
+          <div v-if="p.media" class="media-frame mt-5 media-wrap cursor-zoom-in"
+            @click="openImage(p.media.src, p.title)">
+            <img :src="p.media.src" :alt="`Apercu ${p.title}`" loading="lazy"
               class="project-media opacity-90 transition" />
 
             <div class="media-overlay flex items-end p-4">
@@ -128,16 +98,18 @@ function onVideoReady(e: Event) {
           </div>
 
           <div class="mt-5 flex flex-wrap gap-3">
-            <a v-if="p.links?.repo" :href="p.links.repo" target="_blank" class="btn btn-sm btn-soft">
+            <a v-if="p.links?.repo" :href="p.links.repo" target="_blank" rel="noopener noreferrer"
+              class="btn btn-sm btn-soft">
               Repo
             </a>
 
-            <a v-if="p.links?.live" :href="p.links.live" target="_blank" class="btn btn-sm btn-primary">
+            <a v-if="p.links?.live" :href="p.links.live" target="_blank" rel="noopener noreferrer"
+              class="btn btn-sm btn-primary">
               Live
             </a>
 
             <span v-if="!p.links?.repo && !p.links?.live" class="text-sm text-white/50">
-              Links à compléter
+              Liens privés ou non publiés
             </span>
           </div>
         </article>
@@ -157,11 +129,6 @@ function onVideoReady(e: Event) {
       </div>
     </div>
 
-    <div v-if="activeImage" class="misc-modal" @click.self="closeImage">
-      <button type="button" class="misc-modal__close" aria-label="Close image" @click="closeImage">
-        ✕
-      </button>
-      <img :src="activeImage" :alt="activeTitle ?? 'Project image'" class="misc-modal__img" />
-    </div>
+    <ImageLightbox :src="activeImage" :alt="activeTitle ?? 'Project image'" @close="closeImage" />
   </section>
 </template>

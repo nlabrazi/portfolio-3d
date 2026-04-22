@@ -17,7 +17,8 @@ import { experiences } from "../../../data/experience"
 
             <div class="flex flex-1 flex-wrap items-baseline justify-between gap-2">
               <div class="text-lg font-semibold text-white/90">
-                <a v-if="exp.companyUrl" :href="exp.companyUrl" target="_blank" class="hover:underline">
+                <a v-if="exp.companyUrl" :href="exp.companyUrl" target="_blank" rel="noopener noreferrer"
+                  class="hover:underline">
                   {{ exp.company }}
                 </a>
                 <span v-else>{{ exp.company }}</span>
@@ -30,7 +31,7 @@ import { experiences } from "../../../data/experience"
             </div>
           </div>
 
-          <p class="mt-3 text-sm text-white/70">
+          <p v-if="exp.summary" class="mt-3 text-sm text-white/70">
             {{ exp.summary }}
           </p>
 

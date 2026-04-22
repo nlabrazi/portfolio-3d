@@ -8,24 +8,24 @@ import adjutor from "~/assets/images/adjutor.png"
 export const educationItems: EducationItem[] = [
 	{
 		title: "The Hacking Project",
-		licence: "Developpeur Web",
+		licence: "Développeur Web",
 		location: "Paris (75)",
 		dateStart: "09/2020",
 		dateEnd: "04/2021",
 		description:
-			"The Hacking Project est une formation au code, a plein temps ouverte a tous et sans pre-requis",
+			"The Hacking Project est une formation au code, à plein temps, ouverte à tous et sans prérequis.",
 		skills: "Ruby on Rails, ReactJs, Redux",
 		img: thp,
 	},
 	{
 		title: "Le Wagon",
-		licence: "Developpeur Web",
+		licence: "Développeur Web",
 		location: "Paris (75)",
 		dateStart: "04/2020",
 		dateEnd: "07/2020",
 		description:
-			"Le Wagon est un bootcamp qui enseigne a ses eleves le developpement d'applications web",
-		skills: "Ruby on Rails, Javascript",
+			"Le Wagon est un bootcamp qui enseigne à ses élèves le développement d'applications web.",
+		skills: "Ruby on Rails, JavaScript",
 		img: leWagon,
 	},
 	{
@@ -44,8 +44,8 @@ export const educationItems: EducationItem[] = [
 		location: "Vernon (27)",
 		dateStart: "09/2011",
 		dateEnd: "06/2013",
-		description: "Conception et developpement d'applications",
-		skills: "C, C#, MySql",
+		description: "Conception et développement d'applications",
+		skills: "C, C#, MySQL",
 		img: adjutor,
 	},
 ]

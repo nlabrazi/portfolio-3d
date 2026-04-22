@@ -1,18 +1,8 @@
 <script setup lang="ts">
+import ImageLightbox from "~/components/ui/ImageLightbox.vue"
 import { miscItems } from "../../../data/misc"
 
-const activeImage = ref<string | null>(null)
-const activeTitle = ref<string | null>(null)
-
-function openImage(src: string, title: string) {
-	activeImage.value = src
-	activeTitle.value = title
-}
-
-function closeImage() {
-	activeImage.value = null
-	activeTitle.value = null
-}
+const { activeImage, activeTitle, openImage, closeImage } = useImageLightbox()
 </script>
 
 <template>
@@ -42,11 +32,6 @@ function closeImage() {
       </div>
     </div>
 
-    <div v-if="activeImage" class="misc-modal" @click.self="closeImage">
-      <button type="button" class="misc-modal__close" aria-label="Close image" @click="closeImage">
-        ✕
-      </button>
-      <img :src="activeImage" :alt="activeTitle ?? 'Hobby image'" class="misc-modal__img" />
-    </div>
+    <ImageLightbox :src="activeImage" :alt="activeTitle ?? 'Hobby image'" @close="closeImage" />
   </section>
 </template>

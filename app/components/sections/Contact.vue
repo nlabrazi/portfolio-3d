@@ -1,5 +1,11 @@
 <script setup lang="ts">
 import { site } from "../../../data/site"
+import {
+	formatContactValue,
+	getSocialHref,
+	getSocialLinks,
+	isHttpUrl,
+} from "~/utils/social-links"
 
 type FormState = {
 	name: string
@@ -17,67 +23,42 @@ const form = reactive<FormState>({
 	botField: "",
 })
 
-const contactItems = computed(() => {
-	const map = new Map(site.socials.map((s) => [s.label.toLowerCase(), s.href]))
-	const items = [
-		{
-			key: "email",
-			label: "Email",
-			href: map.get("email") ?? "",
-			icon: ["fas", "envelope"],
-		},
-		{
-			key: "linkedin",
-			label: "LinkedIn",
-			href: map.get("linkedin") ?? "",
-			icon: ["fab", "linkedin"],
-		},
-		{
-			key: "github",
-			label: "GitHub",
-			href: map.get("github") ?? "",
-			icon: ["fab", "github"],
-		},
-		{
-			key: "x",
-			label: "X",
-			href: map.get("x") ?? map.get("twitter") ?? "",
-			icon: ["fab", "x-twitter"],
-		},
-	]
-	return items
-		.filter((i) => i.href)
-		.map((item) => ({
-			...item,
-			value: formatContactValue(item.href),
-		}))
-})
+const contactEmailHref = getSocialHref("email")
+
+const contactItems = getSocialLinks(["email", "linkedin", "github", "x"]).map(
+	(item) => ({
+		...item,
+		value: formatContactValue(item.href),
+	}),
+)
 
 const isSubmitting = ref(false)
-const isSent = ref(false)
 
-// Will plug Netlify after
-// Prepare only UI, wiring will come after
-async function onSubmit() {
-	if (isSubmitting.value) return
+function onSubmit() {
+	if (isSubmitting.value || form.botField) return
+
+	if (!contactEmailHref.startsWith("mailto:")) return
+
 	isSubmitting.value = true
-	isSent.value = false
 
-	// Placeholder UX (will plug Netlify after)
-	await new Promise((r) => setTimeout(r, 500))
-
+	const mailtoTarget = buildMailtoTarget()
 	isSubmitting.value = false
-	isSent.value = true
+	window.location.href = mailtoTarget
 }
 
-function formatContactValue(href: string) {
-	if (href.startsWith("mailto:")) return href.replace("mailto:", "")
-	try {
-		const url = new URL(href)
-		return `${url.host}${url.pathname}`.replace(/\/$/, "")
-	} catch {
-		return href
-	}
+function buildMailtoTarget() {
+	const recipient = contactEmailHref.replace("mailto:", "")
+	const subject = encodeURIComponent(form.subject.trim())
+	const body = encodeURIComponent(
+		[
+			`Nom: ${form.name.trim()}`,
+			`Email: ${form.email.trim()}`,
+			"",
+			form.message.trim(),
+		].join("\n"),
+	)
+
+	return `mailto:${recipient}?subject=${subject}&body=${body}`
 }
 </script>
 
@@ -105,7 +86,8 @@ function formatContactValue(href: string) {
               </span>
               <div>
                 <p class="contact-label">{{ item.label }}</p>
-                <a :href="item.href" target="_blank" rel="noreferrer" class="contact-link">
+                <a :href="item.href" :target="isHttpUrl(item.href) ? '_blank' : undefined"
+                  :rel="isHttpUrl(item.href) ? 'noopener noreferrer' : undefined" class="contact-link">
                   {{ item.value }}
                 </a>
               </div>
@@ -164,11 +146,11 @@ function formatContactValue(href: string) {
             <div class="flex items-center gap-3">
               <button type="submit" :disabled="isSubmitting"
                 class="btn btn-lg btn-primary disabled:cursor-not-allowed disabled:opacity-70">
-                {{ isSubmitting ? "Sending..." : "Send Message" }}
+                {{ isSubmitting ? "Opening..." : "Send Message" }}
               </button>
 
-              <span v-if="isSent" class="text-sm text-emerald-300/90">
-                Message UI ready ✅ (Netlify wiring next)
+              <span class="text-sm text-white/60">
+                Opens your email client with a prefilled draft.
               </span>
             </div>
           </form>

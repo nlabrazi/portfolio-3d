@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { site } from "../../../data/site"
+import { getSocialLinks, isHttpUrl } from "~/utils/social-links"
 
 type SocialLinksProps = {
 	orientation?: "row" | "column"
@@ -11,36 +11,7 @@ const props = withDefaults(defineProps<SocialLinksProps>(), {
 	size: "md",
 })
 
-const socials = computed(() => {
-	const map = new Map(site.socials.map((s) => [s.label.toLowerCase(), s.href]))
-	const links = [
-		{
-			key: "github",
-			label: "GitHub",
-			href: map.get("github") ?? "",
-			icon: ["fab", "github"],
-		},
-		{
-			key: "linkedin",
-			label: "LinkedIn",
-			href: map.get("linkedin") ?? "",
-			icon: ["fab", "linkedin"],
-		},
-		{
-			key: "email",
-			label: "Email",
-			href: map.get("email") ?? "",
-			icon: ["fas", "envelope"],
-		},
-		{
-			key: "x",
-			label: "X",
-			href: map.get("x") ?? map.get("twitter") ?? "",
-			icon: ["fab", "x-twitter"],
-		},
-	]
-	return links.filter((l) => l.href)
-})
+const socials = getSocialLinks(["github", "linkedin", "email", "x"])
 </script>
 
 <template>
@@ -51,8 +22,8 @@ const socials = computed(() => {
   ]">
     <li v-for="l in socials" :key="l.key">
       <a :href="l.href" :aria-label="l.label" class="social-link"
-        :target="l.href.startsWith('http') ? '_blank' : undefined"
-        :rel="l.href.startsWith('http') ? 'noreferrer' : undefined">
+        :target="isHttpUrl(l.href) ? '_blank' : undefined"
+        :rel="isHttpUrl(l.href) ? 'noopener noreferrer' : undefined">
         <FontAwesomeIcon :icon="l.icon" />
       </a>
     </li>

@@ -15,16 +15,6 @@
 	flex-direction: column;
 }
 
-.social-links--sm .social-link {
-	width: 2.35rem;
-	height: 2.35rem;
-}
-
-.social-links--md .social-link {
-	width: 2.75rem;
-	height: 2.75rem;
-}
-
 .social-link {
 	display: inline-flex;
 	align-items: center;
@@ -39,6 +29,16 @@
 		background-color 200ms ease,
 		color 200ms ease,
 		box-shadow 200ms ease;
+}
+
+.social-links--sm .social-link {
+	width: 2.35rem;
+	height: 2.35rem;
+}
+
+.social-links--md .social-link {
+	width: 2.75rem;
+	height: 2.75rem;
 }
 
 .social-link svg {

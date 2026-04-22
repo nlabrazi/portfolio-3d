@@ -1,3 +1,29 @@
+<script setup lang="ts">
+import { site } from "../../data/site"
+
+const homepageDescription =
+  "Développeur web full-stack en France. Projets Angular, Vue, Nuxt et outils orientés produit."
+
+useSeoMeta({
+  title: "Portfolio",
+  description: homepageDescription,
+  ogTitle: `${site.name} · Portfolio`,
+  ogDescription: homepageDescription,
+  ogImage: site.ogImage,
+  ogUrl: site.url,
+  twitterCard: "summary_large_image",
+  twitterTitle: `${site.name} · Portfolio`,
+  twitterDescription: homepageDescription,
+  twitterImage: site.ogImage
+})
+
+useHead({
+  link: [
+    { rel: "canonical", href: site.url }
+  ]
+})
+</script>
+
 <template>
   <div class="py-10">
     <SectionsHero />
@@ -10,24 +36,3 @@
     <SectionsContact />
   </div>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title: 'Portfolio',
-  description: 'Développeur web full-stack en France. Projets Angular, Vue, Nuxt et outils orientés produit.',
-  ogTitle: 'Nabil · Portfolio',
-  ogDescription: 'Développeur web full-stack en France. Projets Angular, Vue, Nuxt et outils orientés produit.',
-  ogImage: 'https://nabster.dev/og-image.jpg',
-  ogUrl: 'https://nabster.dev/',
-  twitterCard: 'summary_large_image',
-  twitterTitle: 'Nabil · Portfolio',
-  twitterDescription: 'Développeur web full-stack en France. Projets Angular, Vue, Nuxt et outils orientés produit.',
-  twitterImage: 'https://nabster.dev/og-image.jpg'
-})
-
-useHead({
-  link: [
-    { rel: 'canonical', href: 'https://nabster.dev/' }
-  ]
-})
-</script>

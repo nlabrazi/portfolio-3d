@@ -1,4 +1,10 @@
-export default defineNuxtPlugin((nuxtApp) => {
+let cleanupPulseListener: (() => void) | undefined
+
+export default defineNuxtPlugin(() => {
+	if (import.meta.server) return
+
+	cleanupPulseListener?.()
+
 	const onDown = (event: PointerEvent) => {
 		const target = event.target as HTMLElement | null
 		if (!target) return
@@ -13,9 +19,14 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 	document.addEventListener("pointerdown", onDown, { passive: true })
 
-	const cleanup = () => {
+	cleanupPulseListener = () => {
 		document.removeEventListener("pointerdown", onDown)
 	}
 
-	window.addEventListener("beforeunload", cleanup, { once: true })
+	if (import.meta.hot) {
+		import.meta.hot.dispose(() => {
+			cleanupPulseListener?.()
+			cleanupPulseListener = undefined
+		})
+	}
 })
