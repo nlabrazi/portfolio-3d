@@ -11,6 +11,6 @@ export const site = {
 		{ label: "Email", href: "mailto:na.labrazi@gmail.com" },
 		{ label: "GitHub", href: "https://github.com/nlabrazi" },
 		{ label: "LinkedIn", href: "https://fr.linkedin.com/in/nabil-labrazi" },
-		{ label: "X", href: "https://x.com/" },
+		{ label: "X", href: "https://x.com/Nabil71405502" },
 	] satisfies SocialLink[],
 } as const

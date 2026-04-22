@@ -1,9 +1,9 @@
 import type { MiscItem } from "./types"
 
-import wow from "~/assets/images/wow.png"
-import travel from "~/assets/images/travel.jpg"
+import wow from "~/assets/images/wow.webp"
+import travel from "~/assets/images/travel.webp"
 import movies from "~/assets/images/movies.jpg"
-import labagar from "~/assets/images/labagar.jpg"
+import labagar from "~/assets/images/labagar.webp"
 
 export const miscItems: MiscItem[] = [
 	{
