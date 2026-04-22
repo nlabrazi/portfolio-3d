@@ -10,7 +10,7 @@ export type ExperienceItem = {
   location: string
   start: string
   end: string
-  summary: string
+  summary?: string
   tasks: string[]
   stack: string[]
   logo?: string

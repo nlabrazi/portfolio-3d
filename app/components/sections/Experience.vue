@@ -31,7 +31,7 @@ import { experiences } from "../../../data/experience"
             </div>
           </div>
 
-          <p class="mt-3 text-sm text-white/70">
+          <p v-if="exp.summary" class="mt-3 text-sm text-white/70">
             {{ exp.summary }}
           </p>
 

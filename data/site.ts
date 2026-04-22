@@ -6,7 +6,7 @@ export const site = {
 	ogImage: "https://nabster.dev/og-image.jpg",
 	name: "Nabil Labrazi",
 	title: "Développeur Web Full-Stack",
-	tagline: "Développeur Web Full-Stack — ouvert à toute opportunités.",
+	tagline: "Développeur Web Full-Stack — ouvert à de nouvelles opportunités.",
 	location: "Île-de-France, France",
 	status: "Disponible pour de nouvelles opportunités en freelance ou en CDI.",
 	socials: [

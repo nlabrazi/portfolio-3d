@@ -108,7 +108,7 @@ watch(totalPages, (value) => {
             </a>
 
             <span v-if="!p.links?.repo && !p.links?.live" class="text-sm text-white/50">
-              Links à compléter
+              Liens privés ou non publiés
             </span>
           </div>
         </article>

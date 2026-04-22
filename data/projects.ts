@@ -15,8 +15,8 @@ export const projects: ProjectItem[] = [
     title: "Lazarus Exchange",
     tech: ["NestJS", "TypeScript", "Node.js", "Vanilla JS"],
     description:
-      "Plateforme d'echange de fichiers securisee avec validation mutuelle avant telechargement.",
-    context: "Projet perso securite et collaboration",
+      "Plateforme d'échange de fichiers sécurisée avec validation mutuelle avant téléchargement.",
+    context: "Projet perso sécurité et collaboration",
     media: {
       type: "image",
       src: lazarusImage,
@@ -31,7 +31,7 @@ export const projects: ProjectItem[] = [
     title: "L'Escale Gourmande",
     tech: ["Nuxt 3", "Vue 3", "Tailwind CSS", "TypeScript"],
     description:
-      "Vitrine web pour un service traiteur evenementiel avec formulaires de demande sur mesure.",
+      "Vitrine web pour un service traiteur événementiel avec formulaires de demande sur mesure.",
     context: "Projet client vitrine",
     media: {
       type: "image",
@@ -47,7 +47,7 @@ export const projects: ProjectItem[] = [
     title: "Argan d'ici",
     tech: ["Nuxt 3", "Vue 3", "Tailwind CSS", "TypeScript", "Prisma", "Stripe"],
     description:
-      "Site de marque e-commerce pour une huile d'argan marocaine: storytelling, catalogue et tunnel de commande.",
+      "Site de marque e-commerce pour une huile d'argan marocaine : storytelling, catalogue et tunnel de commande.",
     context: "Projet business personnel",
     media: {
       type: "image",
@@ -63,8 +63,8 @@ export const projects: ProjectItem[] = [
     title: "Dev Tools",
     tech: ["Python", "Git", "Automation"],
     description:
-      "Suite de scripts pour automatiser les commits, la generation de changelog et les workflows Git.",
-    context: "Boite a outils developpeur",
+      "Suite de scripts pour automatiser les commits, la génération de changelog et les workflows Git.",
+    context: "Boîte à outils développeur",
     media: {
       type: "image",
       src: devtoolsImage,
@@ -78,8 +78,8 @@ export const projects: ProjectItem[] = [
     title: "SJVTDM",
     tech: ["Python", "Telegram Bot", "RSS", "PostgreSQL"],
     description:
-      "Bot Telegram qui agrege des sources d'actualite, genere des resumes et publie automatiquement.",
-    context: "Projet d'automatisation contenu",
+      "Bot Telegram qui agrège des sources d'actualité, génère des résumés et publie automatiquement.",
+    context: "Projet d'automatisation de contenu",
     media: {
       type: "image",
       src: sjvtdmImage,
@@ -93,7 +93,7 @@ export const projects: ProjectItem[] = [
     title: "Sawt AI",
     tech: ["Python", "TensorFlow", "Whisper", "Docker"],
     description:
-      "Outil d'analyse audio et de classification de versets, base sur des modeles de machine learning.",
+      "Outil d'analyse audio et de classification de versets, basé sur des modèles de machine learning.",
     context: "Projet IA / traitement audio",
     media: {
       type: "image",
@@ -108,7 +108,7 @@ export const projects: ProjectItem[] = [
     title: "Games",
     tech: ["React", "JavaScript", "Styled Components"],
     description:
-      "Collection de mini-jeux web interactifs orientee front-end et logique gameplay.",
+      "Collection de mini-jeux web interactifs orientée front-end et logique gameplay.",
     context: "Projet perso jeux et UX",
     media: {
       type: "image",
@@ -124,7 +124,7 @@ export const projects: ProjectItem[] = [
     title: "Article Medium",
     tech: ["Medium"],
     description:
-      "Article sur Medium qui retranscrit mon experience a l'ecole THP.",
+      "Article sur Medium qui retranscrit mon expérience à l'école THP.",
     context: "Mon premier article Medium (validation de mission THP)",
     media: {
       type: "image",
