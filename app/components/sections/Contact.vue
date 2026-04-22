@@ -17,6 +17,9 @@ const form = reactive<FormState>({
 	botField: "",
 })
 
+const contactEmailHref =
+	site.socials.find((social) => social.label.toLowerCase() === "email")?.href ?? ""
+
 const contactItems = computed(() => {
 	const map = new Map(site.socials.map((s) => [s.label.toLowerCase(), s.href]))
 	const items = [
@@ -54,20 +57,32 @@ const contactItems = computed(() => {
 })
 
 const isSubmitting = ref(false)
-const isSent = ref(false)
 
-// Will plug Netlify after
-// Prepare only UI, wiring will come after
-async function onSubmit() {
-	if (isSubmitting.value) return
+function onSubmit() {
+	if (isSubmitting.value || form.botField) return
+
+	if (!contactEmailHref.startsWith("mailto:")) return
+
 	isSubmitting.value = true
-	isSent.value = false
 
-	// Placeholder UX (will plug Netlify after)
-	await new Promise((r) => setTimeout(r, 500))
-
+	const mailtoTarget = buildMailtoTarget()
 	isSubmitting.value = false
-	isSent.value = true
+	window.location.href = mailtoTarget
+}
+
+function buildMailtoTarget() {
+	const recipient = contactEmailHref.replace("mailto:", "")
+	const subject = encodeURIComponent(form.subject.trim())
+	const body = encodeURIComponent(
+		[
+			`Nom: ${form.name.trim()}`,
+			`Email: ${form.email.trim()}`,
+			"",
+			form.message.trim(),
+		].join("\n"),
+	)
+
+	return `mailto:${recipient}?subject=${subject}&body=${body}`
 }
 
 function formatContactValue(href: string) {
@@ -78,6 +93,10 @@ function formatContactValue(href: string) {
 	} catch {
 		return href
 	}
+}
+
+function isHttpUrl(href: string) {
+	return href.startsWith("http://") || href.startsWith("https://")
 }
 </script>
 
@@ -105,7 +124,8 @@ function formatContactValue(href: string) {
               </span>
               <div>
                 <p class="contact-label">{{ item.label }}</p>
-                <a :href="item.href" target="_blank" rel="noreferrer" class="contact-link">
+                <a :href="item.href" :target="isHttpUrl(item.href) ? '_blank' : undefined"
+                  :rel="isHttpUrl(item.href) ? 'noopener noreferrer' : undefined" class="contact-link">
                   {{ item.value }}
                 </a>
               </div>
@@ -164,11 +184,11 @@ function formatContactValue(href: string) {
             <div class="flex items-center gap-3">
               <button type="submit" :disabled="isSubmitting"
                 class="btn btn-lg btn-primary disabled:cursor-not-allowed disabled:opacity-70">
-                {{ isSubmitting ? "Sending..." : "Send Message" }}
+                {{ isSubmitting ? "Opening..." : "Send Message" }}
               </button>
 
-              <span v-if="isSent" class="text-sm text-emerald-300/90">
-                Message UI ready ✅ (Netlify wiring next)
+              <span class="text-sm text-white/60">
+                Opens your email client with a prefilled draft.
               </span>
             </div>
           </form>

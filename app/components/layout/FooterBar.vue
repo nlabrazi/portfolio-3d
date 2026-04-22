@@ -8,6 +8,10 @@ function scrollTo(hash: string) {
 	if (!el) return
 	el.scrollIntoView({ behavior: "smooth", block: "start" })
 }
+
+function isHttpUrl(href: string) {
+	return href.startsWith("http://") || href.startsWith("https://")
+}
 </script>
 
 <template>
@@ -25,8 +29,9 @@ function scrollTo(hash: string) {
           </p>
 
           <div class="mt-6 flex flex-wrap gap-2">
-            <a v-for="s in site.socials" :key="s.href" :href="s.href" target="_blank" rel="noreferrer"
-              class="pill hover:text-white">
+            <a v-for="s in site.socials" :key="s.href" :href="s.href"
+              :target="isHttpUrl(s.href) ? '_blank' : undefined"
+              :rel="isHttpUrl(s.href) ? 'noopener noreferrer' : undefined" class="pill hover:text-white">
               {{ s.label }}
             </a>
           </div>

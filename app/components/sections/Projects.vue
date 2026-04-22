@@ -128,11 +128,13 @@ function onVideoReady(e: Event) {
           </div>
 
           <div class="mt-5 flex flex-wrap gap-3">
-            <a v-if="p.links?.repo" :href="p.links.repo" target="_blank" class="btn btn-sm btn-soft">
+            <a v-if="p.links?.repo" :href="p.links.repo" target="_blank" rel="noopener noreferrer"
+              class="btn btn-sm btn-soft">
               Repo
             </a>
 
-            <a v-if="p.links?.live" :href="p.links.live" target="_blank" class="btn btn-sm btn-primary">
+            <a v-if="p.links?.live" :href="p.links.live" target="_blank" rel="noopener noreferrer"
+              class="btn btn-sm btn-primary">
               Live
             </a>
 
