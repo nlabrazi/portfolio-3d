@@ -1,4 +1,4 @@
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(() => {
 	const onDown = (event: PointerEvent) => {
 		const target = event.target as HTMLElement | null
 		if (!target) return
