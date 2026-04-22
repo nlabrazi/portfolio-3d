@@ -52,7 +52,7 @@ const socials = computed(() => {
     <li v-for="l in socials" :key="l.key">
       <a :href="l.href" :aria-label="l.label" class="social-link"
         :target="l.href.startsWith('http') ? '_blank' : undefined"
-        :rel="l.href.startsWith('http') ? 'noreferrer' : undefined">
+        :rel="l.href.startsWith('http') ? 'noopener noreferrer' : undefined">
         <FontAwesomeIcon :icon="l.icon" />
       </a>
     </li>

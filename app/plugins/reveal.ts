@@ -1,3 +1,5 @@
+const revealObservers = new WeakMap<HTMLElement, IntersectionObserver>()
+
 export default defineNuxtPlugin((nuxtApp) => {
 	nuxtApp.vueApp.directive("reveal", {
 		mounted(el: HTMLElement) {
@@ -5,16 +7,23 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 			el.classList.add("reveal")
 
-			const obs = new IntersectionObserver(
+			const observer = new IntersectionObserver(
 				([entry]) => {
 					if (!entry?.isIntersecting) return
 					el.classList.add("reveal--visible")
-					obs.disconnect()
+					observer.disconnect()
+					revealObservers.delete(el)
 				},
 				{ threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
 			)
 
-			obs.observe(el)
+			revealObservers.set(el, observer)
+			observer.observe(el)
+		},
+
+		unmounted(el: HTMLElement) {
+			revealObservers.get(el)?.disconnect()
+			revealObservers.delete(el)
 		},
 
 		getSSRProps() {
