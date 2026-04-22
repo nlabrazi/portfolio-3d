@@ -10,128 +10,128 @@ import sawtaiImage from "~/assets/images/sawtai.webp"
 import sjvtdmImage from "~/assets/images/sjvtdm.webp"
 
 export const projects: ProjectItem[] = [
-  {
-    slug: "lazarus-exchange",
-    title: "Lazarus Exchange",
-    tech: ["NestJS", "TypeScript", "Node.js", "Vanilla JS"],
-    description:
-      "Plateforme d'échange de fichiers sécurisée avec validation mutuelle avant téléchargement.",
-    context: "Projet perso sécurité et collaboration",
-    media: {
-      type: "image",
-      src: lazarusImage,
-    },
-    links: {
-      repo: "https://github.com/nlabrazi/lazarus-exchange",
-      live: "https://lazarus-exchange.nabster.dev",
-    },
-  },
-  {
-    slug: "lescale-gourmande",
-    title: "L'Escale Gourmande",
-    tech: ["Nuxt 3", "Vue 3", "Tailwind CSS", "TypeScript"],
-    description:
-      "Vitrine web pour un service traiteur événementiel avec formulaires de demande sur mesure.",
-    context: "Projet client vitrine",
-    media: {
-      type: "image",
-      src: lescaleImage,
-    },
-    links: {
-      repo: "https://github.com/nlabrazi/lescale-gourmande",
-      live: "https://lescale-gourmande.nabster.dev",
-    },
-  },
-  {
-    slug: "argandici",
-    title: "Argan d'ici",
-    tech: ["Nuxt 3", "Vue 3", "Tailwind CSS", "TypeScript", "Prisma", "Stripe"],
-    description:
-      "Site de marque e-commerce pour une huile d'argan marocaine : storytelling, catalogue et tunnel de commande.",
-    context: "Projet business personnel",
-    media: {
-      type: "image",
-      src: arganImage,
-    },
-    links: {
-      repo: "https://github.com/nlabrazi/argandici",
-      live: "https://argandici.com",
-    },
-  },
-  {
-    slug: "dev-tools",
-    title: "Dev Tools",
-    tech: ["Python", "Git", "Automation"],
-    description:
-      "Suite de scripts pour automatiser les commits, la génération de changelog et les workflows Git.",
-    context: "Boîte à outils développeur",
-    media: {
-      type: "image",
-      src: devtoolsImage,
-    },
-    links: {
-      repo: "https://github.com/nlabrazi/dev-tools",
-    },
-  },
-  {
-    slug: "sjvtdm",
-    title: "SJVTDM",
-    tech: ["Python", "Telegram Bot", "RSS", "PostgreSQL"],
-    description:
-      "Bot Telegram qui agrège des sources d'actualité, génère des résumés et publie automatiquement.",
-    context: "Projet d'automatisation de contenu",
-    media: {
-      type: "image",
-      src: sjvtdmImage,
-    },
-    links: {
-      repo: "https://github.com/nlabrazi/sjvtdm",
-    },
-  },
-  {
-    slug: "sawt-ai",
-    title: "Sawt AI",
-    tech: ["Python", "TensorFlow", "Whisper", "Docker"],
-    description:
-      "Outil d'analyse audio et de classification de versets, basé sur des modèles de machine learning.",
-    context: "Projet IA / traitement audio",
-    media: {
-      type: "image",
-      src: sawtaiImage,
-    },
-    links: {
-      repo: "https://github.com/nlabrazi/sawt-ai",
-    },
-  },
-  {
-    slug: "games",
-    title: "Games",
-    tech: ["React", "JavaScript", "Styled Components"],
-    description:
-      "Collection de mini-jeux web interactifs orientée front-end et logique gameplay.",
-    context: "Projet perso jeux et UX",
-    media: {
-      type: "image",
-      src: gamesImage,
-    },
-    links: {
-      repo: "https://github.com/nlabrazi/games",
-      live: "https://nabster.online",
-    },
-  },
-  {
-    slug: "medium-article",
-    title: "Article Medium",
-    tech: ["Medium"],
-    description:
-      "Article sur Medium qui retranscrit mon expérience à l'école THP.",
-    context: "Mon premier article Medium (validation de mission THP)",
-    media: {
-      type: "image",
-      src: mediumArticleImage,
-    },
-    links: {
-      live: "https://medium.com/@na-labrazi/op%C3%A9ration-corsaire-95b1d7bd632e",
-    },
-  },
+	{
+		slug: "lazarus-exchange",
+		title: "Lazarus Exchange",
+		tech: ["NestJS", "TypeScript", "Node.js", "Vanilla JS"],
+		description:
+			"Plateforme d'échange de fichiers sécurisée avec validation mutuelle avant téléchargement.",
+		context: "Projet perso sécurité et collaboration",
+		media: {
+			type: "image",
+			src: lazarusImage,
+		},
+		links: {
+			repo: "https://github.com/nlabrazi/lazarus-exchange",
+			live: "https://lazarus-exchange.nabster.dev",
+		},
+	},
+	{
+		slug: "lescale-gourmande",
+		title: "L'Escale Gourmande",
+		tech: ["Nuxt 3", "Vue 3", "Tailwind CSS", "TypeScript"],
+		description:
+			"Vitrine web pour un service traiteur événementiel avec formulaires de demande sur mesure.",
+		context: "Projet client vitrine",
+		media: {
+			type: "image",
+			src: lescaleImage,
+		},
+		links: {
+			repo: "https://github.com/nlabrazi/lescale-gourmande",
+			live: "https://lescale-gourmande.nabster.dev",
+		},
+	},
+	{
+		slug: "argandici",
+		title: "Argan d'ici",
+		tech: ["Nuxt 3", "Vue 3", "Tailwind CSS", "TypeScript", "Prisma", "Stripe"],
+		description:
+			"Site de marque e-commerce pour une huile d'argan marocaine : storytelling, catalogue et tunnel de commande.",
+		context: "Projet business personnel",
+		media: {
+			type: "image",
+			src: arganImage,
+		},
+		links: {
+			repo: "https://github.com/nlabrazi/argandici",
+			live: "https://argandici.com",
+		},
+	},
+	{
+		slug: "dev-tools",
+		title: "Dev Tools",
+		tech: ["Python", "Git", "Automation"],
+		description:
+			"Suite de scripts pour automatiser les commits, la génération de changelog et les workflows Git.",
+		context: "Boîte à outils développeur",
+		media: {
+			type: "image",
+			src: devtoolsImage,
+		},
+		links: {
+			repo: "https://github.com/nlabrazi/dev-tools",
+		},
+	},
+	{
+		slug: "sjvtdm",
+		title: "SJVTDM",
+		tech: ["Python", "Telegram Bot", "RSS", "PostgreSQL"],
+		description:
+			"Bot Telegram qui agrège des sources d'actualité, génère des résumés et publie automatiquement.",
+		context: "Projet d'automatisation de contenu",
+		media: {
+			type: "image",
+			src: sjvtdmImage,
+		},
+		links: {
+			repo: "https://github.com/nlabrazi/sjvtdm",
+		},
+	},
+	{
+		slug: "sawt-ai",
+		title: "Sawt AI",
+		tech: ["Python", "TensorFlow", "Whisper", "Docker"],
+		description:
+			"Outil d'analyse audio et de classification de versets, basé sur des modèles de machine learning.",
+		context: "Projet IA / traitement audio",
+		media: {
+			type: "image",
+			src: sawtaiImage,
+		},
+		links: {
+			repo: "https://github.com/nlabrazi/sawt-ai",
+		},
+	},
+	{
+		slug: "games",
+		title: "Games",
+		tech: ["React", "JavaScript", "Styled Components"],
+		description:
+			"Collection de mini-jeux web interactifs orientée front-end et logique gameplay.",
+		context: "Projet perso jeux et UX",
+		media: {
+			type: "image",
+			src: gamesImage,
+		},
+		links: {
+			repo: "https://github.com/nlabrazi/games",
+			live: "https://nabster.online",
+		},
+	},
+	{
+		slug: "medium-article",
+		title: "Article Medium",
+		tech: ["Medium"],
+		description:
+			"Article sur Medium qui retranscrit mon expérience à l'école THP.",
+		context: "Mon premier article Medium (validation de mission THP)",
+		media: {
+			type: "image",
+			src: mediumArticleImage,
+		},
+		links: {
+			live: "https://medium.com/@na-labrazi/op%C3%A9ration-corsaire-95b1d7bd632e",
+		},
+	},
 ]

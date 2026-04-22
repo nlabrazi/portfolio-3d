@@ -3,6 +3,13 @@ export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
 	modules: ["@nuxtjs/tailwindcss"],
+	typescript: {
+		tsConfig: {
+			compilerOptions: {
+				baseUrl: ".",
+			},
+		},
+	},
 	css: [
 		"~/assets/css/main.css",
 		"~/assets/css/base.css",

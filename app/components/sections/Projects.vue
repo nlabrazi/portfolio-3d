@@ -48,12 +48,13 @@ watch(totalPages, (value) => {
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-          <button class="pill hover:text-white" :class="!selectedTech ? 'border-white/25 text-white' : ''"
+          <button type="button" class="pill hover:text-white"
+            :class="!selectedTech ? 'border-white/25 text-white' : ''"
             @click="selectedTech = null">
             All
           </button>
 
-          <button v-for="t in allTech" :key="t" class="pill hover:text-white"
+          <button v-for="t in allTech" :key="t" type="button" class="pill hover:text-white"
             :class="selectedTech === t ? 'border-white/25 text-white' : ''" @click="selectedTech = t">
             {{ t }}
           </button>

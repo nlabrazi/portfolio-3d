@@ -34,7 +34,9 @@ const socialDefinitionMap = new Map(
 export type SocialLinkKey = (typeof socialDefinitions)[number]["key"]
 
 function getSocialHrefMap() {
-	return new Map(site.socials.map((social) => [social.label.toLowerCase(), social.href]))
+	return new Map(
+		site.socials.map((social) => [social.label.toLowerCase(), social.href]),
+	)
 }
 
 export function getSocialHref(key: SocialLinkKey) {
