@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { scrollToHash } from "~/utils/navigation"
+
 const links = [
 	{ href: "#home", label: "Home" },
 	{ href: "#about", label: "About" },
@@ -14,19 +16,8 @@ const activeHash = ref("#home")
 const isOpen = ref(false)
 const progress = ref(0)
 
-function scrollTo(hash: string) {
-	const id = hash.replace("#", "")
-	if (id === "home") {
-		window.scrollTo({ top: 0, behavior: "smooth" })
-		return
-	}
-	const el = document.getElementById(id)
-	if (!el) return
-	el.scrollIntoView({ behavior: "smooth", block: "start" })
-}
-
 function onNavClick(hash: string) {
-	scrollTo(hash)
+	scrollToHash(hash)
 	isOpen.value = false
 }
 
@@ -96,7 +87,7 @@ onBeforeUnmount(() => {
     </div>
 
     <div class="container flex items-center justify-between py-4">
-      <a href="#home" class="font-semibold tracking-tight text-white" @click.prevent="scrollTo('#home')">
+      <a href="#home" class="font-semibold tracking-tight text-white" @click.prevent="scrollToHash('#home')">
         Nabil Labrazi
       </a>
 

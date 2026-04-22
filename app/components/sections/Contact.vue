@@ -1,5 +1,11 @@
 <script setup lang="ts">
 import { site } from "../../../data/site"
+import {
+	formatContactValue,
+	getSocialHref,
+	getSocialLinks,
+	isHttpUrl,
+} from "~/utils/social-links"
 
 type FormState = {
 	name: string
@@ -17,44 +23,14 @@ const form = reactive<FormState>({
 	botField: "",
 })
 
-const contactEmailHref =
-	site.socials.find((social) => social.label.toLowerCase() === "email")?.href ?? ""
+const contactEmailHref = getSocialHref("email")
 
-const contactItems = computed(() => {
-	const map = new Map(site.socials.map((s) => [s.label.toLowerCase(), s.href]))
-	const items = [
-		{
-			key: "email",
-			label: "Email",
-			href: map.get("email") ?? "",
-			icon: ["fas", "envelope"],
-		},
-		{
-			key: "linkedin",
-			label: "LinkedIn",
-			href: map.get("linkedin") ?? "",
-			icon: ["fab", "linkedin"],
-		},
-		{
-			key: "github",
-			label: "GitHub",
-			href: map.get("github") ?? "",
-			icon: ["fab", "github"],
-		},
-		{
-			key: "x",
-			label: "X",
-			href: map.get("x") ?? map.get("twitter") ?? "",
-			icon: ["fab", "x-twitter"],
-		},
-	]
-	return items
-		.filter((i) => i.href)
-		.map((item) => ({
-			...item,
-			value: formatContactValue(item.href),
-		}))
-})
+const contactItems = getSocialLinks(["email", "linkedin", "github", "x"]).map(
+	(item) => ({
+		...item,
+		value: formatContactValue(item.href),
+	}),
+)
 
 const isSubmitting = ref(false)
 
@@ -83,20 +59,6 @@ function buildMailtoTarget() {
 	)
 
 	return `mailto:${recipient}?subject=${subject}&body=${body}`
-}
-
-function formatContactValue(href: string) {
-	if (href.startsWith("mailto:")) return href.replace("mailto:", "")
-	try {
-		const url = new URL(href)
-		return `${url.host}${url.pathname}`.replace(/\/$/, "")
-	} catch {
-		return href
-	}
-}
-
-function isHttpUrl(href: string) {
-	return href.startsWith("http://") || href.startsWith("https://")
 }
 </script>
 

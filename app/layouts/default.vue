@@ -2,10 +2,7 @@
 import CursorGlow from "~/components/ui/CursorGlow.vue"
 import Starfield from "~/components/hero/Starfield.vue"
 import SocialLinks from "~/components/ui/SocialLinks.vue"
-
-function scrollToTop() {
-	window.scrollTo({ top: 0, behavior: "smooth" })
-}
+import { scrollToTop } from "~/utils/navigation"
 </script>
 
 <template>

@@ -1,17 +1,10 @@
 <script setup lang="ts">
 import { site } from "../../../data/site"
 import { footer } from "../../../data/footer"
+import { scrollToHash } from "~/utils/navigation"
+import { getSocialLinks, isHttpUrl } from "~/utils/social-links"
 
-function scrollTo(hash: string) {
-	const id = hash.replace("#", "")
-	const el = document.getElementById(id)
-	if (!el) return
-	el.scrollIntoView({ behavior: "smooth", block: "start" })
-}
-
-function isHttpUrl(href: string) {
-	return href.startsWith("http://") || href.startsWith("https://")
-}
+const socialLinks = getSocialLinks(["email", "github", "linkedin", "x"])
 </script>
 
 <template>
@@ -29,7 +22,7 @@ function isHttpUrl(href: string) {
           </p>
 
           <div class="mt-6 flex flex-wrap gap-2">
-            <a v-for="s in site.socials" :key="s.href" :href="s.href"
+            <a v-for="s in socialLinks" :key="s.href" :href="s.href"
               :target="isHttpUrl(s.href) ? '_blank' : undefined"
               :rel="isHttpUrl(s.href) ? 'noopener noreferrer' : undefined" class="pill hover:text-white">
               {{ s.label }}
@@ -42,7 +35,7 @@ function isHttpUrl(href: string) {
           <div class="text-sm font-semibold text-white/80">Navigation</div>
           <ul class="mt-4 space-y-2">
             <li v-for="n in footer.navigation" :key="n.href">
-              <a :href="n.href" class="text-sm text-white/60 hover:text-white" @click.prevent="scrollTo(n.href)">
+              <a :href="n.href" class="text-sm text-white/60 hover:text-white" @click.prevent="scrollToHash(n.href)">
                 {{ n.label }}
               </a>
             </li>

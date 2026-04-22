@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import ImageLightbox from "~/components/ui/ImageLightbox.vue"
 import { projects } from "../../../data/projects"
 
 const selectedTech = ref<string | null>(null)
 const currentPage = ref(1)
 const PAGE_SIZE = 4
-const activeImage = ref<string | null>(null)
-const activeTitle = ref<string | null>(null)
+const { activeImage, activeTitle, openImage, closeImage } = useImageLightbox()
 
 const allTech = computed(() => {
 	const set = new Set<string>()
@@ -34,16 +34,6 @@ watch(selectedTech, () => {
 watch(totalPages, (value) => {
 	if (currentPage.value > value) currentPage.value = value
 })
-
-function openImage(src: string, title: string) {
-	activeImage.value = src
-	activeTitle.value = title
-}
-
-function closeImage() {
-	activeImage.value = null
-	activeTitle.value = null
-}
 </script>
 
 <template>
@@ -138,11 +128,6 @@ function closeImage() {
       </div>
     </div>
 
-    <div v-if="activeImage" class="misc-modal" @click.self="closeImage">
-      <button type="button" class="misc-modal__close" aria-label="Close image" @click="closeImage">
-        ✕
-      </button>
-      <img :src="activeImage" :alt="activeTitle ?? 'Project image'" class="misc-modal__img" />
-    </div>
+    <ImageLightbox :src="activeImage" :alt="activeTitle ?? 'Project image'" @close="closeImage" />
   </section>
 </template>
