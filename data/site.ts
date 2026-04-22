@@ -2,6 +2,8 @@ import type { SocialLink } from "./types"
 
 export const site = {
 	brand: "portfolio-3d",
+	url: "https://nabster.dev",
+	ogImage: "https://nabster.dev/og-image.jpg",
 	name: "Nabil Labrazi",
 	title: "Développeur Web Full-Stack",
 	tagline: "Développeur Web Full-Stack — ouvert à toute opportunités.",

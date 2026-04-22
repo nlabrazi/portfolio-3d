@@ -44,18 +44,6 @@ function closeImage() {
 	activeImage.value = null
 	activeTitle.value = null
 }
-
-function onVideoReady(e: Event) {
-	const video = e.target as HTMLVideoElement | null
-	if (!video) return
-	video.muted = true
-	const attempt = video.play()
-	if (attempt && typeof attempt.catch === "function") {
-		attempt.catch(() => {
-			// Autoplay can be blocked in some browsers; ignore silently.
-		})
-	}
-}
 </script>
 
 <template>
@@ -106,18 +94,9 @@ function onVideoReady(e: Event) {
             </span>
           </div>
 
-          <div v-if="p.media" class="media-frame mt-5 media-wrap"
-            :class="p.media.type === 'image' ? 'cursor-zoom-in' : ''"
-            @click="p.media.type === 'image' && p.media.src ? openImage(p.media.src, p.title) : undefined">
-            <video v-if="p.media.type === 'video'" muted autoplay loop playsinline preload="metadata"
-              @canplay="onVideoReady" class="project-media opacity-90 transition">
-              <template v-if="p.media.sources?.length">
-                <source v-for="s in p.media.sources" :key="s.src" :src="s.src" :type="s.type" />
-              </template>
-              <source v-else-if="p.media.src" :src="p.media.src" type="video/mp4" />
-            </video>
-
-            <img v-else-if="p.media.src" :src="p.media.src" :alt="`Apercu ${p.title}`" loading="lazy"
+          <div v-if="p.media" class="media-frame mt-5 media-wrap cursor-zoom-in"
+            @click="openImage(p.media.src, p.title)">
+            <img :src="p.media.src" :alt="`Apercu ${p.title}`" loading="lazy"
               class="project-media opacity-90 transition" />
 
             <div class="media-overlay flex items-end p-4">

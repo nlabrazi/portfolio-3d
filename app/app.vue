@@ -5,6 +5,8 @@
 </template>
 
 <script setup lang="ts">
+import { site } from "../data/site"
+
 useHead({
   htmlAttrs: {
     lang: 'fr'
@@ -17,9 +19,9 @@ useHead({
 
 useSeoMeta({
   titleTemplate: (titleChunk) =>
-    titleChunk ? `${titleChunk} · Nabil` : 'Nabil · Développeur web',
-  description: 'Portfolio de Nabil, développeur web full-stack.',
-  ogSiteName: 'Nabil',
+    titleChunk ? `${titleChunk} · ${site.name}` : `${site.name} · ${site.title}`,
+  description: `Portfolio de ${site.name}, ${site.title.toLowerCase()}.`,
+  ogSiteName: site.name,
   ogType: 'website'
 })
 </script>

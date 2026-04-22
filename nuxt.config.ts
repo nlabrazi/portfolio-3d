@@ -32,7 +32,4 @@ export default defineNuxtConfig({
 			],
 		},
 	},
-	vite: {
-		assetsInclude: ["**/*.mp4", "**/*.webm"],
-	},
 })
