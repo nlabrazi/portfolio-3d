@@ -12,7 +12,7 @@ export const projects: ProjectItem[] = [
 	{
 		slug: "lazarus-exchange",
 		title: "Lazarus Exchange",
-		tech: ["NestJS", "TypeScript", "Node.js", "Vanilla JS"],
+		tech: ["NestJS", "TypeScript", "Node.js", "JavaScript"],
 		description:
 			"Plateforme d'échange de fichiers sécurisée avec validation mutuelle avant téléchargement.",
 		context: "Projet perso sécurité et collaboration",
@@ -44,7 +44,7 @@ export const projects: ProjectItem[] = [
 	{
 		slug: "argandici",
 		title: "Argan d'ici",
-		tech: ["Nuxt 3", "Vue 3", "Tailwind CSS", "TypeScript", "Prisma", "Stripe"],
+		tech: ["Nuxt 3", "Vue 3", "Tailwind CSS", "TypeScript", "Prisma"],
 		description:
 			"Site de marque e-commerce pour une huile d'argan marocaine : storytelling, catalogue et tunnel de commande.",
 		context: "Projet business personnel",
@@ -60,7 +60,7 @@ export const projects: ProjectItem[] = [
 	{
 		slug: "dev-tools",
 		title: "Dev Tools",
-		tech: ["Python", "Git", "Automation"],
+		tech: ["Python"],
 		description:
 			"Suite de scripts pour automatiser les commits, la génération de changelog et les workflows Git.",
 		context: "Boîte à outils développeur",
@@ -75,7 +75,7 @@ export const projects: ProjectItem[] = [
 	{
 		slug: "sjvtdm",
 		title: "SJVTDM",
-		tech: ["Python", "Telegram Bot", "RSS", "PostgreSQL"],
+		tech: ["Python", "Telegram Bot", "PostgreSQL"],
 		description:
 			"Bot Telegram qui agrège des sources d'actualité, génère des résumés et publie automatiquement.",
 		context: "Projet d'automatisation de contenu",
@@ -90,7 +90,7 @@ export const projects: ProjectItem[] = [
 	{
 		slug: "sawt-ai",
 		title: "Sawt AI",
-		tech: ["Python", "TensorFlow", "Whisper", "Docker"],
+		tech: ["Python", "Whisper", "Docker"],
 		description:
 			"Outil d'analyse audio et de classification de versets, basé sur des modèles de machine learning.",
 		context: "Projet IA / traitement audio",
@@ -106,7 +106,7 @@ export const projects: ProjectItem[] = [
 	{
 		slug: "games",
 		title: "Games",
-		tech: ["React", "JavaScript", "Styled Components"],
+		tech: ["React", "JavaScript"],
 		description:
 			"Collection de mini-jeux web interactifs orientée front-end et logique gameplay.",
 		context: "Projet perso jeux et UX",
