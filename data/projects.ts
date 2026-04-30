@@ -1,13 +1,12 @@
-import type { ProjectItem } from "./types"
-
 import arganImage from "~/assets/images/argan.png"
 import devtoolsImage from "~/assets/images/devtools.png"
-import gamesImage from "~/assets/images/games.webp"
+import gamesImage from "~/assets/images/games-lab.webp"
 import lazarusImage from "~/assets/images/lazarus.webp"
 import lescaleImage from "~/assets/images/lescale.webp"
 import mediumArticleImage from "~/assets/images/medium-article.webp"
-import sawtaiImage from "~/assets/images/sawtai.webp"
+import sawtaiImage from "~/assets/images/sawt-ai.webp"
 import sjvtdmImage from "~/assets/images/sjvtdm.webp"
+import type { ProjectItem } from "./types"
 
 export const projects: ProjectItem[] = [
 	{
@@ -101,6 +100,7 @@ export const projects: ProjectItem[] = [
 		},
 		links: {
 			repo: "https://github.com/nlabrazi/sawt-ai",
+			live: "https://sawt-ai.nabster.dev",
 		},
 	},
 	{
@@ -115,8 +115,8 @@ export const projects: ProjectItem[] = [
 			src: gamesImage,
 		},
 		links: {
-			repo: "https://github.com/nlabrazi/games",
-			live: "https://nabster.online",
+			repo: "https://github.com/nlabrazi/games-lab",
+			live: "https://games-lab.nabster.dev",
 		},
 	},
 	{
