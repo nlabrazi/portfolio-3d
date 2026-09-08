@@ -106,6 +106,21 @@ npm run dev
 
 
 
+### Browser tests
+
+Install Chromium once, then run the tests against a fresh production build:
+
+```bash
+npx playwright install chromium
+npm run test:e2e
+```
+
+The lightbox tests cover Projects and Hobbies on desktop and emulated mobile:
+viewport coverage after scrolling, the selected image, closing and reopening,
+and JavaScript or Teleport errors. Playwright starts and stops its own server
+on port 3100. Failed tests retain traces in `test-results/`. Existing page-wide
+image/icon hydration warnings are attached to the results for separate follow-up.
+
 <!-- CONTRIBUTING -->
 # 🙌 Contributing
 

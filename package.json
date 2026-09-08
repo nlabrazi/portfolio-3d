@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"build": "nuxt build",
+		"test:e2e": "npm run build && playwright test",
 		"dev": "nuxt dev",
 		"check": "biome check .",
 		"check:fix": "biome check . --fix",
@@ -27,6 +28,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.12",
+		"@playwright/test": "^1.58.2",
 		"@types/three": "^0.184.0"
 	}
 }
