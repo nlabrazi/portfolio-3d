@@ -49,12 +49,14 @@ watch(totalPages, (value) => {
 
         <div class="flex flex-wrap items-center gap-2">
           <button type="button" class="pill hover:text-white"
+            :aria-pressed="!selectedTech"
             :class="!selectedTech ? 'border-white/25 text-white' : ''"
             @click="selectedTech = null">
             All
           </button>
 
           <button v-for="t in allTech" :key="t" type="button" class="pill hover:text-white"
+            :aria-pressed="selectedTech === t"
             :class="selectedTech === t ? 'border-white/25 text-white' : ''" @click="selectedTech = t">
             {{ t }}
           </button>
@@ -85,17 +87,18 @@ watch(totalPages, (value) => {
             </span>
           </div>
 
-          <div v-if="p.media" class="media-frame mt-5 media-wrap cursor-zoom-in"
+          <button v-if="p.media" type="button" class="media-frame mt-5 media-wrap block w-full cursor-zoom-in text-left"
+            :aria-label="`Agrandir l’image : ${p.title}`" aria-haspopup="dialog"
             @click="openImage(p.media.src, p.title)">
             <img :src="p.media.src" :alt="`Apercu ${p.title}`" loading="lazy"
               class="project-media opacity-90 transition" />
 
-            <div class="media-overlay flex items-end p-4">
-              <div class="text-sm font-semibold text-white/90">
+            <span class="media-overlay flex items-end p-4" aria-hidden="true">
+              <span class="text-sm font-semibold text-white/90">
                 {{ p.title }}
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </button>
 
           <div class="mt-5 flex flex-wrap gap-3">
             <a v-if="p.links?.repo" :href="p.links.repo" target="_blank" rel="noopener noreferrer"
@@ -122,6 +125,7 @@ watch(totalPages, (value) => {
 
         <div class="flex items-center gap-2">
           <button v-for="page in totalPages" :key="`page-${page}`" type="button" class="btn btn-xs"
+            :aria-current="currentPage === page ? 'page' : undefined" :aria-label="`Page ${page}`"
             :class="currentPage === page ? 'btn-primary' : 'btn-soft'" @click="currentPage = page">
             {{ page }}
           </button>

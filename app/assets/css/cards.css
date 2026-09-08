@@ -59,7 +59,8 @@
 	position: relative;
 }
 
-.media-wrap:hover .media-overlay {
+.media-wrap:hover .media-overlay,
+.media-wrap:focus-visible .media-overlay {
 	opacity: 1;
 }
 
@@ -227,12 +228,26 @@
 	position: fixed;
 	inset: 0;
 	z-index: 60;
-	display: flex;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	max-height: none;
+	margin: 0;
+	border: 0;
+	color: inherit;
 	align-items: center;
 	justify-content: center;
 	padding: 2rem;
 	background: rgba(6, 8, 16, 0.7);
 	backdrop-filter: blur(6px);
+}
+
+.misc-modal[open] {
+	display: flex;
+}
+
+.misc-modal::backdrop {
+	background: transparent;
 }
 
 .misc-modal__img {

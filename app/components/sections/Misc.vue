@@ -14,7 +14,8 @@ const { activeImage, activeTitle, openImage, closeImage } = useImageLightbox()
         <article v-for="item in miscItems" :key="item.title"
           class="card glow-hover misc-card"
           :class="item.imageFit === 'cover' ? 'misc-card--landscape' : 'misc-card--portrait'">
-          <button type="button" class="misc-card__media" @click="openImage(item.img, item.title)">
+          <button type="button" class="misc-card__media" :aria-label="`Agrandir l’image : ${item.title}`"
+            aria-haspopup="dialog" @click="openImage(item.img, item.title)">
             <img :src="item.img" :alt="item.title" class="misc-card__img" loading="lazy" decoding="async" />
           </button>
 

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { site } from "../../../data/site"
 import {
 	formatContactValue,
 	getSocialHref,
 	getSocialLinks,
 	isHttpUrl,
 } from "~/utils/social-links"
+import { site } from "../../../data/site"
 
 type FormState = {
 	name: string
@@ -109,47 +109,48 @@ function buildMailtoTarget() {
           <form class="mt-6 space-y-4" @submit.prevent="onSubmit">
             <div class="grid gap-4 md:grid-cols-2">
               <div>
-                <label class="text-sm text-white/60">Full Name *</label>
-                <input v-model="form.name" required type="text"
+                <label for="contact-name" class="text-sm text-white/60">Full Name *</label>
+                <input id="contact-name" v-model="form.name" name="name" autocomplete="name" required type="text"
                   class="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-white/25"
                   placeholder="Your name" />
               </div>
 
               <div>
-                <label class="text-sm text-white/60">Email Address *</label>
-                <input v-model="form.email" required type="email"
+                <label for="contact-email" class="text-sm text-white/60">Email Address *</label>
+                <input id="contact-email" v-model="form.email" name="email" autocomplete="email" required type="email"
                   class="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-white/25"
                   placeholder="you@email.com" />
               </div>
             </div>
 
             <div>
-              <label class="text-sm text-white/60">Subject *</label>
-              <input v-model="form.subject" required type="text"
+              <label for="contact-subject" class="text-sm text-white/60">Subject *</label>
+              <input id="contact-subject" v-model="form.subject" name="subject" required type="text"
                 class="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-white/25"
                 placeholder="Project / Job / Question…" />
             </div>
 
             <div>
-              <label class="text-sm text-white/60">Message *</label>
-              <textarea v-model="form.message" required rows="5"
+              <label for="contact-message" class="text-sm text-white/60">Message *</label>
+              <textarea id="contact-message" v-model="form.message" name="message" required rows="5"
                 class="mt-2 w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-white/25"
                 placeholder="Tell me a bit about what you need…" />
             </div>
 
             <!-- Honeypot (comme la démo) -->
             <div class="hidden">
-              <label>Do not fill this if you are human</label>
-              <input v-model="form.botField" type="text" />
+              <label for="contact-bot-field">Do not fill this if you are human</label>
+              <input id="contact-bot-field" v-model="form.botField" name="botField" type="text" tabindex="-1" autocomplete="off" />
             </div>
 
             <div class="flex items-center gap-3">
               <button type="submit" :disabled="isSubmitting"
+                aria-describedby="contact-mailto-help"
                 class="btn btn-lg btn-primary disabled:cursor-not-allowed disabled:opacity-70">
                 {{ isSubmitting ? "Opening..." : "Send Message" }}
               </button>
 
-              <span class="text-sm text-white/60">
+              <span id="contact-mailto-help" class="text-sm text-white/60">
                 Opens your email client with a prefilled draft.
               </span>
             </div>

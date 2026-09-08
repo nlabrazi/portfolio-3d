@@ -165,6 +165,10 @@ and JavaScript or Teleport errors. Playwright starts and stops its own server
 on port 3100. Failed tests retain traces in `test-results/`. Existing page-wide
 image/icon hydration warnings are attached to the results for separate follow-up.
 
+Accessibility tests cover opening images with Enter/Space, closing with Escape,
+keeping focus inside the dialog and restoring it on close, contact labels and
+required fields, and the selected state of project filters and pagination.
+
 <!-- CONTRIBUTING -->
 # 🙌 Contributing
 
