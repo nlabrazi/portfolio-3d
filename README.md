@@ -147,6 +147,11 @@ affect resources outside this app. Review these separately before changing the V
 
 ### Browser tests
 
+Run `npm run test:unit` for starfield density, animation timing from 30 to 244 Hz,
+pause recovery and resource cleanup. The browser suite also checks that both star
+layers render in a single canvas on desktop and mobile, including after resizing.
+Starfield screenshots are saved in `test-results/` for visual review.
+
 Install Chromium once, then run the tests against a fresh production build:
 
 ```bash
