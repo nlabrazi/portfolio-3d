@@ -2,7 +2,39 @@
 export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
-	modules: ["@nuxtjs/tailwindcss"],
+	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n"],
+	i18n: {
+		baseUrl: "https://nabster.dev",
+		defaultLocale: "fr",
+		strategy: "prefix_except_default",
+		detectBrowserLanguage: false,
+		locales: [
+			{
+				code: "fr",
+				language: "fr",
+				name: "Français",
+				dir: "ltr",
+				file: "fr.json",
+			},
+			{
+				code: "en",
+				language: "en",
+				name: "English",
+				dir: "ltr",
+				file: "en.json",
+			},
+			{
+				code: "ar",
+				language: "ar",
+				name: "العربية",
+				dir: "rtl",
+				file: "ar.json",
+			},
+		],
+	},
+	nitro: {
+		prerender: { routes: ["/", "/en/", "/ar/"] },
+	},
 	typescript: {
 		tsConfig: {
 			compilerOptions: {

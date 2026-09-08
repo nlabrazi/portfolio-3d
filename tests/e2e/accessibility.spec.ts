@@ -50,9 +50,9 @@ test("contact labels focus their fields and expose required inputs", async ({
 }) => {
 	const contact = page.locator("#contact")
 	const fields = [
-		["Full Name *", "Nabil"],
-		["Email Address *", "nabil@example.com"],
-		["Subject *", "Projet web"],
+		["Nom complet *", "Nabil"],
+		["Adresse e-mail *", "nabil@example.com"],
+		["Objet *", "Projet web"],
 		["Message *", "Bonjour, discutons de ce projet."],
 	]
 	await expect
@@ -77,15 +77,15 @@ test("contact labels focus their fields and expose required inputs", async ({
 		)
 		.toBe(true)
 	await expect(
-		contact.getByLabel("Full Name *", { exact: true }),
+		contact.getByLabel("Nom complet *", { exact: true }),
 	).toHaveAttribute("autocomplete", "name")
 	await expect(
-		contact.getByLabel("Email Address *", { exact: true }),
+		contact.getByLabel("Adresse e-mail *", { exact: true }),
 	).toHaveAttribute("autocomplete", "email")
 	await expect(
-		contact.getByRole("button", { name: "Send Message" }),
+		contact.getByRole("button", { name: "Envoyer un message" }),
 	).toHaveAccessibleDescription(
-		"Opens your email client with a prefilled draft.",
+		"Ouvre votre messagerie avec un brouillon prérempli.",
 	)
 })
 
@@ -93,7 +93,7 @@ test("project filters and pagination expose their selected state", async ({
 	page,
 }) => {
 	const projects = page.locator("#projects")
-	const all = projects.getByRole("button", { name: "All", exact: true })
+	const all = projects.getByRole("button", { name: "Tous", exact: true })
 	await expect(all).toHaveAttribute("aria-pressed", "true")
 	const pageTwo = projects.getByRole("button", { name: "Page 2", exact: true })
 	await pageTwo.press("Enter")

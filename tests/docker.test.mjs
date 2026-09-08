@@ -76,6 +76,20 @@ test("Node 24 generates a static portfolio served by Nginx", {
 		})
 		assert.equal(assetResponse.status, 200)
 		assert.match(assetResponse.headers.get("content-type"), /javascript/)
+		for (const [path, lang, dir, heading] of [
+			["/", "fr", "ltr", "Projets"],
+			["/en/", "en", "ltr", "Projects"],
+			["/ar/", "ar", "rtl", "المشاريع"],
+		]) {
+			const localizedResponse = await fetch(new URL(path, url), {
+				signal: AbortSignal.timeout(5_000),
+			})
+			assert.equal(localizedResponse.status, 200, path)
+			const localizedHtml = await localizedResponse.text()
+			assert.match(localizedHtml, new RegExp(`<html[^>]*lang="${lang}"`))
+			assert.match(localizedHtml, new RegExp(`<html[^>]*dir="${dir}"`))
+			assert.ok(localizedHtml.includes(heading), `${path} must be translated`)
+		}
 	} finally {
 		if (container) docker("stop", container)
 		for (const image of [devImage, prodImage]) {

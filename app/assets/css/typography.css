@@ -13,7 +13,7 @@
 .h2::after {
 	content: "";
 	position: absolute;
-	left: 0;
+	inset-inline-start: 0;
 	bottom: -0.45rem;
 	width: 2.6rem;
 	height: 2px;

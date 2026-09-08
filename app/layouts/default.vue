@@ -3,6 +3,8 @@ import Starfield from "~/components/hero/Starfield.vue"
 import CursorGlow from "~/components/ui/CursorGlow.vue"
 import SocialLinks from "~/components/ui/SocialLinks.vue"
 import { scrollToTop } from "~/utils/navigation"
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -15,7 +17,7 @@ import { scrollToTop } from "~/utils/navigation"
 
     <SocialLinks class="social-dock-left" orientation="column" size="sm" />
 
-    <button type="button" class="to-top" aria-label="Back to top" @click="scrollToTop">
+    <button type="button" class="to-top" :aria-label="t('common.top')" @click="scrollToTop">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path fill="currentColor"
           d="M12 4.5c.4 0 .78.16 1.06.44l6 6a1.5 1.5 0 1 1-2.12 2.12L13.5 9.62V20a1.5 1.5 0 0 1-3 0V9.62l-3.44 3.44a1.5 1.5 0 1 1-2.12-2.12l6-6c.28-.28.66-.44 1.06-.44z" />

@@ -67,7 +67,6 @@
 - 📝 Blog Integration: Incorporate a blog to share insights, tutorials, or updates.
 - 🌙 Dark Mode: Implement a dark mode toggle for better user experience.
 - 📱 Responsive Design Enhancements: Further optimize for various devices and screen sizes.
-- 🌐 Multi-language Support: Offer content in multiple languages to reach a broader audienced.
 
 ---
 
@@ -112,6 +111,14 @@ npm run dev
 Local development uses `docker compose up --build` (development server and
 source mounts). After switching Node major versions, recreate only the dependency
 volume if it still contains dependencies installed with the previous Node version.
+
+When dependencies change, refresh the existing dependency volume once:
+
+```bash
+docker compose stop app
+docker compose run --rm --no-deps app npm ci
+docker compose up -d app
+```
 
 Production on the VPS is static: `/srv/apps/portfolio/deploy.sh` updates the
 `repo` checkout from `master`, runs `npm ci` and `npm run generate` on the host,
@@ -168,6 +175,25 @@ image/icon hydration warnings are attached to the results for separate follow-up
 Accessibility tests cover opening images with Enter/Space, closing with Escape,
 keeping focus inside the dialog and restoring it on close, contact labels and
 required fields, and the selected state of project filters and pagination.
+
+### Languages
+
+The header switches between French (`/`), English (`/en/`) and Arabic (`/ar/`).
+Arabic uses a right-to-left layout. The selected language is retained in the URL;
+there is no automatic browser-language redirect. Translation messages live in
+`i18n/locales/{fr,en,ar}.json`; content data references those message keys.
+Update all three catalogs when changing text. Product and technology names stay unchanged.
+
+`npm run generate` renders all three routes, including localized metadata, for the
+existing static Nginx deployment. No VPS or deployment script changes are needed.
+Unit tests check catalog completeness; browser tests cover language switching,
+reloads, metadata, translated interactions and mobile overflow. Docker tests check
+that Nginx serves each translated page. To run the language browser tests against
+an already running static server:
+
+```bash
+PLAYWRIGHT_BASE_URL=http://127.0.0.1:3100 npx playwright test tests/e2e/languages.spec.ts
+```
 
 <!-- CONTRIBUTING -->
 # 🙌 Contributing

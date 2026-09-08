@@ -34,6 +34,8 @@ watch(selectedTech, () => {
 watch(totalPages, (value) => {
 	if (currentPage.value > value) currentPage.value = value
 })
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -41,9 +43,9 @@ watch(totalPages, (value) => {
     <div class="container">
       <div class="section-title">
         <div>
-          <h2 class="h2">Projects</h2>
+          <h2 class="h2">{{ t('nav.projects') }}</h2>
           <p class="mt-2 text-sm text-white/60">
-            Une sélection de mes projets.
+            {{ t('projects.intro') }}
           </p>
         </div>
 
@@ -52,7 +54,7 @@ watch(totalPages, (value) => {
             :aria-pressed="!selectedTech"
             :class="!selectedTech ? 'border-white/25 text-white' : ''"
             @click="selectedTech = null">
-            All
+            {{ t('projects.all') }}
           </button>
 
           <button v-for="t in allTech" :key="t" type="button" class="pill hover:text-white"
@@ -68,16 +70,16 @@ watch(totalPages, (value) => {
           <div class="flex items-start justify-between gap-4">
             <div>
               <h3 class="text-lg font-semibold text-white/90">
-                {{ p.title }}
+                {{ t(p.title) }}
               </h3>
 
               <p class="mt-2 text-sm text-white/60">
-                {{ p.description }}
+                {{ t(p.description) }}
               </p>
             </div>
 
-            <div class="text-right text-xs text-white/50">
-              {{ p.context }}
+            <div class="text-end text-xs text-white/50">
+              {{ t(p.context) }}
             </div>
           </div>
 
@@ -87,15 +89,15 @@ watch(totalPages, (value) => {
             </span>
           </div>
 
-          <button v-if="p.media" type="button" class="media-frame mt-5 media-wrap block w-full cursor-zoom-in text-left"
-            :aria-label="`Agrandir l’image : ${p.title}`" aria-haspopup="dialog"
-            @click="openImage(p.media.src, p.title)">
-            <img :src="p.media.src" :alt="`Apercu ${p.title}`" loading="lazy"
+          <button v-if="p.media" type="button" class="media-frame mt-5 media-wrap block w-full cursor-zoom-in text-start"
+            :aria-label="t('common.expandImage', { title: t(p.title) })" aria-haspopup="dialog"
+            @click="openImage(p.media.src, t(p.title))">
+            <img :src="p.media.src" :alt="t('common.preview', { title: t(p.title) })" loading="lazy"
               class="project-media opacity-90 transition" />
 
             <span class="media-overlay flex items-end p-4" aria-hidden="true">
               <span class="text-sm font-semibold text-white/90">
-                {{ p.title }}
+                {{ t(p.title) }}
               </span>
             </span>
           </button>
@@ -103,16 +105,16 @@ watch(totalPages, (value) => {
           <div class="mt-5 flex flex-wrap gap-3">
             <a v-if="p.links?.repo" :href="p.links.repo" target="_blank" rel="noopener noreferrer"
               class="btn btn-sm btn-soft">
-              Repo
+              {{ t('projects.repo') }}
             </a>
 
             <a v-if="p.links?.live" :href="p.links.live" target="_blank" rel="noopener noreferrer"
               class="btn btn-sm btn-primary">
-              Live
+              {{ t('projects.live') }}
             </a>
 
             <span v-if="!p.links?.repo && !p.links?.live" class="text-sm text-white/50">
-              Liens privés ou non publiés
+              {{ t('projects.private') }}
             </span>
           </div>
         </article>
@@ -120,12 +122,12 @@ watch(totalPages, (value) => {
 
       <div v-if="totalPages > 1" class="mt-6 flex items-center justify-center gap-3">
         <span class="text-xs text-white/60">
-          Page {{ currentPage }} / {{ totalPages }}
+          {{ t('projects.pageOf', { current: currentPage, total: totalPages }) }}
         </span>
 
         <div class="flex items-center gap-2">
           <button v-for="page in totalPages" :key="`page-${page}`" type="button" class="btn btn-xs"
-            :aria-current="currentPage === page ? 'page' : undefined" :aria-label="`Page ${page}`"
+            :aria-current="currentPage === page ? 'page' : undefined" :aria-label="t('projects.page', { page })"
             :class="currentPage === page ? 'btn-primary' : 'btn-soft'" @click="currentPage = page">
             {{ page }}
           </button>
@@ -133,6 +135,6 @@ watch(totalPages, (value) => {
       </div>
     </div>
 
-    <ImageLightbox :src="activeImage" :alt="activeTitle ?? 'Project image'" @close="closeImage" />
+    <ImageLightbox :src="activeImage" :alt="activeTitle ?? t('common.expandedImage')" @close="closeImage" />
   </section>
 </template>

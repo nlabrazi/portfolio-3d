@@ -1,0 +1,286 @@
+{
+	"content": {
+		"experience": {
+			"0": {
+				"role": "Développeur d’outils de données",
+				"location": "Paris (75)",
+				"start": "Juillet 2025",
+				"end": "Aujourd'hui",
+				"tasks": {
+					"0": "Développement de nouvelles fonctionnalités",
+					"1": "Mise à jour des guides et de la documentation",
+					"2": "Suivi et support aux utilisateurs"
+				},
+				"stack": {
+					"0": "TypeScript",
+					"1": "Angular",
+					"2": "Tailwind CSS",
+					"3": "PostgreSQL"
+				}
+			},
+			"1": {
+				"role": "Spécialiste outils — Support",
+				"location": "Paris (75)",
+				"start": "Septembre 2021",
+				"end": "Juin 2025",
+				"tasks": {
+					"0": "Monitoring des environnements",
+					"1": "Résolution d'incidents",
+					"2": "Suivi des nouvelles fonctionnalités avec les PM",
+					"3": "Développement de nouvelles fonctionnalités",
+					"4": "Mise à jour des guides et de la documentation"
+				},
+				"stack": {
+					"0": "JIRA",
+					"1": "Grafana, Kibana, Datadog",
+					"2": "Node.js, Angular, PostgreSQL"
+				}
+			},
+			"2": {
+				"role": "Supervision — Support",
+				"location": "Paris (75)",
+				"start": "Octobre 2017",
+				"end": "Janvier 2020",
+				"tasks": {
+					"0": "Monitoring des environnements (proxy, tunnel VPN, Raspberry Pi...)",
+					"1": "Résolution d'incidents (niveau 3)",
+					"2": "Suivi des nouvelles fonctionnalités avec les PO / PM / dev",
+					"3": "Mise en place de procédures de contrôle et d'automatisation des tâches"
+				},
+				"stack": {
+					"0": "JIRA, Zendesk",
+					"1": "Grafana, Kibana, Datadog, NewRelic",
+					"2": "Ruby, JavaScript, PostgreSQL"
+				}
+			},
+			"3": {
+				"role": "Analyste technique",
+				"location": "Gennevilliers (92)",
+				"start": "Janvier 2015",
+				"end": "Octobre 2017",
+				"tasks": {
+					"0": "Résolution d'incidents (niveau 3)",
+					"1": "Analyse, insertions et maintenance de base de données",
+					"2": "Développement SQL (stored procedures...)",
+					"3": "Création et mise en place d'outils d'amélioration des tâches opératoires"
+				},
+				"stack": {
+					"0": "ETL / applications web / serveurs web (AWS / Azure)",
+					"1": "NewRelic, Active Directory, Exchange...",
+					"2": "SQL Server 2016"
+				}
+			},
+			"4": {
+				"role": "Support informatique",
+				"location": "Issy-les-Moulineaux (92)",
+				"start": "Décembre 2012",
+				"end": "Décembre 2014",
+				"tasks": {
+					"0": "Résolution d'incidents (niveau 1 & 2)",
+					"1": "Préparation, intégration & installation de postes utilisateurs",
+					"2": "Administration système",
+					"3": "Requêtes SQL pour l’extraction de données"
+				},
+				"stack": {
+					"0": "Active Directory, Exchange...",
+					"1": "BlackBerry Server",
+					"2": "SQL Server 2012"
+				}
+			}
+		},
+		"education": {
+			"0": {
+				"licence": "Développeur Web",
+				"location": "Paris (75)",
+				"description": "The Hacking Project est une formation au code, à plein temps, ouverte à tous et sans prérequis."
+			},
+			"1": {
+				"licence": "Développeur Web",
+				"location": "Paris (75)",
+				"description": "Le Wagon est un bootcamp qui enseigne à ses élèves le développement d'applications web."
+			},
+			"2": {
+				"licence": "Administration BDD",
+				"location": "Rueil-Malmaison (92)",
+				"description": "Formation aux requêtes et à l’administration de SQL Server 2016."
+			},
+			"3": {
+				"licence": "BTS SIO",
+				"location": "Vernon (27)",
+				"description": "Conception et développement d'applications"
+			}
+		},
+		"projects": {
+			"0": {
+				"title": "Lazarus Exchange",
+				"description": "Plateforme d'échange de fichiers sécurisée avec validation mutuelle avant téléchargement.",
+				"context": "Projet perso sécurité et collaboration"
+			},
+			"1": {
+				"title": "L'Escale Gourmande",
+				"description": "Vitrine web pour un service traiteur événementiel avec formulaires de demande sur mesure.",
+				"context": "Projet client vitrine"
+			},
+			"2": {
+				"title": "Argan d'ici",
+				"description": "Site de marque e-commerce pour une huile d'argan marocaine : storytelling, catalogue et tunnel de commande.",
+				"context": "Projet business personnel"
+			},
+			"3": {
+				"title": "Dev Tools",
+				"description": "Suite de scripts pour automatiser les commits, la génération de changelog et les workflows Git.",
+				"context": "Boîte à outils développeur"
+			},
+			"4": {
+				"title": "SJVTDM",
+				"description": "Bot Telegram qui agrège des sources d'actualité, génère des résumés et publie automatiquement.",
+				"context": "Projet d'automatisation de contenu"
+			},
+			"5": {
+				"title": "Sawt AI",
+				"description": "Outil d'analyse audio et de classification de versets, basé sur des modèles de machine learning.",
+				"context": "Projet IA / traitement audio"
+			},
+			"6": {
+				"title": "Games",
+				"description": "Collection de mini-jeux web interactifs orientée front-end et logique gameplay.",
+				"context": "Projet perso jeux et UX"
+			},
+			"7": {
+				"title": "Article Medium",
+				"description": "Article sur Medium qui retranscrit mon expérience à l'école THP.",
+				"context": "Mon premier article Medium (validation de mission THP)"
+			}
+		},
+		"misc": {
+			"0": {
+				"title": "Passionné de muay-thaï",
+				"backContent": "Pratiquant de boxe thaïlandaise",
+				"footer": "Entraînement au Sutai MuayThai Gym - Thaïlande (2019)"
+			},
+			"1": {
+				"title": "Passionné de voyages",
+				"backContent": "Passionné par les voyages",
+				"footer": "Voyages sur les 5 continents"
+			},
+			"2": {
+				"title": "Passionné de jeux vidéo",
+				"backContent": "Grand passionné de jeux vidéo",
+				"footer": "Tryharder, compétiteur de l'extrême et streamer"
+			},
+			"3": {
+				"title": "Passionné de cinéma",
+				"backContent": "Merci Netflix et cie",
+				"footer": "Du classique et du plus récent"
+			}
+		},
+		"skills": {
+			"0": {
+				"title": "Développement front-end"
+			},
+			"1": {
+				"title": "Back-end et bases de données"
+			},
+			"2": {
+				"title": "Outils et infrastructure"
+			}
+		},
+		"about": {
+			"heading": "Mais qui suis-je ?",
+			"paragraphs": {
+				"0": "Ayant obtenu mon premier PC à l'âge de 6 ans (Amstrad CPC 464), l'informatique a pour moi toujours été une passion. J'ai donc naturellement choisi d'en faire mon métier.",
+				"1": "En tant que développeur Web, j'aime utiliser mon souci du détail obsessionnel pour accomplir chacune des missions qui me sont proposées.",
+				"2": "Impatient d’apporter ma touche personnelle et mon énergie à la concrétisation de projets, je serai ravi de faire partie de vos prochaines aventures."
+			}
+		}
+	},
+	"nav": {
+		"home": "Accueil",
+		"about": "À propos",
+		"experience": "Expérience",
+		"education": "Formation",
+		"skills": "Compétences",
+		"projects": "Projets",
+		"misc": "Loisirs",
+		"contact": "Contact"
+	},
+	"common": {
+		"language": "Choisir la langue",
+		"menu": "Ouvrir ou fermer le menu",
+		"top": "Retour en haut",
+		"closeImage": "Fermer l’image",
+		"expandedImage": "Image agrandie",
+		"expandImage": "Agrandir l’image : {title}",
+		"imageDialog": "Agrandissement : {title}",
+		"preview": "Aperçu de {title}",
+		"logo": "Logo de {name}",
+		"portrait": "Portrait de Nabil Labrazi"
+	},
+	"site": {
+		"title": "Développeur Web Full-Stack",
+		"tagline": "Développeur Web Full-Stack — ouvert à de nouvelles opportunités.",
+		"status": "Disponible pour de nouvelles opportunités en freelance ou en CDI.",
+		"location": "Île-de-France, France"
+	},
+	"hero": {
+		"available": "Disponible 🚀",
+		"intro": "Créateur d’expériences web modernes",
+		"projects": "Mes projets"
+	},
+	"seo": {
+		"title": "Portfolio",
+		"description": "Développeur web full-stack en France. Projets Angular, Vue, Nuxt et outils orientés produit."
+	},
+	"experience": {
+		"tasks": "Missions",
+		"tools": "Outils / Langages"
+	},
+	"education": {
+		"dates": "Dates",
+		"location": "Lieu",
+		"languages": "Langages :"
+	},
+	"projects": {
+		"intro": "Une sélection de mes projets.",
+		"all": "Tous",
+		"repo": "Code source",
+		"live": "Voir le site",
+		"private": "Liens privés ou non publiés",
+		"page": "Page {page}",
+		"pageOf": "Page {current} / {total}"
+	},
+	"contact": {
+		"heading": "Échangeons",
+		"intro": "Construisons ensemble votre prochain projet.",
+		"information": "Coordonnées",
+		"formTitle": "Envoyez-moi un message",
+		"name": "Nom complet",
+		"email": "Adresse e-mail",
+		"subject": "Objet",
+		"message": "Message",
+		"namePlaceholder": "Votre nom",
+		"emailPlaceholder": "vous{'@'}exemple.com",
+		"subjectPlaceholder": "Projet / Emploi / Question…",
+		"messagePlaceholder": "Parlez-moi de votre besoin…",
+		"honeypot": "Ne remplissez pas ce champ si vous êtes humain",
+		"send": "Envoyer un message",
+		"opening": "Ouverture…",
+		"mailtoHelp": "Ouvre votre messagerie avec un brouillon prérempli."
+	},
+	"social": {
+		"email": "E-mail",
+		"github": "GitHub",
+		"linkedin": "LinkedIn",
+		"x": "X"
+	},
+	"footer": {
+		"navigation": "Navigation",
+		"services": "Services",
+		"builtWith": "Réalisé avec Nuxt • Tailwind • Three.js",
+		"service0": "Développement web",
+		"service1": "Développement front-end",
+		"service2": "API back-end",
+		"service3": "Intégration UI/UX",
+		"service4": "Performance et expérience développeur"
+	}
+}

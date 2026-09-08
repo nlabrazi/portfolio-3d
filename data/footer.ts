@@ -1,17 +1,17 @@
 export const footer = {
 	services: [
-		"Web Development",
-		"Frontend Engineering",
-		"Backend APIs",
-		"UI/UX Implementation",
-		"Performance & DX",
+		"footer.service0",
+		"footer.service1",
+		"footer.service2",
+		"footer.service3",
+		"footer.service4",
 	],
 	navigation: [
-		{ label: "Home", href: "#home" },
-		{ label: "About", href: "#about" },
-		{ label: "Experience", href: "#experience" },
-		{ label: "Skills", href: "#skills" },
-		{ label: "Projects", href: "#projects" },
-		{ label: "Contact", href: "#contact" },
+		{ label: "nav.home", href: "#home" },
+		{ label: "nav.about", href: "#about" },
+		{ label: "nav.experience", href: "#experience" },
+		{ label: "nav.skills", href: "#skills" },
+		{ label: "nav.projects", href: "#projects" },
+		{ label: "nav.contact", href: "#contact" },
 	],
 } as const

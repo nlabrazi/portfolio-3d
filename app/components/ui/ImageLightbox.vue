@@ -37,18 +37,20 @@ onBeforeUnmount(() => {
 	dialog.value?.close()
 	restorePage()
 })
+
+const { t } = useI18n()
 </script>
 
 <template>
   <Teleport to="#teleports">
     <!-- The close button is the lightbox's only focusable control. -->
-    <dialog v-if="src" ref="dialog" class="misc-modal" :aria-label="alt ? `Agrandissement : ${alt}` : 'Image agrandie'"
+    <dialog v-if="src" ref="dialog" class="misc-modal" :aria-label="alt ? t('common.imageDialog', { title: alt }) : t('common.expandedImage')"
       @cancel.prevent="emit('close')" @click.self="emit('close')"
       @keydown.tab.prevent="closeButton?.focus()">
-      <button ref="closeButton" type="button" class="misc-modal__close" aria-label="Fermer l’image" @click="emit('close')">
+      <button ref="closeButton" type="button" class="misc-modal__close" :aria-label="t('common.closeImage')" @click="emit('close')">
         <span aria-hidden="true">✕</span>
       </button>
-      <img :src="src" :alt="alt ?? 'Image agrandie'" class="misc-modal__img" />
+      <img :src="src" :alt="alt ?? t('common.expandedImage')" class="misc-modal__img" />
     </dialog>
   </Teleport>
 </template>

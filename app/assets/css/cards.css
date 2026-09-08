@@ -189,7 +189,7 @@
 	background: rgba(255, 255, 255, 0.03);
 	border: 0;
 	width: 100%;
-	text-align: left;
+	text-align: start;
 	cursor: zoom-in;
 }
 
@@ -261,7 +261,7 @@
 .misc-modal__close {
 	position: absolute;
 	top: 1.5rem;
-	right: 1.5rem;
+	inset-inline-end: 1.5rem;
 	width: 2.5rem;
 	height: 2.5rem;
 	border-radius: 999px;
