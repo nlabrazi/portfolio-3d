@@ -40,10 +40,6 @@ const props = withDefaults(defineProps<StarfieldProps>(), {
 	twinkleAmount: 0.12,
 })
 
-function shouldDisableOnMobile() {
-	return window.matchMedia("(pointer: coarse)").matches
-}
-
 function init() {
 	if (!container.value) return
 
@@ -122,7 +118,6 @@ function onResize() {
 }
 
 onMounted(() => {
-	if (shouldDisableOnMobile()) return
 	init()
 	window.addEventListener("resize", onResize)
 })
