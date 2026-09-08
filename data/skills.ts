@@ -2,7 +2,7 @@ import type { SkillGroup } from "./types"
 
 export const skillGroups: SkillGroup[] = [
 	{
-		title: "Frontend Development",
+		title: "content.skills.0.title",
 		items: [
 			{ label: "Angular", icon: "devicon-angularjs-plain colored" },
 			{ label: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
@@ -16,7 +16,7 @@ export const skillGroups: SkillGroup[] = [
 		],
 	},
 	{
-		title: "Backend & Database",
+		title: "content.skills.1.title",
 		items: [
 			{ label: "Node", icon: "devicon-nodejs-plain colored" },
 			{ label: "Nest", icon: "devicon-nestjs-plain colored" },
@@ -28,7 +28,7 @@ export const skillGroups: SkillGroup[] = [
 		],
 	},
 	{
-		title: "Tools & Infra",
+		title: "content.skills.2.title",
 		items: [
 			{ label: "Datadog", icon: "devicon-datadog-plain colored" },
 			{ label: "Docker", icon: "devicon-docker-plain colored" },

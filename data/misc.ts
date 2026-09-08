@@ -1,36 +1,35 @@
-import type { MiscItem } from "./types"
-
-import wow from "~/assets/images/wow.webp"
-import travel from "~/assets/images/travel.webp"
-import movies from "~/assets/images/movies.jpg"
 import labagar from "~/assets/images/labagar.webp"
+import movies from "~/assets/images/movies.jpg"
+import travel from "~/assets/images/travel.webp"
+import wow from "~/assets/images/wow.webp"
+import type { MiscItem } from "./types"
 
 export const miscItems: MiscItem[] = [
 	{
-		title: "Muay Thai Fan",
-		backContent: "Pratiquant de boxe thaïlandaise",
-		footer: "Entraînement au Sutai MuayThai Gym - Thaïlande (2019)",
+		title: "content.misc.0.title",
+		backContent: "content.misc.0.backContent",
+		footer: "content.misc.0.footer",
 		img: labagar,
 		imageFit: "cover",
 	},
 	{
-		title: "Glob Trotters",
-		backContent: "Passionné par les voyages",
-		footer: "Voyages sur les 5 continents",
+		title: "content.misc.1.title",
+		backContent: "content.misc.1.backContent",
+		footer: "content.misc.1.footer",
 		img: travel,
 		imageFit: "cover",
 	},
 	{
-		title: "Video Games Fan",
-		backContent: "Grand passionné de jeux vidéo",
-		footer: "Tryharder, compétiteur de l'extrême et streamer",
+		title: "content.misc.2.title",
+		backContent: "content.misc.2.backContent",
+		footer: "content.misc.2.footer",
 		img: wow,
 		imageFit: "contain",
 	},
 	{
-		title: "Cinema Fan",
-		backContent: "Merci Netflix et cie",
-		footer: "Du classique et du plus récent",
+		title: "content.misc.3.title",
+		backContent: "content.misc.3.backContent",
+		footer: "content.misc.3.footer",
 		img: movies,
 		imageFit: "contain",
 	},

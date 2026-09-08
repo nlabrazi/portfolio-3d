@@ -67,7 +67,6 @@
 - 📝 Blog Integration: Incorporate a blog to share insights, tutorials, or updates.
 - 🌙 Dark Mode: Implement a dark mode toggle for better user experience.
 - 📱 Responsive Design Enhancements: Further optimize for various devices and screen sizes.
-- 🌐 Multi-language Support: Offer content in multiple languages to reach a broader audienced.
 
 ---
 
@@ -86,7 +85,8 @@
 <!-- GETTING STARTED -->
 # ✅ Getting Started
 
-Ensure you have Node.js and npm installed on your system before proceeding.
+Use Node.js 24 LTS and npm. With nvm, run `nvm install` then `nvm use`
+to select the version declared in `.nvmrc`.
 
 ### 💻 Installation
 
@@ -105,6 +105,100 @@ npm run dev
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+
+### Docker
+
+Local development uses `docker compose up --build` (development server and
+source mounts). After switching Node major versions, recreate only the dependency
+volume if it still contains dependencies installed with the previous Node version.
+
+When dependencies change, refresh the existing dependency volume once:
+
+```bash
+docker compose stop app
+docker compose run --rm --no-deps app npm ci
+docker compose up -d app
+```
+
+Production on the VPS is static: `/srv/apps/portfolio/deploy.sh` updates the
+`repo` checkout from `master`, runs `npm ci` and `npm run generate` on the host,
+and copies `.output/public` to `/srv/apps/portfolio/public`. The existing Compose
+file outside the repo serves that directory with `nginx:alpine` on the external
+`web` network. Keep using that VPS Compose file; the repo Compose is for local development.
+
+Node 24 must also be installed and selected on the VPS **before** running `npm ci`.
+Changing the Docker base image or adding `.nvmrc` does not change the host's Node
+version. If the VPS uses nvm, load it in the deployment shell and run `nvm install`
+and `nvm use` from the repo directory. Check `node --version` in the deployment
+script's execution environment, including when started non-interactively.
+
+The Dockerfile's `build` target also runs `npm run generate`; its optional `prod`
+target serves the generated files with Nginx for local validation. It does not
+replace the VPS deployment workflow. The Docker build context excludes local
+dependencies, build outputs, Git and `.env` files. The current app uses no build-time
+secrets; revisit that exclusion explicitly if configuration is introduced later.
+
+To check a clean Node 24 install, static generation, excluded files and HTTP delivery
+through Nginx:
+
+```bash
+npm run test:docker
+```
+
+These integration tests require a running Docker daemon. They create temporary image
+tags and a container on a random localhost port, then clean them up. Build cache is retained.
+
+Deployment follow-up: the current `rm -rf public` then `mv public_new public`
+sequence is not atomic and has no rollback. The global Docker prune commands also
+affect resources outside this app. Review these separately before changing the VPS script.
+
+### Browser tests
+
+Run `npm run test:unit` for starfield density, animation timing from 30 to 244 Hz,
+pause recovery and resource cleanup. The browser suite also checks that both star
+layers render in a single canvas on desktop and mobile, including after resizing.
+Starfield screenshots are saved in `test-results/` for visual review.
+
+Install Chromium once, then run the tests against a fresh production build:
+
+```bash
+npx playwright install chromium
+npm run test:e2e
+```
+
+The lightbox tests cover Projects and Hobbies on desktop and emulated mobile:
+viewport coverage after scrolling, the selected image, closing and reopening,
+and JavaScript or Teleport errors. Playwright starts and stops its own server
+on port 3100. Failed tests retain traces in `test-results/`. Existing page-wide
+image/icon hydration warnings are attached to the results for separate follow-up.
+
+Accessibility tests cover opening images with Enter/Space, closing with Escape,
+keeping focus inside the dialog and restoring it on close, contact labels and
+required fields, and the selected state of project filters and pagination.
+
+Anchor navigation tests cover the header, hero, footer and back-to-top link in all
+three languages, including keyboard focus, browser history, direct URLs and reloads.
+Links use native fragments (`#projects`, for example). The scroll offset follows
+the sticky header height, and reduced-motion preferences disable smooth scrolling.
+
+### Languages
+
+The header switches between French (`/`), English (`/en/`) and Arabic (`/ar/`).
+Arabic uses a right-to-left layout. The selected language is retained in the URL;
+there is no automatic browser-language redirect. Translation messages live in
+`i18n/locales/{fr,en,ar}.json`; content data references those message keys.
+Update all three catalogs when changing text. Product and technology names stay unchanged.
+
+`npm run generate` renders all three routes, including localized metadata, for the
+existing static Nginx deployment. No VPS or deployment script changes are needed.
+Unit tests check catalog completeness; browser tests cover language switching,
+reloads, metadata, translated interactions and mobile overflow. Docker tests check
+that Nginx serves each translated page. To run the language browser tests against
+an already running static server:
+
+```bash
+PLAYWRIGHT_BASE_URL=http://127.0.0.1:3100 npx playwright test tests/e2e/languages.spec.ts
+```
 
 <!-- CONTRIBUTING -->
 # 🙌 Contributing

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { site } from "../../../data/site"
 import {
 	formatContactValue,
 	getSocialHref,
@@ -51,8 +50,8 @@ function buildMailtoTarget() {
 	const subject = encodeURIComponent(form.subject.trim())
 	const body = encodeURIComponent(
 		[
-			`Nom: ${form.name.trim()}`,
-			`Email: ${form.email.trim()}`,
+			`${t("contact.name")}: ${form.name.trim()}`,
+			`${t("contact.email")}: ${form.email.trim()}`,
 			"",
 			form.message.trim(),
 		].join("\n"),
@@ -60,16 +59,18 @@ function buildMailtoTarget() {
 
 	return `mailto:${recipient}?subject=${subject}&body=${body}`
 }
+
+const { t } = useI18n()
 </script>
 
 <template>
-  <section id="contact" class="section" v-reveal>
+  <section tabindex="-1" id="contact" class="section" v-reveal>
     <div class="container">
       <div class="section-title">
         <div>
-          <h2 class="h2">Get In Touch</h2>
+          <h2 class="h2">{{ t('contact.heading') }}</h2>
           <p class="mt-2 text-sm text-white/60">
-            Let’s build something great together.
+            {{ t('contact.intro') }}
           </p>
         </div>
       </div>
@@ -77,7 +78,7 @@ function buildMailtoTarget() {
       <div class="grid gap-4 lg:grid-cols-2">
         <!-- Left Card: Contact Information -->
         <article class="card glow-hover p-6 contact-card">
-          <h3 class="text-2xl font-semibold text-white">Contact Information</h3>
+          <h3 class="text-2xl font-semibold text-white">{{ t('contact.information') }}</h3>
 
           <ul class="contact-list">
             <li v-for="item in contactItems" :key="item.key" class="contact-item">
@@ -85,9 +86,9 @@ function buildMailtoTarget() {
                 <FontAwesomeIcon :icon="item.icon" />
               </span>
               <div>
-                <p class="contact-label">{{ item.label }}</p>
+                <p class="contact-label">{{ t(`social.${item.key}`) }}</p>
                 <a :href="item.href" :target="isHttpUrl(item.href) ? '_blank' : undefined"
-                  :rel="isHttpUrl(item.href) ? 'noopener noreferrer' : undefined" class="contact-link">
+                  :rel="isHttpUrl(item.href) ? 'noopener noreferrer' : undefined" class="contact-link" dir="ltr">
                   {{ item.value }}
                 </a>
               </div>
@@ -97,60 +98,61 @@ function buildMailtoTarget() {
           <div class="contact-status">
             <div class="status-dot"></div>
             <p class="text-sm text-white/70">
-              {{ site.status ?? "Available for opportunities" }}
+              {{ t('site.status') }}
             </p>
           </div>
         </article>
 
         <!-- Right Card: Send Message -->
         <article class="card glow-hover p-6">
-          <h3 class="text-lg font-semibold text-white/90">Send Me a Message</h3>
+          <h3 class="text-lg font-semibold text-white/90">{{ t('contact.formTitle') }}</h3>
 
           <form class="mt-6 space-y-4" @submit.prevent="onSubmit">
             <div class="grid gap-4 md:grid-cols-2">
               <div>
-                <label class="text-sm text-white/60">Full Name *</label>
-                <input v-model="form.name" required type="text"
+                <label for="contact-name" class="text-sm text-white/60">{{ t('contact.name') }} *</label>
+                <input id="contact-name" v-model="form.name" name="name" autocomplete="name" required type="text"
                   class="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-white/25"
-                  placeholder="Your name" />
+                  :placeholder="t('contact.namePlaceholder')" />
               </div>
 
               <div>
-                <label class="text-sm text-white/60">Email Address *</label>
-                <input v-model="form.email" required type="email"
+                <label for="contact-email" class="text-sm text-white/60">{{ t('contact.email') }} *</label>
+                <input id="contact-email" v-model="form.email" name="email" dir="ltr" autocomplete="email" required type="email"
                   class="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-white/25"
-                  placeholder="you@email.com" />
+                  :placeholder="t('contact.emailPlaceholder')" />
               </div>
             </div>
 
             <div>
-              <label class="text-sm text-white/60">Subject *</label>
-              <input v-model="form.subject" required type="text"
+              <label for="contact-subject" class="text-sm text-white/60">{{ t('contact.subject') }} *</label>
+              <input id="contact-subject" v-model="form.subject" name="subject" required type="text"
                 class="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-white/25"
-                placeholder="Project / Job / Question…" />
+                :placeholder="t('contact.subjectPlaceholder')" />
             </div>
 
             <div>
-              <label class="text-sm text-white/60">Message *</label>
-              <textarea v-model="form.message" required rows="5"
+              <label for="contact-message" class="text-sm text-white/60">{{ t('contact.message') }} *</label>
+              <textarea id="contact-message" v-model="form.message" name="message" required rows="5"
                 class="mt-2 w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-white/25"
-                placeholder="Tell me a bit about what you need…" />
+                :placeholder="t('contact.messagePlaceholder')" />
             </div>
 
             <!-- Honeypot (comme la démo) -->
             <div class="hidden">
-              <label>Do not fill this if you are human</label>
-              <input v-model="form.botField" type="text" />
+              <label for="contact-bot-field">{{ t('contact.honeypot') }}</label>
+              <input id="contact-bot-field" v-model="form.botField" name="botField" type="text" tabindex="-1" autocomplete="off" />
             </div>
 
             <div class="flex items-center gap-3">
               <button type="submit" :disabled="isSubmitting"
+                aria-describedby="contact-mailto-help"
                 class="btn btn-lg btn-primary disabled:cursor-not-allowed disabled:opacity-70">
-                {{ isSubmitting ? "Opening..." : "Send Message" }}
+                {{ isSubmitting ? t('contact.opening') : t('contact.send') }}
               </button>
 
-              <span class="text-sm text-white/60">
-                Opens your email client with a prefilled draft.
+              <span id="contact-mailto-help" class="text-sm text-white/60">
+                {{ t('contact.mailtoHelp') }}
               </span>
             </div>
           </form>

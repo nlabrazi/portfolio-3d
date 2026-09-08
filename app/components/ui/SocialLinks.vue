@@ -12,6 +12,8 @@ const props = withDefaults(defineProps<SocialLinksProps>(), {
 })
 
 const socials = getSocialLinks(["github", "linkedin", "email", "x"])
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -21,7 +23,7 @@ const socials = getSocialLinks(["github", "linkedin", "email", "x"])
     props.size === 'sm' ? 'social-links--sm' : 'social-links--md',
   ]">
     <li v-for="l in socials" :key="l.key">
-      <a :href="l.href" :aria-label="l.label" class="social-link"
+      <a :href="l.href" :aria-label="t(`social.${l.key}`)" class="social-link"
         :target="isHttpUrl(l.href) ? '_blank' : undefined"
         :rel="isHttpUrl(l.href) ? 'noopener noreferrer' : undefined">
         <FontAwesomeIcon :icon="l.icon" />

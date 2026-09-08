@@ -11,11 +11,10 @@ import type { ProjectItem } from "./types"
 export const projects: ProjectItem[] = [
 	{
 		slug: "lazarus-exchange",
-		title: "Lazarus Exchange",
+		title: "content.projects.0.title",
 		tech: ["NestJS", "TypeScript", "Node.js", "JavaScript"],
-		description:
-			"Plateforme d'échange de fichiers sécurisée avec validation mutuelle avant téléchargement.",
-		context: "Projet perso sécurité et collaboration",
+		description: "content.projects.0.description",
+		context: "content.projects.0.context",
 		media: {
 			type: "image",
 			src: lazarusImage,
@@ -27,11 +26,10 @@ export const projects: ProjectItem[] = [
 	},
 	{
 		slug: "lescale-gourmande",
-		title: "L'Escale Gourmande",
+		title: "content.projects.1.title",
 		tech: ["Nuxt 3", "Vue 3", "Tailwind CSS", "TypeScript"],
-		description:
-			"Vitrine web pour un service traiteur événementiel avec formulaires de demande sur mesure.",
-		context: "Projet client vitrine",
+		description: "content.projects.1.description",
+		context: "content.projects.1.context",
 		media: {
 			type: "image",
 			src: lescaleImage,
@@ -43,11 +41,10 @@ export const projects: ProjectItem[] = [
 	},
 	{
 		slug: "argandici",
-		title: "Argan d'ici",
+		title: "content.projects.2.title",
 		tech: ["Nuxt 3", "Vue 3", "Tailwind CSS", "TypeScript", "Prisma"],
-		description:
-			"Site de marque e-commerce pour une huile d'argan marocaine : storytelling, catalogue et tunnel de commande.",
-		context: "Projet business personnel",
+		description: "content.projects.2.description",
+		context: "content.projects.2.context",
 		media: {
 			type: "image",
 			src: arganImage,
@@ -59,11 +56,10 @@ export const projects: ProjectItem[] = [
 	},
 	{
 		slug: "dev-tools",
-		title: "Dev Tools",
+		title: "content.projects.3.title",
 		tech: ["Python"],
-		description:
-			"Suite de scripts pour automatiser les commits, la génération de changelog et les workflows Git.",
-		context: "Boîte à outils développeur",
+		description: "content.projects.3.description",
+		context: "content.projects.3.context",
 		media: {
 			type: "image",
 			src: devtoolsImage,
@@ -74,11 +70,10 @@ export const projects: ProjectItem[] = [
 	},
 	{
 		slug: "sjvtdm",
-		title: "SJVTDM",
+		title: "content.projects.4.title",
 		tech: ["Python", "Telegram Bot", "PostgreSQL"],
-		description:
-			"Bot Telegram qui agrège des sources d'actualité, génère des résumés et publie automatiquement.",
-		context: "Projet d'automatisation de contenu",
+		description: "content.projects.4.description",
+		context: "content.projects.4.context",
 		media: {
 			type: "image",
 			src: sjvtdmImage,
@@ -89,11 +84,10 @@ export const projects: ProjectItem[] = [
 	},
 	{
 		slug: "sawt-ai",
-		title: "Sawt AI",
+		title: "content.projects.5.title",
 		tech: ["Python", "Whisper", "Docker"],
-		description:
-			"Outil d'analyse audio et de classification de versets, basé sur des modèles de machine learning.",
-		context: "Projet IA / traitement audio",
+		description: "content.projects.5.description",
+		context: "content.projects.5.context",
 		media: {
 			type: "image",
 			src: sawtaiImage,
@@ -105,11 +99,10 @@ export const projects: ProjectItem[] = [
 	},
 	{
 		slug: "games",
-		title: "Games",
+		title: "content.projects.6.title",
 		tech: ["React", "JavaScript"],
-		description:
-			"Collection de mini-jeux web interactifs orientée front-end et logique gameplay.",
-		context: "Projet perso jeux et UX",
+		description: "content.projects.6.description",
+		context: "content.projects.6.context",
 		media: {
 			type: "image",
 			src: gamesImage,
@@ -121,11 +114,10 @@ export const projects: ProjectItem[] = [
 	},
 	{
 		slug: "medium-article",
-		title: "Article Medium",
+		title: "content.projects.7.title",
 		tech: ["Medium"],
-		description:
-			"Article sur Medium qui retranscrit mon expérience à l'école THP.",
-		context: "Mon premier article Medium (validation de mission THP)",
+		description: "content.projects.7.description",
+		context: "content.projects.7.context",
 		media: {
 			type: "image",
 			src: mediumArticleImage,

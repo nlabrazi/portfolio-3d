@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { skillGroups } from "../../../data/skills"
+
+const { t } = useI18n()
 </script>
 
 <template>
-  <section id="skills" class="section" v-reveal>
+  <section tabindex="-1" id="skills" class="section" v-reveal>
     <div class="container">
-      <h2 class="h2">Skills</h2>
+      <h2 class="h2">{{ t('nav.skills') }}</h2>
 
       <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <article v-for="g in skillGroups" :key="g.title" class="card glow-hover p-8 sm:p-9">
-          <h3 class="text-lg font-semibold text-white/90">{{ g.title }}</h3>
+          <h3 class="text-lg font-semibold text-white/90">{{ t(g.title) }}</h3>
 
           <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
             <div v-for="it in g.items" :key="it.label" class="skill-item">

@@ -56,7 +56,7 @@
 /* Social: dock gauche */
 .social-dock-left {
 	position: fixed;
-	left: 1.5rem;
+	inset-inline-start: 1.5rem;
 	top: 50%;
 	transform: translateY(-50%);
 	z-index: 20;
@@ -71,8 +71,11 @@
 
 /* Social: bouton top */
 .to-top {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: fixed;
-	right: 1.5rem;
+	inset-inline-end: 1.5rem;
 	bottom: 1.5rem;
 	z-index: 20;
 	width: 3rem;

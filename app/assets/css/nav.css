@@ -54,6 +54,16 @@
 }
 
 /* Nav: menu mobile */
+.mobile-menu {
+	position: absolute;
+	inset-inline: 0;
+	top: 100%;
+	max-height: calc(100dvh - var(--header-height, 5rem));
+	overflow-y: auto;
+	background: rgba(10, 10, 10, 0.97);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .mobile-nav {
 	display: grid;
 	gap: 0.5rem;
@@ -80,4 +90,34 @@
 	);
 	box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
 	transition: width 120ms ease;
+}
+
+/* Language controls stay visible without opening the mobile menu. */
+.language-switcher {
+	display: flex;
+	flex-shrink: 0;
+	justify-content: flex-end;
+	gap: 0.125rem;
+}
+
+.language-switcher__link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	border: 1px solid transparent;
+	border-radius: 0.5rem;
+	font-size: 1rem;
+	color: rgba(255, 255, 255, 0.75);
+}
+
+.language-switcher__link:hover {
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.language-switcher__link[aria-current="true"] {
+	border-color: rgba(56, 189, 248, 0.6);
+	background: rgba(56, 189, 248, 0.12);
+	color: white;
 }

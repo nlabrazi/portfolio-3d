@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { site } from "../../../data/site"
-import { footer } from "../../../data/footer"
-import { scrollToHash } from "~/utils/navigation"
 import { getSocialLinks, isHttpUrl } from "~/utils/social-links"
+import { footer } from "../../../data/footer"
+import { site } from "../../../data/site"
 
 const socialLinks = getSocialLinks(["email", "github", "linkedin", "x"])
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -18,25 +19,25 @@ const socialLinks = getSocialLinks(["email", "github", "linkedin", "x"])
             {{ site.name }}
           </div>
           <p class="mt-3 text-sm text-white/60">
-            {{ site.tagline }}
+            {{ t('site.tagline') }}
           </p>
 
           <div class="mt-6 flex flex-wrap gap-2">
             <a v-for="s in socialLinks" :key="s.href" :href="s.href"
               :target="isHttpUrl(s.href) ? '_blank' : undefined"
               :rel="isHttpUrl(s.href) ? 'noopener noreferrer' : undefined" class="pill hover:text-white">
-              {{ s.label }}
+              {{ t(`social.${s.key}`) }}
             </a>
           </div>
         </div>
 
         <!-- Navigation -->
         <div>
-          <div class="text-sm font-semibold text-white/80">Navigation</div>
+          <div class="text-sm font-semibold text-white/80">{{ t('footer.navigation') }}</div>
           <ul class="mt-4 space-y-2">
             <li v-for="n in footer.navigation" :key="n.href">
-              <a :href="n.href" class="text-sm text-white/60 hover:text-white" @click.prevent="scrollToHash(n.href)">
-                {{ n.label }}
+              <a :href="n.href" class="text-sm text-white/60 hover:text-white">
+                {{ t(n.label) }}
               </a>
             </li>
           </ul>
@@ -44,10 +45,10 @@ const socialLinks = getSocialLinks(["email", "github", "linkedin", "x"])
 
         <!-- Services -->
         <div>
-          <div class="text-sm font-semibold text-white/80">Services</div>
+          <div class="text-sm font-semibold text-white/80">{{ t('footer.services') }}</div>
           <ul class="mt-4 space-y-2">
             <li v-for="s in footer.services" :key="s" class="text-sm text-white/60">
-              {{ s }}
+              {{ t(s) }}
             </li>
           </ul>
         </div>
@@ -60,7 +61,7 @@ const socialLinks = getSocialLinks(["email", "github", "linkedin", "x"])
         class="container flex flex-col gap-3 py-6 text-sm text-white/50 md:flex-row md:items-center md:justify-between">
         <div>© {{ new Date().getFullYear() }} — {{ site.name }}</div>
         <div class="text-white/40">
-          Built with Nuxt • Tailwind • Three.js
+          {{ t('footer.builtWith') }}
         </div>
       </div>
     </div>

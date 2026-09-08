@@ -1,0 +1,286 @@
+{
+	"nav": {
+		"home": "Home",
+		"about": "About",
+		"experience": "Experience",
+		"education": "Education",
+		"skills": "Skills",
+		"projects": "Projects",
+		"misc": "Hobbies",
+		"contact": "Contact"
+	},
+	"common": {
+		"language": "Choose language",
+		"menu": "Toggle navigation",
+		"top": "Back to top",
+		"closeImage": "Close image",
+		"expandedImage": "Expanded image",
+		"expandImage": "Enlarge image: {title}",
+		"imageDialog": "Expanded view: {title}",
+		"preview": "Preview of {title}",
+		"logo": "{name} logo",
+		"portrait": "Portrait of Nabil Labrazi"
+	},
+	"site": {
+		"title": "Full-Stack Web Developer",
+		"tagline": "Full-Stack Web Developer — open to new opportunities.",
+		"status": "Available for freelance projects and permanent roles.",
+		"location": "Île-de-France, France"
+	},
+	"hero": {
+		"available": "Available 🚀",
+		"intro": "Creating modern web experiences",
+		"projects": "My projects"
+	},
+	"seo": {
+		"title": "Portfolio",
+		"description": "Full-stack web developer in France. Angular, Vue and Nuxt projects, and product-focused tools."
+	},
+	"experience": {
+		"tasks": "Responsibilities",
+		"tools": "Tools / Languages"
+	},
+	"education": {
+		"dates": "Dates",
+		"location": "Location",
+		"languages": "Languages:"
+	},
+	"projects": {
+		"intro": "A selection of my projects.",
+		"all": "All",
+		"repo": "Source code",
+		"live": "Visit site",
+		"private": "Private or unpublished links",
+		"page": "Page {page}",
+		"pageOf": "Page {current} / {total}"
+	},
+	"contact": {
+		"heading": "Get in touch",
+		"intro": "Let’s build something great together.",
+		"information": "Contact information",
+		"formTitle": "Send me a message",
+		"name": "Full name",
+		"email": "Email address",
+		"subject": "Subject",
+		"message": "Message",
+		"namePlaceholder": "Your name",
+		"emailPlaceholder": "you{'@'}example.com",
+		"subjectPlaceholder": "Project / Job / Question…",
+		"messagePlaceholder": "Tell me a bit about what you need…",
+		"honeypot": "Do not fill this field if you are human",
+		"send": "Send message",
+		"opening": "Opening…",
+		"mailtoHelp": "Opens your email client with a prefilled draft."
+	},
+	"social": {
+		"email": "Email",
+		"github": "GitHub",
+		"linkedin": "LinkedIn",
+		"x": "X"
+	},
+	"footer": {
+		"navigation": "Navigation",
+		"services": "Services",
+		"builtWith": "Built with Nuxt • Tailwind • Three.js",
+		"service0": "Web development",
+		"service1": "Frontend engineering",
+		"service2": "Backend APIs",
+		"service3": "UI/UX implementation",
+		"service4": "Performance & developer experience"
+	},
+	"content": {
+		"experience": {
+			"0": {
+				"stack": {
+					"0": "TypeScript",
+					"1": "Angular",
+					"2": "Tailwind CSS",
+					"3": "PostgreSQL"
+				},
+				"role": "Data Tools Programmer",
+				"location": "Paris (75)",
+				"start": "July 2025",
+				"end": "Present",
+				"tasks": {
+					"0": "Developing new features",
+					"1": "Updating guides and documentation",
+					"2": "User support and follow-up"
+				}
+			},
+			"1": {
+				"stack": {
+					"0": "JIRA",
+					"1": "Grafana, Kibana, Datadog",
+					"2": "Node.js, Angular, PostgreSQL"
+				},
+				"role": "Tools Specialist — Support",
+				"location": "Paris (75)",
+				"start": "September 2021",
+				"end": "June 2025",
+				"tasks": {
+					"0": "Monitoring environments",
+					"1": "Resolving incidents",
+					"2": "Tracking new features with project managers",
+					"3": "Developing new features",
+					"4": "Updating guides and documentation"
+				}
+			},
+			"2": {
+				"stack": {
+					"0": "JIRA, Zendesk",
+					"1": "Grafana, Kibana, Datadog, NewRelic",
+					"2": "Ruby, JavaScript, PostgreSQL"
+				},
+				"role": "Monitoring — Support",
+				"location": "Paris (75)",
+				"start": "October 2017",
+				"end": "January 2020",
+				"tasks": {
+					"0": "Monitoring environments (proxies, VPN tunnels, Raspberry Pi…)",
+					"1": "Resolving incidents (level 3)",
+					"2": "Tracking new features with product owners, project managers and developers",
+					"3": "Implementing monitoring procedures and task automation"
+				}
+			},
+			"3": {
+				"stack": {
+					"0": "ETL / web apps / web servers (AWS / Azure)",
+					"1": "NewRelic, Active Directory, Exchange...",
+					"2": "SQL Server 2016"
+				},
+				"role": "Technical Analyst",
+				"location": "Gennevilliers (92)",
+				"start": "January 2015",
+				"end": "October 2017",
+				"tasks": {
+					"0": "Resolving incidents (level 3)",
+					"1": "Database analysis, data insertion and maintenance",
+					"2": "SQL development (stored procedures…)",
+					"3": "Creating and deploying tools to improve operational tasks"
+				}
+			},
+			"4": {
+				"stack": {
+					"0": "Active Directory, Exchange...",
+					"1": "BlackBerry Server",
+					"2": "SQL Server 2012"
+				},
+				"role": "IT Support",
+				"location": "Issy-les-Moulineaux (92)",
+				"start": "December 2012",
+				"end": "December 2014",
+				"tasks": {
+					"0": "Resolving incidents (levels 1 & 2)",
+					"1": "Preparing, integrating and installing user workstations",
+					"2": "System administration",
+					"3": "SQL queries for data extraction"
+				}
+			}
+		},
+		"projects": {
+			"0": {
+				"title": "Lazarus Exchange",
+				"description": "Secure file-sharing platform with mutual approval before downloads.",
+				"context": "Personal security and collaboration project"
+			},
+			"1": {
+				"title": "L'Escale Gourmande",
+				"description": "Showcase website for an event catering service, with custom enquiry forms.",
+				"context": "Client showcase website"
+			},
+			"2": {
+				"title": "Argan d'ici",
+				"description": "E-commerce brand website for Moroccan argan oil: brand story, catalogue and checkout.",
+				"context": "Personal business project"
+			},
+			"3": {
+				"title": "Dev Tools",
+				"description": "Scripts to automate commits, changelog generation and Git workflows.",
+				"context": "Developer toolbox"
+			},
+			"4": {
+				"title": "SJVTDM",
+				"description": "Telegram bot that aggregates news sources, generates summaries and publishes automatically.",
+				"context": "Content automation project"
+			},
+			"5": {
+				"title": "Sawt AI",
+				"description": "Audio analysis and verse classification tool powered by machine learning models.",
+				"context": "AI / audio processing project"
+			},
+			"6": {
+				"title": "Games",
+				"description": "A collection of interactive web mini-games focused on frontend development and gameplay logic.",
+				"context": "Personal games and UX project"
+			},
+			"7": {
+				"title": "Medium Article",
+				"description": "A Medium article sharing my experience at The Hacking Project.",
+				"context": "My first Medium article (THP assignment)"
+			}
+		},
+		"education": {
+			"0": {
+				"licence": "Web Developer",
+				"location": "Paris (75)",
+				"description": "The Hacking Project is a full-time coding course open to everyone, with no prerequisites."
+			},
+			"1": {
+				"licence": "Web Developer",
+				"location": "Paris (75)",
+				"description": "Le Wagon is a coding bootcamp teaching web application development."
+			},
+			"2": {
+				"licence": "Database Administration",
+				"location": "Rueil-Malmaison (92)",
+				"description": "SQL Server 2016 querying and administration training."
+			},
+			"3": {
+				"licence": "BTS SIO — IT Services Diploma",
+				"location": "Vernon (27)",
+				"description": "Application design and development."
+			}
+		},
+		"misc": {
+			"0": {
+				"title": "Muay Thai enthusiast",
+				"backContent": "Thai boxing practitioner",
+				"footer": "Training at Sutai MuayThai Gym — Thailand (2019)"
+			},
+			"1": {
+				"title": "Travel enthusiast",
+				"backContent": "Passionate about travel",
+				"footer": "Travels across five continents"
+			},
+			"2": {
+				"title": "Video game enthusiast",
+				"backContent": "A lifelong passion for video games",
+				"footer": "Dedicated player, competitive gamer and streamer"
+			},
+			"3": {
+				"title": "Cinema enthusiast",
+				"backContent": "Thanks to Netflix and friends",
+				"footer": "From classics to the latest releases"
+			}
+		},
+		"skills": {
+			"0": {
+				"title": "Frontend Development"
+			},
+			"1": {
+				"title": "Backend & Databases"
+			},
+			"2": {
+				"title": "Tools & Infrastructure"
+			}
+		},
+		"about": {
+			"heading": "Who am I?",
+			"paragraphs": {
+				"0": "Ever since I got my first computer at the age of six (an Amstrad CPC 464), computing has been a passion. Making it my career was a natural choice.",
+				"1": "As a web developer, I bring a meticulous attention to detail to every task I take on.",
+				"2": "I look forward to bringing my personal touch and energy to new projects. I would be delighted to be part of your next adventure."
+			}
+		}
+	}
+}
