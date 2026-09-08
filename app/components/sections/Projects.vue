@@ -39,7 +39,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <section id="projects" class="section" v-reveal>
+  <section tabindex="-1" id="projects" class="section" v-reveal>
     <div class="container">
       <div class="section-title">
         <div>

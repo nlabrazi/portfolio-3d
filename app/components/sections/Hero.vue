@@ -6,7 +6,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <section id="home" class="section hero-section relative overflow-hidden" v-reveal>
+  <section tabindex="-1" id="home" class="section hero-section relative overflow-hidden" v-reveal>
     <div class="hero-ambient" aria-hidden="true"></div>
     <div class="container relative z-10">
       <div class="hero-content mx-auto flex max-w-4xl flex-col items-center text-center">

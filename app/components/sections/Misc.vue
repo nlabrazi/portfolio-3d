@@ -8,7 +8,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <section id="misc" class="section" v-reveal>
+  <section tabindex="-1" id="misc" class="section" v-reveal>
     <div class="container">
       <h2 class="h2">{{ t('nav.misc') }}</h2>
 

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { scrollToHash } from "~/utils/navigation"
 import { getSocialLinks, isHttpUrl } from "~/utils/social-links"
 import { footer } from "../../../data/footer"
 import { site } from "../../../data/site"
@@ -37,7 +36,7 @@ const { t } = useI18n()
           <div class="text-sm font-semibold text-white/80">{{ t('footer.navigation') }}</div>
           <ul class="mt-4 space-y-2">
             <li v-for="n in footer.navigation" :key="n.href">
-              <a :href="n.href" class="text-sm text-white/60 hover:text-white" @click.prevent="scrollToHash(n.href)">
+              <a :href="n.href" class="text-sm text-white/60 hover:text-white">
                 {{ t(n.label) }}
               </a>
             </li>

@@ -176,6 +176,11 @@ Accessibility tests cover opening images with Enter/Space, closing with Escape,
 keeping focus inside the dialog and restoring it on close, contact labels and
 required fields, and the selected state of project filters and pagination.
 
+Anchor navigation tests cover the header, hero, footer and back-to-top link in all
+three languages, including keyboard focus, browser history, direct URLs and reloads.
+Links use native fragments (`#projects`, for example). The scroll offset follows
+the sticky header height, and reduced-motion preferences disable smooth scrolling.
+
 ### Languages
 
 The header switches between French (`/`), English (`/en/`) and Arabic (`/ar/`).

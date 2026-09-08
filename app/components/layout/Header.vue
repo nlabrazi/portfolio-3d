@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { scrollToHash } from "~/utils/navigation"
-
 const { t, locale } = useI18n()
 
 const links = [
@@ -17,13 +15,10 @@ const links = [
 const activeHash = ref("#home")
 const isOpen = ref(false)
 const progress = ref(0)
+const header = ref<HTMLElement | null>(null)
+let headerObserver: ResizeObserver | null = null
 
 watch(locale, () => { isOpen.value = false })
-
-function onNavClick(hash: string) {
-	scrollToHash(hash)
-	isOpen.value = false
-}
 
 function updateProgress() {
 	const doc = document.documentElement
@@ -36,6 +31,11 @@ function updateProgress() {
 let obs: IntersectionObserver | null = null
 
 onMounted(() => {
+	headerObserver = new ResizeObserver(([entry]) => {
+		document.documentElement.style.setProperty("--header-height", `${entry.target.getBoundingClientRect().height}px`)
+	})
+	if (header.value) headerObserver.observe(header.value)
+
 	const ids = links.map((l) => l.href.slice(1))
 	const elements = ids
 		.map((id) => document.getElementById(id))
@@ -77,6 +77,8 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+	headerObserver?.disconnect()
+	document.documentElement.style.removeProperty("--header-height")
 	obs?.disconnect()
 	obs = null
 	window.removeEventListener("scroll", updateProgress)
@@ -85,19 +87,19 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/70 backdrop-blur relative">
+  <header ref="header" class="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/70 backdrop-blur relative">
     <div class="scroll-progress">
       <span class="scroll-progress__bar" :style="{ width: `${progress}%` }"></span>
     </div>
 
     <div class="container flex items-center justify-between gap-2 py-4">
-      <a href="#home" class="shrink-0 whitespace-nowrap font-semibold tracking-tight text-white" @click.prevent="scrollToHash('#home')">
+      <a href="#home" class="shrink-0 whitespace-nowrap font-semibold tracking-tight text-white" @click="isOpen = false">
         Nabil Labrazi
       </a>
 
       <nav class="hidden items-center whitespace-nowrap xl:flex">
         <a v-for="l in links" :key="l.href" :href="l.href" class="nav-link"
-          :class="activeHash === l.href ? 'nav-link--active' : ''" @click.prevent="onNavClick(l.href)">
+          :class="activeHash === l.href ? 'nav-link--active' : ''" :aria-current="activeHash === l.href ? 'location' : undefined" @click="isOpen = false">
           {{ t(l.label) }}
         </a>
       </nav>
@@ -117,10 +119,10 @@ onBeforeUnmount(() => {
       </button>
     </div>
 
-    <div v-show="isOpen" id="mobile-menu" class="container pb-5 xl:hidden">
+    <div v-show="isOpen" id="mobile-menu" class="mobile-menu container pb-5 xl:hidden">
       <nav class="mobile-nav">
         <a v-for="l in links" :key="l.href" :href="l.href" class="nav-link"
-          :class="activeHash === l.href ? 'nav-link--active' : ''" @click.prevent="onNavClick(l.href)">
+          :class="activeHash === l.href ? 'nav-link--active' : ''" :aria-current="activeHash === l.href ? 'location' : undefined" @click="isOpen = false">
           {{ t(l.label) }}
         </a>
       </nav>

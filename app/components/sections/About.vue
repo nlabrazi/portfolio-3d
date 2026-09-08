@@ -6,7 +6,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <section id="about" class="section" v-reveal>
+  <section tabindex="-1" id="about" class="section" v-reveal>
     <div class="container">
       <h2 class="h2">{{ t('nav.about') }}</h2>
 
