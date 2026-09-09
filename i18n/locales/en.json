@@ -69,8 +69,17 @@
 		"messagePlaceholder": "Tell me a bit about what you need…",
 		"honeypot": "Do not fill this field if you are human",
 		"send": "Send message",
-		"opening": "Opening…",
-		"mailtoHelp": "Opens your email client with a prefilled draft."
+		"sending": "Sending…",
+		"sendHelp": "Your message is sent through Web3Forms.",
+		"success": "Your message has been sent. Thank you!",
+		"error": "Sending failed. Your message has been kept: try again or contact me by email.",
+		"captchaRequired": "Please complete the spam protection check.",
+		"captchaError": "Spam verification is unavailable. Try again or contact me by email.",
+		"retry": "Try again",
+		"invalid": "Please fill in every field with valid content.",
+		"rateLimit": "Sending is temporarily unavailable. Try again later or contact me by email.",
+		"timeout": "The service did not respond in time. Your message has been kept. Check before retrying to avoid a duplicate.",
+		"unavailable": "The form is temporarily unavailable. Please contact me using the email address provided."
 	},
 	"social": {
 		"email": "Email",

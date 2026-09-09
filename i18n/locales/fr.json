@@ -264,8 +264,17 @@
 		"messagePlaceholder": "Parlez-moi de votre besoin…",
 		"honeypot": "Ne remplissez pas ce champ si vous êtes humain",
 		"send": "Envoyer un message",
-		"opening": "Ouverture…",
-		"mailtoHelp": "Ouvre votre messagerie avec un brouillon prérempli."
+		"sending": "Envoi en cours…",
+		"sendHelp": "Votre message est transmis via Web3Forms.",
+		"success": "Votre message a bien été envoyé. Merci !",
+		"error": "L’envoi a échoué. Votre message est conservé : réessayez ou contactez-moi par e-mail.",
+		"captchaRequired": "Veuillez compléter la vérification antispam.",
+		"captchaError": "La vérification antispam est indisponible. Réessayez ou contactez-moi par e-mail.",
+		"retry": "Réessayer",
+		"invalid": "Veuillez remplir tous les champs avec un contenu valide.",
+		"rateLimit": "L’envoi est temporairement indisponible. Réessayez plus tard ou contactez-moi par e-mail.",
+		"timeout": "Le service n’a pas répondu à temps. Votre message est conservé. Vérifiez avant de réessayer pour éviter un doublon.",
+		"unavailable": "Le formulaire est temporairement indisponible. Vous pouvez me contacter via l’adresse e-mail indiquée."
 	},
 	"social": {
 		"email": "E-mail",

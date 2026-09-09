@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
 	formatContactValue,
-	getSocialHref,
 	getSocialLinks,
 	isHttpUrl,
 } from "~/utils/social-links"
@@ -11,7 +10,6 @@ type FormState = {
 	email: string
 	subject: string
 	message: string
-	botField: string
 }
 
 const form = reactive<FormState>({
@@ -19,10 +17,16 @@ const form = reactive<FormState>({
 	email: "",
 	subject: "",
 	message: "",
-	botField: "",
 })
 
-const contactEmailHref = getSocialHref("email")
+const config = useRuntimeConfig()
+const isConfigured = computed(() => Boolean(config.public.web3formsAccessKey))
+const captcha = ref<{ reset: () => void } | null>(null)
+const captchaEnabled = ref(false)
+const captchaToken = ref("")
+const result = ref<"success" | "error" | "captchaRequired" | "invalid" | "rateLimit" | "timeout" | "">("")
+let controller: AbortController | undefined
+onBeforeUnmount(() => controller?.abort())
 
 const contactItems = getSocialLinks(["email", "linkedin", "github", "x"]).map(
 	(item) => ({
@@ -33,31 +37,51 @@ const contactItems = getSocialLinks(["email", "linkedin", "github", "x"]).map(
 
 const isSubmitting = ref(false)
 
-function onSubmit() {
-	if (isSubmitting.value || form.botField) return
-
-	if (!contactEmailHref.startsWith("mailto:")) return
-
+async function onSubmit() {
+	if (isSubmitting.value || !isConfigured.value) return
+	captchaEnabled.value = true
+	result.value = ""
+	if (![form.name, form.email, form.subject, form.message].every((value) => value.trim())) {
+		result.value = "invalid"
+		return
+	}
+	if (!captchaToken.value) {
+		result.value = "captchaRequired"
+		return
+	}
 	isSubmitting.value = true
-
-	const mailtoTarget = buildMailtoTarget()
-	isSubmitting.value = false
-	window.location.href = mailtoTarget
-}
-
-function buildMailtoTarget() {
-	const recipient = contactEmailHref.replace("mailto:", "")
-	const subject = encodeURIComponent(form.subject.trim())
-	const body = encodeURIComponent(
-		[
-			`${t("contact.name")}: ${form.name.trim()}`,
-			`${t("contact.email")}: ${form.email.trim()}`,
-			"",
-			form.message.trim(),
-		].join("\n"),
-	)
-
-	return `mailto:${recipient}?subject=${subject}&body=${body}`
+	controller = new AbortController()
+	const timeout = window.setTimeout(() => controller?.abort(), 15_000)
+	try {
+		const response = await fetch("https://api.web3forms.com/submit", {
+			method: "POST",
+			headers: { "Content-Type": "application/json", Accept: "application/json" },
+			signal: controller.signal,
+			body: JSON.stringify({
+				access_key: config.public.web3formsAccessKey,
+				name: form.name.trim(),
+				email: form.email.trim(),
+				subject: form.subject.trim(),
+				message: form.message.trim(),
+				"h-captcha-response": captchaToken.value,
+			}),
+		})
+		if (response.status === 429) {
+			result.value = "rateLimit"
+			return
+		}
+		const data = await response.json()
+		if (!response.ok || data?.success !== true) throw new Error("Submission rejected")
+		result.value = "success"
+		Object.assign(form, { name: "", email: "", subject: "", message: "" })
+	} catch {
+		result.value = controller.signal.aborted ? "timeout" : "error"
+	} finally {
+		window.clearTimeout(timeout)
+		isSubmitting.value = false
+		captchaToken.value = ""
+		captcha.value?.reset()
+	}
 }
 
 const { t } = useI18n()
@@ -107,7 +131,9 @@ const { t } = useI18n()
         <article class="card glow-hover p-6">
           <h3 class="text-lg font-semibold text-white/90">{{ t('contact.formTitle') }}</h3>
 
-          <form class="mt-6 space-y-4" @submit.prevent="onSubmit">
+          <form class="mt-6 space-y-4" :aria-busy="isSubmitting" @focusin="captchaEnabled = true" @submit.prevent="onSubmit">
+            <fieldset :disabled="isSubmitting || !isConfigured" class="space-y-4">
+            <legend class="sr-only">{{ t('contact.formTitle') }}</legend>
             <div class="grid gap-4 md:grid-cols-2">
               <div>
                 <label for="contact-name" class="text-sm text-white/60">{{ t('contact.name') }} *</label>
@@ -138,23 +164,22 @@ const { t } = useI18n()
                 :placeholder="t('contact.messagePlaceholder')" />
             </div>
 
-            <!-- Honeypot (comme la démo) -->
-            <div class="hidden">
-              <label for="contact-bot-field">{{ t('contact.honeypot') }}</label>
-              <input id="contact-bot-field" v-model="form.botField" name="botField" type="text" tabindex="-1" autocomplete="off" />
-            </div>
+            <UiContactCaptcha v-if="captchaEnabled && isConfigured" ref="captcha" @verified="captchaToken = $event" />
 
-            <div class="flex items-center gap-3">
+            <div class="flex flex-wrap items-center gap-3">
               <button type="submit" :disabled="isSubmitting"
-                aria-describedby="contact-mailto-help"
+                aria-describedby="contact-send-help"
                 class="btn btn-lg btn-primary disabled:cursor-not-allowed disabled:opacity-70">
-                {{ isSubmitting ? t('contact.opening') : t('contact.send') }}
+                {{ isSubmitting ? t('contact.sending') : t('contact.send') }}
               </button>
 
-              <span id="contact-mailto-help" class="text-sm text-white/60">
-                {{ t('contact.mailtoHelp') }}
+              <span id="contact-send-help" class="text-sm text-white/60">
+                {{ t('contact.sendHelp') }}
               </span>
             </div>
+            </fieldset>
+            <p v-if="!isConfigured" class="text-sm text-white/80">{{ t('contact.unavailable') }}</p>
+            <p role="status" aria-live="polite" aria-atomic="true" class="text-sm text-white/90">{{ result ? t(`contact.${result}`) : '' }}</p>
           </form>
         </article>
       </div>
