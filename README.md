@@ -57,7 +57,7 @@
 
 - 🌐 Live Site: <a href="https://nabster.dev">nabster.dev</a>
 - 📁 Project Showcase: Displays a selection of projects with descriptions and links.
-- ✉️ Contact Section: Includes direct contact links and a prefilled email draft flow.
+- ✉️ Contact Section: Sends messages through Web3Forms, with direct email links as a fallback.
 
 ---
 
@@ -159,6 +159,10 @@ pause recovery and resource cleanup. The browser suite also checks that both sta
 layers render in a single canvas on desktop and mobile, including after resizing.
 Starfield screenshots are saved in `test-results/` for visual review.
 
+The E2E build embeds a dummy Web3Forms key. Contact tests simulate Web3Forms and
+hCaptcha, so no real messages are sent and no quota is consumed. Run your normal
+`npm run generate` before deployment; do not deploy the E2E build output.
+
 Install Chromium once, then run the tests against a fresh production build:
 
 ```bash
@@ -180,6 +184,43 @@ Anchor navigation tests cover the header, hero, footer and back-to-top link in a
 three languages, including keyboard focus, browser history, direct URLs and reloads.
 Links use native fragments (`#projects`, for example). The scroll offset follows
 the sticky header height, and reduced-motion preferences disable smooth scrolling.
+
+### Contact form setup (Web3Forms)
+
+1. In [Web3Forms](https://app.web3forms.com/), create/select your form and verify
+   the destination email address.
+2. Set `NUXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in the local `.env` file (see
+   `.env.example`). This is a public form identifier intended for browser use,
+   not a secret account API token. Keeping it in `.env` separates configuration
+   from source code; it will still be visible in the generated site.
+3. In the form's spam protection settings, enable **hCaptcha** so Web3Forms checks
+   the CAPTCHA token on the server. The app uses Web3Forms' documented shared free
+   site key; no separate hCaptcha account is needed.
+4. Recreate the local development container with
+   `docker compose up -d --force-recreate app` after changing `.env`.
+   On the VPS, set the same variable in `/srv/apps/portfolio/repo/.env` once,
+   then use the existing commit/MR/deployment process. `npm run generate` loads
+   that file and embeds the public key in the static files. No Compose or
+   `deploy.sh` changes are required. Regenerate after changing the key.
+5. Manually send one test message from the site, solve the CAPTCHA, check the
+   destination inbox/spam folder, and verify that Reply targets the visitor's address.
+
+The form stays unavailable until its key is configured, with direct email links
+remaining accessible. Nuxt needs `NUXT_PUBLIC_WEB3FORMS_ACCESS_KEY` **at
+build/generate time**. Changing a container's environment after static generation
+does not update the generated site. The optional Docker production preview excludes
+`.env` from its build context and therefore has no configured form by default;
+the VPS generates on the host and loads its own `.env` as described above.
+
+The CAPTCHA loads only on interaction with the form. Errors, expired CAPTCHA,
+rate limits and timeouts preserve the entered message. Only an HTTP success with
+`success: true` clears the fields. No automatic retries are made, since a timed-out
+request may already have been accepted. A success confirms API acceptance, not inbox delivery.
+
+Official references: [Vue integration](https://docs.web3forms.com/how-to-guides/js-frameworks/vue-js),
+[API fields and responses](https://docs.web3forms.com/getting-started/api-reference),
+[hCaptcha setup](https://docs.web3forms.com/getting-started/customizations/spam-protection/hcaptcha),
+[public access keys](https://docs.web3forms.com/getting-started/faq).
 
 ### Languages
 

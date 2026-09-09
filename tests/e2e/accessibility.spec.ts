@@ -84,9 +84,7 @@ test("contact labels focus their fields and expose required inputs", async ({
 	).toHaveAttribute("autocomplete", "email")
 	await expect(
 		contact.getByRole("button", { name: "Envoyer un message" }),
-	).toHaveAccessibleDescription(
-		"Ouvre votre messagerie avec un brouillon prérempli.",
-	)
+	).toHaveAccessibleDescription("Votre message est transmis via Web3Forms.")
 })
 
 test("project filters and pagination expose their selected state", async ({

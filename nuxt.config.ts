@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
+	runtimeConfig: { public: { web3formsAccessKey: "" } },
 	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n"],
 	i18n: {
 		baseUrl: "https://nabster.dev",
