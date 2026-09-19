@@ -1,3 +1,5 @@
+@Library('nabster-ci') _
+
 pipeline {
     agent {
         docker {
@@ -28,6 +30,16 @@ pipeline {
             steps {
                 sh 'npm run build'
             }
+        }
+    }
+
+    post {
+        success {
+            notifyTelegram('✅ CI SUCCESS')
+        }
+
+        failure {
+            notifyTelegram('❌ CI FAILED')
         }
     }
 }
