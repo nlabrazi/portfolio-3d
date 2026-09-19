@@ -8,6 +8,12 @@ pipeline {
     }
 
     stages {
+        stage('Notify start') {
+            steps {
+                notifyTelegram('started')
+            }
+        }
+
         stage('Install') {
             steps {
                 sh 'npm ci'
@@ -35,11 +41,11 @@ pipeline {
 
     post {
         success {
-            notifyTelegram('✅ CI SUCCESS')
+            notifyTelegram('success')
         }
 
         failure {
-            notifyTelegram('❌ CI FAILED')
+            notifyTelegram('failed')
         }
     }
 }
