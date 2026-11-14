@@ -1,87 +1,83 @@
 <script setup lang="ts">
-import {
-	formatContactValue,
-	getSocialLinks,
-	isHttpUrl,
-} from "~/utils/social-links"
+import { formatContactValue, getSocialLinks, isHttpUrl } from '~/utils/social-links'
 
 type FormState = {
-	name: string
-	email: string
-	subject: string
-	message: string
+  name: string
+  email: string
+  subject: string
+  message: string
 }
 
 const form = reactive<FormState>({
-	name: "",
-	email: "",
-	subject: "",
-	message: "",
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
 })
 
 const config = useRuntimeConfig()
 const isConfigured = computed(() => Boolean(config.public.web3formsAccessKey))
 const captcha = ref<{ reset: () => void } | null>(null)
 const captchaEnabled = ref(false)
-const captchaToken = ref("")
-const result = ref<"success" | "error" | "captchaRequired" | "invalid" | "rateLimit" | "timeout" | "">("")
+const captchaToken = ref('')
+const result = ref<
+  'success' | 'error' | 'captchaRequired' | 'invalid' | 'rateLimit' | 'timeout' | ''
+>('')
 let controller: AbortController | undefined
 onBeforeUnmount(() => controller?.abort())
 
-const contactItems = getSocialLinks(["email", "linkedin", "github", "x"]).map(
-	(item) => ({
-		...item,
-		value: formatContactValue(item.href),
-	}),
-)
+const contactItems = getSocialLinks(['email', 'linkedin', 'github', 'x']).map((item) => ({
+  ...item,
+  value: formatContactValue(item.href),
+}))
 
 const isSubmitting = ref(false)
 
 async function onSubmit() {
-	if (isSubmitting.value || !isConfigured.value) return
-	captchaEnabled.value = true
-	result.value = ""
-	if (![form.name, form.email, form.subject, form.message].every((value) => value.trim())) {
-		result.value = "invalid"
-		return
-	}
-	if (!captchaToken.value) {
-		result.value = "captchaRequired"
-		return
-	}
-	isSubmitting.value = true
-	controller = new AbortController()
-	const timeout = window.setTimeout(() => controller?.abort(), 15_000)
-	try {
-		const response = await fetch("https://api.web3forms.com/submit", {
-			method: "POST",
-			headers: { "Content-Type": "application/json", Accept: "application/json" },
-			signal: controller.signal,
-			body: JSON.stringify({
-				access_key: config.public.web3formsAccessKey,
-				name: form.name.trim(),
-				email: form.email.trim(),
-				subject: form.subject.trim(),
-				message: form.message.trim(),
-				"h-captcha-response": captchaToken.value,
-			}),
-		})
-		if (response.status === 429) {
-			result.value = "rateLimit"
-			return
-		}
-		const data = await response.json()
-		if (!response.ok || data?.success !== true) throw new Error("Submission rejected")
-		result.value = "success"
-		Object.assign(form, { name: "", email: "", subject: "", message: "" })
-	} catch {
-		result.value = controller.signal.aborted ? "timeout" : "error"
-	} finally {
-		window.clearTimeout(timeout)
-		isSubmitting.value = false
-		captchaToken.value = ""
-		captcha.value?.reset()
-	}
+  if (isSubmitting.value || !isConfigured.value) return
+  captchaEnabled.value = true
+  result.value = ''
+  if (![form.name, form.email, form.subject, form.message].every((value) => value.trim())) {
+    result.value = 'invalid'
+    return
+  }
+  if (!captchaToken.value) {
+    result.value = 'captchaRequired'
+    return
+  }
+  isSubmitting.value = true
+  controller = new AbortController()
+  const timeout = window.setTimeout(() => controller?.abort(), 15_000)
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      signal: controller.signal,
+      body: JSON.stringify({
+        access_key: config.public.web3formsAccessKey,
+        name: form.name.trim(),
+        email: form.email.trim(),
+        subject: form.subject.trim(),
+        message: form.message.trim(),
+        'h-captcha-response': captchaToken.value,
+      }),
+    })
+    if (response.status === 429) {
+      result.value = 'rateLimit'
+      return
+    }
+    const data = await response.json()
+    if (!response.ok || data?.success !== true) throw new Error('Submission rejected')
+    result.value = 'success'
+    Object.assign(form, { name: '', email: '', subject: '', message: '' })
+  } catch {
+    result.value = controller.signal.aborted ? 'timeout' : 'error'
+  } finally {
+    window.clearTimeout(timeout)
+    isSubmitting.value = false
+    captchaToken.value = ''
+    captcha.value?.reset()
+  }
 }
 
 const { t } = useI18n()

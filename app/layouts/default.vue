@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Starfield from "~/components/hero/Starfield.vue"
-import CursorGlow from "~/components/ui/CursorGlow.vue"
-import SocialLinks from "~/components/ui/SocialLinks.vue"
+import Starfield from '~/components/hero/Starfield.vue'
+import CursorGlow from '~/components/ui/CursorGlow.vue'
+import SocialLinks from '~/components/ui/SocialLinks.vue'
 
 const { t } = useI18n()
 </script>

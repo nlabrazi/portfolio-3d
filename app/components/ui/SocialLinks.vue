@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { getSocialLinks, isHttpUrl } from "~/utils/social-links"
+import { getSocialLinks, isHttpUrl } from '~/utils/social-links'
 
 type SocialLinksProps = {
-	orientation?: "row" | "column"
-	size?: "sm" | "md"
+  orientation?: 'row' | 'column'
+  size?: 'sm' | 'md'
 }
 
 const props = withDefaults(defineProps<SocialLinksProps>(), {
-	orientation: "row",
-	size: "md",
+  orientation: 'row',
+  size: 'md',
 })
 
-const socials = getSocialLinks(["github", "linkedin", "email", "x"])
+const socials = getSocialLinks(['github', 'linkedin', 'email', 'x'])
 
 const { t } = useI18n()
 </script>

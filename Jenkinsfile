@@ -14,9 +14,18 @@ pipeline {
             }
         }
 
+        stage('Notify Renovate PR') {
+            when {
+                changeRequest target: 'staging'
+            }
+            steps {
+                notifyRenovatePr()
+            }
+        }
+
         stage('Install') {
             steps {
-                sh 'npm ci'
+                npmCi()
             }
         }
 
@@ -28,7 +37,7 @@ pipeline {
 
         stage('Unit tests') {
             steps {
-                sh 'npm run test:unit'
+                sh 'npm test'
             }
         }
 

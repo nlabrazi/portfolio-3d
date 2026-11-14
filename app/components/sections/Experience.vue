@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { experiences } from "../../../data/experience"
+import { experiences } from '../../../data/experience'
 
 const { t } = useI18n()
 </script>

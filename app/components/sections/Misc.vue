@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ImageLightbox from "~/components/ui/ImageLightbox.vue"
-import { miscItems } from "../../../data/misc"
+import ImageLightbox from '~/components/ui/ImageLightbox.vue'
+import { miscItems } from '../../../data/misc'
 
 const { activeImage, activeTitle, openImage, closeImage } = useImageLightbox()
 

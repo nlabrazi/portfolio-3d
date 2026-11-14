@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { getSocialLinks, isHttpUrl } from "~/utils/social-links"
-import { footer } from "../../../data/footer"
-import { site } from "../../../data/site"
+import { getSocialLinks, isHttpUrl } from '~/utils/social-links'
+import { footer } from '../../../data/footer'
+import { site } from '../../../data/site'
 
-const socialLinks = getSocialLinks(["email", "github", "linkedin", "x"])
+const socialLinks = getSocialLinks(['email', 'github', 'linkedin', 'x'])
 
 const { t } = useI18n()
 </script>
