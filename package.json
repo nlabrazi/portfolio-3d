@@ -29,13 +29,13 @@
     "@nuxtjs/i18n": "^10.6.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "nuxt": "^4.4.2",
-    "three": "^0.184.0",
+    "three": "^0.187.0",
     "vue": "^3.5.33"
   },
   "devDependencies": {
     "@nlabrazi/config-biome": "^0.2.0",
     "@nlabrazi/config-playwright": "^0.1.0",
     "@nlabrazi/tsconfig": "^0.1.0",
-    "@types/three": "^0.184.0"
+    "@types/three": "^0.187.0"
   }
 }
