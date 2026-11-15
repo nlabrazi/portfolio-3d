@@ -2,87 +2,91 @@
 const { t, locale } = useI18n()
 
 const links = [
-	{ href: "#home", label: "nav.home" },
-	{ href: "#about", label: "nav.about" },
-	{ href: "#experience", label: "nav.experience" },
-	{ href: "#education", label: "nav.education" },
-	{ href: "#skills", label: "nav.skills" },
-	{ href: "#projects", label: "nav.projects" },
-	{ href: "#misc", label: "nav.misc" },
-	{ href: "#contact", label: "nav.contact" },
+  { href: '#home', label: 'nav.home' },
+  { href: '#about', label: 'nav.about' },
+  { href: '#experience', label: 'nav.experience' },
+  { href: '#education', label: 'nav.education' },
+  { href: '#skills', label: 'nav.skills' },
+  { href: '#projects', label: 'nav.projects' },
+  { href: '#misc', label: 'nav.misc' },
+  { href: '#contact', label: 'nav.contact' },
 ]
 
-const activeHash = ref("#home")
+const activeHash = ref('#home')
 const isOpen = ref(false)
 const progress = ref(0)
 const header = ref<HTMLElement | null>(null)
 let headerObserver: ResizeObserver | null = null
 
-watch(locale, () => { isOpen.value = false })
+watch(locale, () => {
+  isOpen.value = false
+})
 
 function updateProgress() {
-	const doc = document.documentElement
-	const height = doc.scrollHeight - doc.clientHeight
-	const current = window.scrollY || doc.scrollTop
-	progress.value =
-		height > 0 ? Math.min(100, Math.max(0, (current / height) * 100)) : 0
+  const doc = document.documentElement
+  const height = doc.scrollHeight - doc.clientHeight
+  const current = window.scrollY || doc.scrollTop
+  progress.value = height > 0 ? Math.min(100, Math.max(0, (current / height) * 100)) : 0
 }
 
 let obs: IntersectionObserver | null = null
 
 onMounted(() => {
-	headerObserver = new ResizeObserver(([entry]) => {
-		document.documentElement.style.setProperty("--header-height", `${entry.target.getBoundingClientRect().height}px`)
-	})
-	if (header.value) headerObserver.observe(header.value)
+  headerObserver = new ResizeObserver(([entry]) => {
+    document.documentElement.style.setProperty(
+      '--header-height',
+      `${entry.target.getBoundingClientRect().height}px`,
+    )
+  })
+  if (header.value) headerObserver.observe(header.value)
 
-	const ids = links.map((l) => l.href.slice(1))
-	const elements = ids
-		.map((id) => document.getElementById(id))
-		.filter((x): x is HTMLElement => Boolean(x))
+  const ids = links.map((l) => l.href.slice(1))
+  const elements = ids
+    .map((id) => document.getElementById(id))
+    .filter((x): x is HTMLElement => Boolean(x))
 
-	const ratios = new Map<string, number>()
-	for (const el of elements) ratios.set(el.id, 0)
+  const ratios = new Map<string, number>()
+  for (const el of elements) ratios.set(el.id, 0)
 
-	obs = new IntersectionObserver(
-		(entries) => {
-			for (const e of entries) {
-				const id = (e.target as HTMLElement).id
-				ratios.set(id, e.isIntersecting ? e.intersectionRatio : 0)
-			}
+  obs = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        const id = (e.target as HTMLElement).id
+        ratios.set(id, e.isIntersecting ? e.intersectionRatio : 0)
+      }
 
-			let bestId: string | null = null
-			let bestRatio = 0
+      let bestId: string | null = null
+      let bestRatio = 0
 
-			for (const [id, ratio] of ratios.entries()) {
-				if (ratio > bestRatio) {
-					bestRatio = ratio
-					bestId = id
-				}
-			}
+      for (const [id, ratio] of ratios.entries()) {
+        if (ratio > bestRatio) {
+          bestRatio = ratio
+          bestId = id
+        }
+      }
 
-			if (bestId) activeHash.value = `#${bestId}`
-		},
-		{
-			threshold: [0, 0.1, 0.2, 0.35, 0.5, 0.65],
-			rootMargin: "-15% 0px -70% 0px",
-		},
-	)
+      if (bestId) activeHash.value = `#${bestId}`
+    },
+    {
+      threshold: [0, 0.1, 0.2, 0.35, 0.5, 0.65],
+      rootMargin: '-15% 0px -70% 0px',
+    },
+  )
 
-	for (const el of elements) obs.observe(el)
+  for (const el of elements) obs.observe(el)
 
-	updateProgress()
-	window.addEventListener("scroll", updateProgress, { passive: true })
-	window.addEventListener("resize", updateProgress)
+  updateProgress()
+  window.addEventListener('scroll', updateProgress, { passive: true })
+  window.addEventListener('resize', updateProgress)
 })
 
 onBeforeUnmount(() => {
-	headerObserver?.disconnect()
-	document.documentElement.style.removeProperty("--header-height")
-	obs?.disconnect()
-	obs = null
-	window.removeEventListener("scroll", updateProgress)
-	window.removeEventListener("resize", updateProgress)
+  headerObserver?.disconnect()
+  document.documentElement.style.removeProperty('--header-height')
+  obs?.disconnect()
+  obs = null
+  window.removeEventListener('scroll', updateProgress)
+  window.removeEventListener('resize', updateProgress)
 })
 </script>
 

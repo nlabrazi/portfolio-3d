@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { site } from "../../../data/site"
-import SocialLinks from "../ui/SocialLinks.vue"
+import { site } from '../../../data/site'
+import SocialLinks from '../ui/SocialLinks.vue'
 
 const { t } = useI18n()
 </script>

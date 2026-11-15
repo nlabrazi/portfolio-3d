@@ -2,9 +2,9 @@
 const { locale, t } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const languages = [
-	{ code: "fr", label: "Français", flag: "🇫🇷", dir: "ltr" },
-	{ code: "en", label: "English", flag: "🇬🇧", dir: "ltr" },
-	{ code: "ar", label: "العربية", flag: "🇸🇦", dir: "rtl" },
+  { code: 'fr', label: 'Français', flag: '🇫🇷', dir: 'ltr' },
+  { code: 'en', label: 'English', flag: '🇬🇧', dir: 'ltr' },
+  { code: 'ar', label: 'العربية', flag: '🇸🇦', dir: 'rtl' },
 ] as const
 </script>
 

@@ -16,7 +16,7 @@ pipeline {
 
         stage('Install') {
             steps {
-                sh 'npm ci'
+                npmCi()
             }
         }
 
@@ -28,7 +28,7 @@ pipeline {
 
         stage('Unit tests') {
             steps {
-                sh 'npm run test:unit'
+                sh 'npm test'
             }
         }
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import homeBgImage from "~/assets/images/home-bg.webp"
-import { about } from "../../../data/about"
+import homeBgImage from '~/assets/images/home-bg.webp'
+import { about } from '../../../data/about'
 
 const { t } = useI18n()
 </script>

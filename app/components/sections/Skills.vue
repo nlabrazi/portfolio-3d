@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { skillGroups } from "../../../data/skills"
+import { skillGroups } from '../../../data/skills'
 
 const { t } = useI18n()
 </script>

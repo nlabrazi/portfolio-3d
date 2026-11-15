@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ImageLightbox from "~/components/ui/ImageLightbox.vue"
-import { projects } from "../../../data/projects"
+import ImageLightbox from '~/components/ui/ImageLightbox.vue'
+import { projects } from '../../../data/projects'
 
 const selectedTech = ref<string | null>(null)
 const currentPage = ref(1)
@@ -8,31 +8,29 @@ const PAGE_SIZE = 4
 const { activeImage, activeTitle, openImage, closeImage } = useImageLightbox()
 
 const allTech = computed(() => {
-	const set = new Set<string>()
-	for (const p of projects) for (const t of p.tech) set.add(t)
-	return Array.from(set).sort((a, b) => a.localeCompare(b))
+  const set = new Set<string>()
+  for (const p of projects) for (const t of p.tech) set.add(t)
+  return Array.from(set).sort((a, b) => a.localeCompare(b))
 })
 
 const filtered = computed(() => {
-	if (!selectedTech.value) return projects
-	return projects.filter((p) => p.tech.includes(selectedTech.value as string))
+  if (!selectedTech.value) return projects
+  return projects.filter((p) => p.tech.includes(selectedTech.value as string))
 })
 
-const totalPages = computed(() =>
-	Math.max(1, Math.ceil(filtered.value.length / PAGE_SIZE)),
-)
+const totalPages = computed(() => Math.max(1, Math.ceil(filtered.value.length / PAGE_SIZE)))
 
 const paginatedProjects = computed(() => {
-	const start = (currentPage.value - 1) * PAGE_SIZE
-	return filtered.value.slice(start, start + PAGE_SIZE)
+  const start = (currentPage.value - 1) * PAGE_SIZE
+  return filtered.value.slice(start, start + PAGE_SIZE)
 })
 
 watch(selectedTech, () => {
-	currentPage.value = 1
+  currentPage.value = 1
 })
 
 watch(totalPages, (value) => {
-	if (currentPage.value > value) currentPage.value = value
+  if (currentPage.value > value) currentPage.value = value
 })
 
 const { t } = useI18n()

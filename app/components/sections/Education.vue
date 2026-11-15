@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { educationItems } from "../../../data/education"
+import { educationItems } from '../../../data/education'
 
 const { t } = useI18n()
 </script>

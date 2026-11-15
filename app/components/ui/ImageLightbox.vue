@@ -1,11 +1,11 @@
 <script setup lang="ts">
 defineProps<{
-	src: string | null
-	alt?: string
+  src: string | null
+  alt?: string
 }>()
 
 const emit = defineEmits<{
-	close: []
+  close: []
 }>()
 
 const dialog = ref<HTMLDialogElement | null>(null)
@@ -14,28 +14,32 @@ let previousFocus: HTMLElement | null = null
 let previousOverflow: string | null = null
 
 function restorePage() {
-	if (previousOverflow !== null) {
-		document.documentElement.style.overflow = previousOverflow
-		previousOverflow = null
-	}
-	if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true })
-	previousFocus = null
+  if (previousOverflow !== null) {
+    document.documentElement.style.overflow = previousOverflow
+    previousOverflow = null
+  }
+  if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true })
+  previousFocus = null
 }
 
-watch(dialog, (element, previous) => {
-	previous?.close()
-	restorePage()
-	if (!element) return
-	previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null
-	previousOverflow = document.documentElement.style.overflow
-	document.documentElement.style.overflow = "hidden"
-	element.showModal()
-	closeButton.value?.focus({ preventScroll: true })
-}, { flush: "post" })
+watch(
+  dialog,
+  (element, previous) => {
+    previous?.close()
+    restorePage()
+    if (!element) return
+    previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null
+    previousOverflow = document.documentElement.style.overflow
+    document.documentElement.style.overflow = 'hidden'
+    element.showModal()
+    closeButton.value?.focus({ preventScroll: true })
+  },
+  { flush: 'post' },
+)
 
 onBeforeUnmount(() => {
-	dialog.value?.close()
-	restorePage()
+  dialog.value?.close()
+  restorePage()
 })
 
 const { t } = useI18n()

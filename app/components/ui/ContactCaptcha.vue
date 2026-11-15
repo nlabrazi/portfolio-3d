@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type CaptchaApi, loadCaptcha } from "~/utils/hcaptcha"
+import { type CaptchaApi, loadCaptcha } from '~/utils/hcaptcha'
 
 const { locale, t } = useI18n()
 const emit = defineEmits<{ verified: [token: string] }>()
@@ -10,38 +10,47 @@ let widget: string | undefined
 let mounted = false
 
 function reset() {
-	emit("verified", "")
-	if (widget !== undefined) api?.reset(widget)
+  emit('verified', '')
+  if (widget !== undefined) api?.reset(widget)
 }
 function render() {
-	if (!mounted || !api || !container.value) return
-	if (widget !== undefined) api.remove(widget)
-	emit("verified", "")
-	widget = api.render(container.value, {
-		// Official shared site key for Web3Forms Free (not our form Access Key).
-		sitekey: "50b2fe65-b00b-4b9e-ad62-3ba471098be2",
-		theme: "dark",
-		size: "compact",
-		hl: locale.value,
-		callback: (token) => { failed.value = false; emit("verified", token) },
-		"expired-callback": () => emit("verified", ""),
-		"error-callback": () => { failed.value = true; emit("verified", "") },
-	})
+  if (!mounted || !api || !container.value) return
+  if (widget !== undefined) api.remove(widget)
+  emit('verified', '')
+  widget = api.render(container.value, {
+    // Official shared site key for Web3Forms Free (not our form Access Key).
+    sitekey: '50b2fe65-b00b-4b9e-ad62-3ba471098be2',
+    theme: 'dark',
+    size: 'compact',
+    hl: locale.value,
+    callback: (token) => {
+      failed.value = false
+      emit('verified', token)
+    },
+    'expired-callback': () => emit('verified', ''),
+    'error-callback': () => {
+      failed.value = true
+      emit('verified', '')
+    },
+  })
 }
 async function start() {
-	failed.value = false
-	try {
-		api = await loadCaptcha()
-		render()
-	} catch {
-		if (mounted) failed.value = true
-	}
+  failed.value = false
+  try {
+    api = await loadCaptcha()
+    render()
+  } catch {
+    if (mounted) failed.value = true
+  }
 }
-onMounted(() => { mounted = true; void start() })
+onMounted(() => {
+  mounted = true
+  void start()
+})
 watch(locale, render)
 onBeforeUnmount(() => {
-	mounted = false
-	if (widget !== undefined) api?.remove(widget)
+  mounted = false
+  if (widget !== undefined) api?.remove(widget)
 })
 defineExpose({ reset })
 </script>
