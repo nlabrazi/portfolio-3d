@@ -22,20 +22,20 @@
     "test:e2e": "node tests/build-e2e.mjs && playwright test"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.2",
-    "@fortawesome/free-brands-svg-icons": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/fontawesome-svg-core": "^7.3.1",
+    "@fortawesome/free-brands-svg-icons": "^7.3.1",
+    "@fortawesome/free-solid-svg-icons": "^7.3.1",
     "@fortawesome/vue-fontawesome": "^3.3.3",
     "@nuxtjs/i18n": "^10.6.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "nuxt": "^4.6.4",
-    "three": "^0.184.0",
+    "three": "^0.187.0",
     "vue": "^3.5.45"
   },
   "devDependencies": {
     "@nlabrazi/config-biome": "^0.2.0",
     "@nlabrazi/config-playwright": "^0.1.0",
     "@nlabrazi/tsconfig": "^0.1.0",
-    "@types/three": "^0.184.1"
+    "@types/three": "^0.187.0"
   }
 }
