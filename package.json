@@ -16,8 +16,10 @@
     "format": "biome format --write .",
     "lint": "biome lint .",
     "typecheck": "nuxt typecheck",
-    "test": "node --test tests/unit/*.test.ts",
-    "test:unit": "node --test tests/unit/*.test.ts",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
     "test:docker": "node --test tests/docker.test.mjs",
     "test:e2e": "node tests/build-e2e.mjs && playwright test"
   },
@@ -35,6 +37,7 @@
   "devDependencies": {
     "@nlabrazi/config-biome": "^0.2.0",
     "@nlabrazi/config-playwright": "^0.1.0",
+    "@nlabrazi/config-vitest": "^0.2.0",
     "@nlabrazi/tsconfig": "^0.1.0",
     "@types/three": "^0.187.0"
   }
