@@ -11,8 +11,8 @@ RUN chown -R node:node /app
 
 USER node
 
-COPY --chown=node:node package*.json ./
-RUN npm ci
+COPY --chown=node:node package*.json .npmrc ./
+RUN --mount=type=secret,id=npmrc,target=/home/node/.npmrc,uid=1000,gid=1000,mode=0400,required=true npm ci
 
 COPY --chown=node:node . .
 
@@ -36,4 +36,6 @@ RUN npm run generate
 ##################################
 FROM nginx:alpine AS prod
 COPY --from=build /app/.output/public /usr/share/nginx/html
+COPY docker/40-runtime-config.sh /docker-entrypoint.d/40-runtime-config.sh
+RUN chmod +x /docker-entrypoint.d/40-runtime-config.sh
 EXPOSE 80
