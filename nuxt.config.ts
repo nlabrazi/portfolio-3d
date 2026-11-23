@@ -59,6 +59,9 @@ export default defineNuxtConfig({
     head: {
       script: [
         {
+          src: '/runtime-config.js',
+        },
+        {
           src: 'https://umami.nabster.dev/script.js',
           defer: true,
           'data-website-id': '5b11973a-7fe3-4221-bc32-6d2f382ca899',

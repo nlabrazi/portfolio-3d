@@ -4,6 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile
       target: dev
+      secrets:
+        - npmrc
     container_name: portfolio-3d
     restart: unless-stopped
     user: "${UID}:${GID}"
@@ -17,6 +19,10 @@ services:
       - ./:/app
       - node_modules:/app/node_modules
     command: ["npx", "nuxt", "dev", "--host", "0.0.0.0", "--port", "3000"]
+
+secrets:
+  npmrc:
+    file: ${NPMRC_FILE:-~/.npmrc}
 
 volumes:
   node_modules:

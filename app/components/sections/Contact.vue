@@ -16,7 +16,22 @@ const form = reactive<FormState>({
 })
 
 const config = useRuntimeConfig()
-const isConfigured = computed(() => Boolean(config.public.web3formsAccessKey))
+const runtimeWeb3formsKey = ref('')
+const web3formsAccessKey = computed(
+  () => config.public.web3formsAccessKey?.trim() || runtimeWeb3formsKey.value,
+)
+const isConfigured = computed(() => Boolean(web3formsAccessKey.value))
+
+onMounted(() => {
+  const injected = (
+    window as Window & {
+      __PORTFOLIO_RUNTIME_CONFIG__?: { web3formsAccessKey?: string }
+    }
+  ).__PORTFOLIO_RUNTIME_CONFIG__?.web3formsAccessKey?.trim()
+  if (injected) {
+    runtimeWeb3formsKey.value = injected
+  }
+})
 const captcha = ref<{ reset: () => void } | null>(null)
 const captchaEnabled = ref(false)
 const captchaToken = ref('')
@@ -54,7 +69,7 @@ async function onSubmit() {
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       signal: controller.signal,
       body: JSON.stringify({
-        access_key: config.public.web3formsAccessKey,
+        access_key: web3formsAccessKey.value,
         name: form.name.trim(),
         email: form.email.trim(),
         subject: form.subject.trim(),
