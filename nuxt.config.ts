@@ -1,8 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  extends: ['@nlabrazi/nuxt-layer'],
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  runtimeConfig: { public: { web3formsAccessKey: '' } },
+  runtimeConfig: {
+    health: {
+      service: 'portfolio-3d',
+    },
+    public: {
+      web3formsAccessKey: '',
+      umami: {
+        websiteId: '3da21a6b-3e88-4d47-b70a-5627fa5b282c',
+        domains: 'nabster.dev',
+      },
+      site: {
+        name: 'Nabil Labrazi',
+        url: 'https://nabster.dev',
+      },
+    },
+  },
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/i18n'],
   i18n: {
     baseUrl: 'https://nabster.dev',
@@ -60,11 +76,6 @@ export default defineNuxtConfig({
       script: [
         {
           src: '/runtime-config.js',
-        },
-        {
-          src: 'https://umami.nabster.dev/script.js',
-          defer: true,
-          'data-website-id': '5b11973a-7fe3-4221-bc32-6d2f382ca899',
         },
       ],
       link: [
